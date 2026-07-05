@@ -18,15 +18,14 @@ sys.path.insert(0, str(ROOT / "src"))
 from gaga_jcvpca import project_io, qc_markers  # noqa: E402
 from gaga_jcvpca.config import load_config  # noqa: E402
 from gaga_jcvpca.inventory import build_inventory  # noqa: E402
+from gaga_jcvpca.feature_manifest_gen import (  # noqa: E402
+    DEFAULT_MANIFEST_BY_PARTICIPANT,
+    resolve_manifest_path,
+)
 from gaga_jcvpca.rotations import FilterSettings, build_link_map_from_bones, convert_session_take  # noqa: E402
 from gaga_jcvpca.selection import link_stem  # noqa: E402
 
-MANIFEST_BY_PARTICIPANT = {
-    "671": "group4_core_14link_within_671_feature_manifest.csv",
-    "252": "group4_core_16link_within_252_feature_manifest.csv",
-    "651": "group4_core_14link_within_651_feature_manifest.csv",
-    "790": "group4_core_16link_within_790_feature_manifest.csv",
-}
+MANIFEST_BY_PARTICIPANT = DEFAULT_MANIFEST_BY_PARTICIPANT
 
 
 def _description_for_session(config, session_id: str) -> Path | None:
@@ -44,14 +43,14 @@ def _description_for_session(config, session_id: str) -> Path | None:
 
 def convert_one_session(config, session_id: str, skeleton_path: Path) -> None:
     participant = session_id.split("_", 1)[0]
-    manifest_name = MANIFEST_BY_PARTICIPANT.get(participant)
-    if manifest_name is None:
+    manifest_dir = config.resolve_path("data.feature_manifests")
+    manifest_path = resolve_manifest_path(participant, manifest_dir, MANIFEST_BY_PARTICIPANT)
+    if manifest_path is None:
         print(f"skip {session_id}: no feature manifest for participant {participant}")
         return
 
-    manifest_dir = config.resolve_path("data.feature_manifests")
     features = project_io.feature_names_from_manifest(
-        project_io.load_feature_manifest(manifest_dir / manifest_name)
+        project_io.load_feature_manifest(manifest_path)
     )
     link_ids = sorted({link_stem(f) for f in features})
 
@@ -86,26 +85,10 @@ def convert_one_session(config, session_id: str, skeleton_path: Path) -> None:
     matrix.to_parquet(out_path)
     print(f"wrote {out_path} ({matrix.shape})")
 
-    md = qc_markers.marker_data_from_take(take)
-    thresholds = config.data
     inv = build_inventory(config)
-    segments = [s for s in inv.segments if s.session.as_str() == session_id]
-    findings = []
-    for seg in segments:
-        start, end = seg.start_frame, seg.end_frame
-        end = min(end, md.n_frames)
-        if start >= end:
-            continue
-        seg_md = qc_markers.MarkerData(
-            marker_names=md.marker_names,
-            presence=md.presence[start:end],
-            frame_rate_hz=md.frame_rate_hz,
-            positions=md.positions[start:end] if md.positions is not None else None,
-            session_id=md.session_id,
-        )
-        label = f"{session_id}::{seg.canonical_label}"
-        findings.extend(qc_markers.qc_segment_all_regions(seg_md, thresholds, label))
-
+    findings, _ = qc_markers.run_marker_qc(
+        config, inv, session_ids=[session_id], write_cache=False
+    )
     if findings:
         qc_dir = config.resolve_path("outputs.cache") / "qc"
         qc_dir.mkdir(parents=True, exist_ok=True)

@@ -13,9 +13,10 @@ from typing import Optional
 
 import pandas as pd
 
-from gaga_jcvpca import jcvpca, reporting, validation
+from gaga_jcvpca import jcvpca, qc_markers, reporting, validation
 from gaga_jcvpca.config import Config, load_config
 from gaga_jcvpca.inventory import Inventory, build_inventory
+from gaga_jcvpca.schemas import QCFinding
 from gaga_jcvpca.selection import AnalysisSelection, region_of_link
 
 
@@ -27,33 +28,62 @@ class ProjectSnapshot:
     inventory: Inventory
     science_hash: str = ""
     recommended_next_action: str = ""
+    qc_findings: list[QCFinding] = field(default_factory=list)
+    qc_summary_df: pd.DataFrame = field(default_factory=pd.DataFrame)
+    qc_summary: dict = field(default_factory=dict)
+    qc_parse_warnings: list[str] = field(default_factory=list)
 
     @property
     def summary(self) -> dict:
-        return self.inventory.summary()
+        base = self.inventory.summary()
+        base.update(self.qc_summary)
+        return base
 
 
-def _recommend_next_action(inv: Inventory) -> str:
-    ready = [r for r in inv.rows if r.status == "ready"]
+def _recommend_next_action(inv: Inventory, qc_summary: dict) -> str:
+    n_marker_sessions = sum(1 for r in inv.rows if r.has_marker_csv)
     if not inv.rows:
         return "No sessions discovered. Add segmentation workbooks and raw captures to data/."
+    if n_marker_sessions == 0:
+        return (
+            "No marker CSV files found. Set data.raw_markers or data.raw_skeleton in "
+            "configs/paths.yaml (expected layout: data/raw_markers/{participant}/), "
+            "then open Tab 3 for QC review."
+        )
+    ready = [r for r in inv.rows if r.status == "ready"]
     if not ready:
         return (
-            "Sessions are discovered but raw skeleton CSVs are not linked. "
-            "Set data.raw_skeleton in configs/paths.yaml to the capture location, "
-            "then run conversion and marker QC."
+            "Marker files are present but sessions are not analysis-ready "
+            "(need segmentation sheet + skeleton CSV). Review Tab 2 inventory."
         )
-    return "Review QC, then build an analysis selection and run JcvPCA."
+    if qc_summary.get("n_findings", 0) == 0:
+        return "Review QC in Tab 3, then build an analysis selection and run JcvPCA."
+    return "Review QC in Tab 3, then build an analysis selection and run JcvPCA."
 
 
 def build_snapshot(config: Optional[Config] = None) -> ProjectSnapshot:
     cfg = config or load_config()
     inv = build_inventory(cfg)
+    qc_findings: list[QCFinding] = []
+    qc_df = pd.DataFrame()
+    parse_warnings: list[str] = []
+
+    if any(r.has_marker_csv for r in inv.rows):
+        qc_findings, qc_df = qc_markers.run_marker_qc(cfg, inv, write_cache=True)
+        parse_warnings = [
+            f.message for f in qc_findings if f.metric == "parse_error"
+        ]
+
+    qc_summary = qc_markers.summarize_qc_findings(qc_findings, inv)
     return ProjectSnapshot(
         config=cfg,
         inventory=inv,
         science_hash=cfg.science_hash,
-        recommended_next_action=_recommend_next_action(inv),
+        recommended_next_action=_recommend_next_action(inv, qc_summary),
+        qc_findings=qc_findings,
+        qc_summary_df=qc_df,
+        qc_summary=qc_summary,
+        qc_parse_warnings=parse_warnings,
     )
 
 

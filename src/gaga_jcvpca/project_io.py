@@ -383,18 +383,41 @@ def parse_motive_take(path: str | Path, max_frames: Optional[int] = None) -> Mot
     )
 
 
-def resolve_session_skeleton(config: "Config", session_id: str) -> Optional[Path]:
-    """Return the raw skeleton CSV path for a canonical session id, if present."""
-    try:
-        skeleton_dir = config.resolve_path("data.raw_skeleton")
-    except KeyError:
+def _resolve_session_csv_in_dir(dir_path: Path, session_id: str) -> Optional[Path]:
+    """Return the first matching Motive CSV for a session id under ``dir_path``."""
+    if not dir_path or not dir_path.exists():
         return None
-    if not skeleton_dir.exists():
-        return None
-    for path in skeleton_dir.rglob("*.csv"):
+    for path in dir_path.rglob("*.csv"):
         if path.stat().st_size == 0 or "DataDescriptions" in path.name:
             continue
         key = parse_session_id(path.name)
         if key is not None and key.as_str() == session_id:
             return path
     return None
+
+
+def resolve_session_marker_csv(config: "Config", session_id: str) -> Optional[Path]:
+    """Return the marker CSV path for a session (dedicated export or skeleton fallback)."""
+    try:
+        marker_dir = config.resolve_path("data.raw_markers")
+    except KeyError:
+        marker_dir = None
+    if marker_dir is not None:
+        found = _resolve_session_csv_in_dir(marker_dir, session_id)
+        if found is not None:
+            return found
+
+    skel = resolve_session_skeleton(config, session_id)
+    if skel is not None and raw_csv_type(skel) in (None, "Marker", "Bone"):
+        # Skeleton exports embed Type=Marker columns alongside bones.
+        return skel
+    return None
+
+
+def resolve_session_skeleton(config: "Config", session_id: str) -> Optional[Path]:
+    """Return the raw skeleton CSV path for a canonical session id, if present."""
+    try:
+        skeleton_dir = config.resolve_path("data.raw_skeleton")
+    except KeyError:
+        return None
+    return _resolve_session_csv_in_dir(skeleton_dir, session_id)

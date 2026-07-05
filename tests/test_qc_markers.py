@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import numpy as np
 import pytest
+from pathlib import Path
 
 from gaga_jcvpca import qc_markers as qc
 from gaga_jcvpca.schemas import Recommendation, Severity
@@ -121,3 +122,86 @@ def test_parse_motive_marker_csv_from_skeleton(project_root):
     assert md.positions is not None
     assert md.positions[100:, mi].shape[0] > 0
     assert np.isfinite(md.positions[100, mi]).all()
+
+
+def test_run_marker_qc_synthetic(config, monkeypatch):
+    from gaga_jcvpca.inventory import Inventory
+    from gaga_jcvpca.schemas import ExerciseSegment, InventoryRow, SessionKey
+
+    session = SessionKey("671", "T1", "P1", "R1")
+    inv = Inventory(
+        rows=[
+            InventoryRow(
+                participant="671",
+                timepoint="T1",
+                task_part="P1",
+                repetition="R1",
+                session_id=session.as_str(),
+                has_marker_csv=True,
+            )
+        ],
+        segments=[
+            ExerciseSegment(
+                session=session,
+                exercise_id=9,
+                canonical_label="ex09",
+                exercise_name="test",
+                start_frame=0,
+                end_frame=300,
+            )
+        ],
+        naming_issues=[],
+    )
+    presence = np.ones((600, 3), dtype=bool)
+    names = ["LElbowOut", "ChestTop", "HeadTop"]
+    md = qc.MarkerData(marker_names=names, presence=presence, frame_rate_hz=120.0)
+
+    monkeypatch.setattr(
+        "gaga_jcvpca.qc_markers.parse_motive_marker_csv",
+        lambda path, frame_rate_hz: md,
+    )
+    monkeypatch.setattr(
+        "gaga_jcvpca.project_io.resolve_session_marker_csv",
+        lambda cfg, sid: Path("/fake/marker.csv"),
+    )
+
+    findings, df = qc.run_marker_qc(config, inv, write_cache=False)
+    assert findings
+    assert not df.empty
+    assert set(["resolution", "severity", "recommendation", "message"]).issubset(df.columns)
+    assert any("::session" in f.scope for f in findings)
+    assert any("::ex09" in f.scope for f in findings)
+
+
+def test_run_marker_qc_parse_failure_soft_warning(config, monkeypatch):
+    from gaga_jcvpca.inventory import Inventory
+    from gaga_jcvpca.schemas import InventoryRow
+
+    inv = Inventory(
+        rows=[
+            InventoryRow(
+                participant="671",
+                timepoint="T1",
+                task_part="P1",
+                repetition="R1",
+                session_id="671_T1_P1_R1",
+                has_marker_csv=True,
+            )
+        ],
+        segments=[],
+        naming_issues=[],
+    )
+
+    def _boom(path, frame_rate_hz):
+        raise ValueError("bad csv")
+
+    monkeypatch.setattr("gaga_jcvpca.qc_markers.parse_motive_marker_csv", _boom)
+    monkeypatch.setattr(
+        "gaga_jcvpca.project_io.resolve_session_marker_csv",
+        lambda cfg, sid: Path("/fake/bad.csv"),
+    )
+
+    findings, df = qc.run_marker_qc(config, inv, write_cache=False)
+    assert len(findings) == 1
+    assert findings[0].metric == "parse_error"
+    assert "bad csv" in findings[0].message

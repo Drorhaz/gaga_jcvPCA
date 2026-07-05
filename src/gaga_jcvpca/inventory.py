@@ -109,14 +109,20 @@ def build_inventory(config: Config) -> Inventory:
 
     # Raw dirs may not physically exist in a standalone checkout; that's fine.
     try:
+        marker_dir = config.resolve_path("data.raw_markers")
+    except KeyError:
+        marker_dir = Path()
+    try:
         skeleton_dir = config.resolve_path("data.raw_skeleton")
     except KeyError:
         skeleton_dir = Path()
 
+    marker_files = _index_raw_files(marker_dir, "Marker")
     skeleton_files = _index_raw_files(skeleton_dir, "Bone")
     description_files = _index_descriptions(desc_dir)
 
     workbooks = project_io.find_segmentation_workbooks(seg_dir)
+    workbook_pids = set(workbooks.keys())
 
     # Collect segments + build per-session segment counts.
     segments: list[ExerciseSegment] = []
@@ -138,7 +144,7 @@ def build_inventory(config: Config) -> Inventory:
     all_session_ids = set(sessions_with_sheet)
     for sid in list(skeleton_files) + list(description_files):
         key = parse_session_id(sid)
-        if key and key.task_part == task_part_scope:
+        if key and key.task_part == task_part_scope and key.participant in workbook_pids:
             all_session_ids.add(sid)
 
     rows: list[InventoryRow] = []
@@ -147,6 +153,7 @@ def build_inventory(config: Config) -> Inventory:
         key = parse_session_id(sid)
         if key is None:
             continue
+        has_marker = sid in marker_files or sid in skeleton_files
         has_skel = sid in skeleton_files
         has_desc = sid in description_files
         has_sheet = sid in sessions_with_sheet
@@ -166,6 +173,8 @@ def build_inventory(config: Config) -> Inventory:
                 notes.append("no segmentation sheet")
             if not has_skel:
                 notes.append("no raw skeleton csv")
+            if not has_marker:
+                notes.append("no marker csv")
         else:
             status = "missing"
 
@@ -176,6 +185,7 @@ def build_inventory(config: Config) -> Inventory:
                 task_part=key.task_part,
                 repetition=key.repetition,
                 session_id=sid,
+                has_marker_csv=has_marker,
                 has_skeleton_csv=has_skel,
                 has_description=has_desc,
                 has_segmentation_sheet=has_sheet,

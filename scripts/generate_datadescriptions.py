@@ -68,8 +68,20 @@ def generate_datadescriptions(skeleton_path: Path, out_path: Path) -> None:
 
 def main() -> None:
     desc_dir = ROOT / "data" / "descriptions"
-    for participant in ("651", "790"):
-        skel_dir = ROOT / "data" / "raw_skeleton" / participant
+    skeleton_root = ROOT / "data" / "raw_skeleton"
+    if not skeleton_root.exists():
+        print(f"No skeleton directory: {skeleton_root}")
+        return
+
+    participants = sorted(
+        {
+            p.name
+            for p in skeleton_root.iterdir()
+            if p.is_dir() and p.name.isdigit()
+        }
+    )
+    for participant in participants:
+        skel_dir = skeleton_root / participant
         for skeleton_path in sorted(skel_dir.glob("*.csv")):
             if "DataDescriptions" in skeleton_path.name:
                 continue

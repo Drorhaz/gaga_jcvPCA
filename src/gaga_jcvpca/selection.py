@@ -138,19 +138,20 @@ def default_selection(
     """
     qc_findings = qc_findings or []
     region_recs: dict[str, str] = {}
+    region_messages: dict[str, str] = {}
+    order = {
+        Recommendation.INCLUDE.value: 0,
+        Recommendation.INCLUDE_WITH_CAUTION.value: 1,
+        Recommendation.EXCLUDE.value: 2,
+    }
     for f in qc_findings:
         # link/region-resolution findings carry scope suffix '::<region>'
         if f.resolution == "link" and "::" in f.scope:
             region = f.scope.rsplit("::", 1)[-1]
-            # keep the worst recommendation per region
             prev = region_recs.get(region)
-            order = {
-                Recommendation.INCLUDE.value: 0,
-                Recommendation.INCLUDE_WITH_CAUTION.value: 1,
-                Recommendation.EXCLUDE.value: 2,
-            }
             if prev is None or order.get(f.recommendation.value, 0) > order.get(prev, 0):
                 region_recs[region] = f.recommendation.value
+                region_messages[region] = f.message
 
     stems = sorted({link_stem(f) for f in manifest["feature_name"].astype(str)})
     choices: list[LinkChoice] = []
@@ -169,15 +170,20 @@ def default_selection(
             continue
         rec = region_recs.get(region, Recommendation.INCLUDE.value)
         included = rec != Recommendation.EXCLUDE.value
-        reason = {
-            Recommendation.INCLUDE.value: "Clean QC; included by default.",
-            Recommendation.INCLUDE_WITH_CAUTION.value: (
-                "QC soft-warning in this body region; included but flagged for careful interpretation."
-            ),
-            Recommendation.EXCLUDE.value: (
-                "QC recommends exclusion for this body region (excess marker gaps)."
-            ),
-        }[rec]
+        if rec == Recommendation.INCLUDE.value:
+            reason = "Clean QC; included by default."
+        else:
+            reason = region_messages.get(
+                region,
+                {
+                    Recommendation.INCLUDE_WITH_CAUTION.value: (
+                        "QC soft-warning in this body region; included but flagged for careful interpretation."
+                    ),
+                    Recommendation.EXCLUDE.value: (
+                        "QC recommends exclusion for this body region (excess marker gaps)."
+                    ),
+                }.get(rec, "QC advisory for this body region."),
+            )
         choices.append(
             LinkChoice(link=stem, region=region, included=included, reason=reason, qc_recommendation=rec)
         )

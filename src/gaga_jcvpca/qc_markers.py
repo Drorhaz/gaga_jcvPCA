@@ -370,4 +370,192 @@ def parse_motive_marker_csv(path: str | Path, frame_rate_hz: float) -> MarkerDat
     from gaga_jcvpca import project_io
 
     take = project_io.parse_motive_take(path)
-    return marker_data_from_take(take, frame_rate_hz=frame_rate_hz)
+    md = marker_data_from_take(take, frame_rate_hz=frame_rate_hz)
+    md.session_id = Path(path).stem
+    return md
+
+
+def _slice_marker_data(md: MarkerData, start: int, end: int) -> Optional[MarkerData]:
+    """Return a segment window of marker data (half-open frame interval)."""
+    end = min(int(end), md.n_frames)
+    start = int(start)
+    if start >= end:
+        return None
+    return MarkerData(
+        marker_names=md.marker_names,
+        presence=md.presence[start:end],
+        frame_rate_hz=md.frame_rate_hz,
+        positions=md.positions[start:end] if md.positions is not None else None,
+        session_id=md.session_id,
+    )
+
+
+def _comparability_findings(inventory) -> list[QCFinding]:
+    """Convert inventory naming issues and marker-set checks into QC findings."""
+    findings: list[QCFinding] = []
+    for issue in inventory.naming_issues:
+        if issue.kind != "marker_set_difference":
+            continue
+        findings.append(
+            QCFinding(
+                resolution="participant",
+                scope=issue.subject,
+                metric="marker_set_prefixes",
+                value=1.0,
+                severity=Severity.SOFT_WARNING,
+                recommendation=Recommendation.INCLUDE_WITH_CAUTION,
+                message=issue.message,
+                affects_levels=["link-level", "region-level"],
+            )
+        )
+
+    by_participant: dict[str, dict[str, str]] = {}
+    for sid, prefix in inventory.marker_set_by_session.items():
+        pid = sid.split("_", 1)[0]
+        by_participant.setdefault(pid, {})[sid] = prefix
+    for pid, mapping in by_participant.items():
+        f = marker_set_finding(pid, mapping)
+        if f is not None and not any(
+            x.scope == pid and x.metric == "marker_set_prefixes" for x in findings
+        ):
+            findings.append(f)
+    return findings
+
+
+def _qc_one_session(
+    config,
+    inventory,
+    session_id: str,
+    thresholds: dict,
+) -> list[QCFinding]:
+    """Run session-level and per-segment QC for one capture."""
+    from gaga_jcvpca import project_io
+
+    path = project_io.resolve_session_marker_csv(config, session_id)
+    if path is None:
+        return []
+
+    frame_rate = float(thresholds.get("capture", {}).get("frame_rate_hz", 120.0))
+    try:
+        md = parse_motive_marker_csv(path, frame_rate_hz=frame_rate)
+        md.session_id = session_id
+    except Exception as exc:
+        return [
+            QCFinding(
+                resolution="session",
+                scope=session_id,
+                metric="parse_error",
+                value=0.0,
+                severity=Severity.SOFT_WARNING,
+                recommendation=Recommendation.INCLUDE_WITH_CAUTION,
+                message=(
+                    f"Could not parse marker CSV for {session_id} at {path}: {exc}. "
+                    f"Marker QC for this session is unavailable; review the file manually."
+                ),
+                affects_levels=["region-level", "functional-space", "null-space"],
+            )
+        ]
+
+    findings: list[QCFinding] = []
+    findings.extend(
+        qc_segment_all_regions(md, thresholds, scope_label=f"{session_id}::session")
+    )
+
+    segments = [s for s in inventory.segments if s.session.as_str() == session_id]
+    for seg in segments:
+        seg_md = _slice_marker_data(md, seg.start_frame, seg.end_frame)
+        if seg_md is None:
+            continue
+        label = f"{session_id}::{seg.canonical_label}"
+        findings.extend(qc_segment_all_regions(seg_md, thresholds, label))
+    return findings
+
+
+def run_marker_qc(
+    config,
+    inventory,
+    *,
+    session_ids: Optional[list[str]] = None,
+    write_cache: bool = True,
+) -> tuple[list[QCFinding], pd.DataFrame]:
+    """Run raw-marker QC across inventory sessions and optionally persist qc_summary.csv."""
+    thresholds = config.data
+    if session_ids is None:
+        session_ids = sorted(
+            r.session_id for r in inventory.rows if r.has_marker_csv
+        )
+
+    all_findings: list[QCFinding] = []
+    for sid in session_ids:
+        all_findings.extend(_qc_one_session(config, inventory, sid, thresholds))
+
+    if session_ids is None or len(session_ids) > 1:
+        all_findings.extend(_comparability_findings(inventory))
+
+    df = findings_to_dataframe(all_findings)
+    if write_cache and not df.empty:
+        qc_dir = config.resolve_path("outputs.cache") / "qc"
+        qc_dir.mkdir(parents=True, exist_ok=True)
+        df.to_csv(qc_dir / "qc_summary.csv", index=False)
+    return all_findings, df
+
+
+def marker_source_cache_key(config, inventory) -> str:
+    """Hash marker input paths + mtimes for Streamlit cache invalidation."""
+    import hashlib
+
+    from gaga_jcvpca import project_io
+
+    parts: list[str] = []
+    for row in sorted(inventory.rows, key=lambda r: r.session_id):
+        if not row.has_marker_csv:
+            continue
+        path = project_io.resolve_session_marker_csv(config, row.session_id)
+        if path is None:
+            continue
+        try:
+            mtime = path.stat().st_mtime
+        except OSError:
+            mtime = 0
+        parts.append(f"{row.session_id}:{path}:{mtime}")
+    blob = "|".join(parts)
+    return hashlib.sha256(blob.encode()).hexdigest()[:16]
+
+
+def summarize_qc_findings(findings: list[QCFinding], inventory) -> dict:
+    """Roll up QC metrics for the dashboard overview."""
+    n_sessions = sum(1 for r in inventory.rows if r.has_marker_csv)
+    if not findings:
+        return {
+            "n_findings": 0,
+            "n_sessions_with_markers": n_sessions,
+            "n_soft_warnings": 0,
+            "n_large_gaps": 0,
+            "n_velocity_artifact_findings": 0,
+            "by_severity": {},
+            "by_recommendation": {},
+        }
+
+    by_severity: dict[str, int] = {}
+    by_recommendation: dict[str, int] = {}
+    n_large_gaps = 0
+    n_velocity = 0
+    for f in findings:
+        by_severity[f.severity.value] = by_severity.get(f.severity.value, 0) + 1
+        by_recommendation[f.recommendation.value] = (
+            by_recommendation.get(f.recommendation.value, 0) + 1
+        )
+        if f.metric == "velocity_artifact_frames":
+            n_velocity += 1
+        if f.metric == "marker_missing_percent" and "critical" in f.message.lower():
+            n_large_gaps += 1
+
+    return {
+        "n_findings": len(findings),
+        "n_sessions_with_markers": n_sessions,
+        "n_soft_warnings": by_severity.get(Severity.SOFT_WARNING.value, 0),
+        "n_large_gaps": n_large_gaps,
+        "n_velocity_artifact_findings": n_velocity,
+        "by_severity": by_severity,
+        "by_recommendation": by_recommendation,
+    }

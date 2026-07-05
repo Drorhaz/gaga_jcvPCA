@@ -82,6 +82,7 @@ class InventoryRow:
     task_part: str
     repetition: str
     session_id: str
+    has_marker_csv: bool = False
     has_skeleton_csv: bool = False
     has_description: bool = False
     has_segmentation_sheet: bool = False

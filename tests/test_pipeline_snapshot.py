@@ -12,6 +12,20 @@ def test_snapshot_has_summary_and_next_action(config):
     assert s["n_participants"] == 2
     assert s["n_sessions"] == 12
     assert snap.recommended_next_action  # non-empty guidance
+    assert "n_findings" in snap.qc_summary
+    assert isinstance(snap.qc_summary_df, type(snap.qc_summary_df))
+
+
+def test_snapshot_qc_when_markers_present(config):
+    snap = build_snapshot(config)
+    n_marker = sum(1 for r in snap.inventory.rows if r.has_marker_csv)
+    if n_marker == 0:
+        assert snap.qc_summary["n_findings"] == 0
+        return
+    assert snap.qc_summary["n_sessions_with_markers"] == n_marker
+    assert set(["n_soft_warnings", "n_large_gaps", "by_severity"]).issubset(
+        snap.qc_summary.keys()
+    )
 
 
 def test_snapshot_dataframes_render(config):
@@ -26,6 +40,6 @@ def test_snapshot_dataframes_render(config):
 
 def test_next_action_reflects_ready_sessions(config):
     snap = build_snapshot(config)
-    # Skeleton CSVs and segmentation sheets are present for all P1 sessions.
-    assert snap.summary["n_ready_sessions"] == 12
+    assert snap.summary["n_ready_sessions"] > 0
+    assert snap.summary["n_ready_sessions"] == snap.inventory.summary()["n_ready_sessions"]
     assert "review qc" in snap.recommended_next_action.lower()

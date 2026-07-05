@@ -6,26 +6,35 @@ QC Review, Selection, Analysis Setup, Results, and Run History.
 
 from __future__ import annotations
 
+import re
+
 import _bootstrap  # noqa: F401  (adds src/ to sys.path)
+import pandas as pd
 import streamlit as st
 
 from components.widgets import metric_row, next_action_banner, sidebar_navigator, status_badge
+from gaga_jcvpca import qc_markers
 from gaga_jcvpca.pipeline import build_snapshot
 
 st.set_page_config(page_title="gaga_jcvpca", layout="wide")
 
+_SCOPE_SESSION_RE = re.compile(r"^([^:]+)_([^_]+)_([^_]+)_([^:]+)")
 
-@st.cache_data(show_spinner=False)
-def _load_snapshot_cached(science_token: str):
-    # science_token only participates in cache invalidation.
+
+@st.cache_data(show_spinner="Running marker QC…")
+def _load_snapshot_cached(science_token: str, marker_key: str):
+    # science_token and marker_key participate in cache invalidation only.
     return build_snapshot()
 
 
 def _snapshot():
     from gaga_jcvpca.config import load_config
+    from gaga_jcvpca.inventory import build_inventory
 
     cfg = load_config()
-    return _load_snapshot_cached(cfg.science_hash)
+    inv = build_inventory(cfg)
+    marker_key = qc_markers.marker_source_cache_key(cfg, inv)
+    return _load_snapshot_cached(cfg.science_hash, marker_key)
 
 
 def main() -> None:
@@ -52,7 +61,7 @@ def main() -> None:
     with tabs[1]:
         _render_inventory(snapshot, nav)
     with tabs[2]:
-        _render_qc(snapshot)
+        _render_qc(snapshot, nav)
     with tabs[3]:
         _render_selection(snapshot)
     with tabs[4]:
@@ -74,6 +83,8 @@ def _render_overview(snapshot) -> None:
             ("Repetitions", len(snapshot.inventory.repetitions())),
             ("Sessions", s["n_sessions"]),
             ("Analysis-ready", s["n_ready_sessions"]),
+            ("QC soft warnings", s.get("n_soft_warnings", 0)),
+            ("Critical gap flags", s.get("n_large_gaps", 0)),
         ]
     )
     next_action_banner(snapshot.recommended_next_action)
@@ -101,6 +112,7 @@ def _render_inventory(snapshot, nav) -> None:
     df["status"] = df["status"].map(status_badge)
     show_cols = [
         "session_id",
+        "has_marker_csv",
         "has_skeleton_csv",
         "has_description",
         "has_segmentation_sheet",
@@ -134,30 +146,214 @@ def _render_inventory(snapshot, nav) -> None:
     with st.expander("Marker-set prefixes by session"):
         st.json(snapshot.inventory.marker_set_by_session)
 
+    with st.expander("Feature manifests (missing / topology check)"):
+        from gaga_jcvpca.feature_manifest_gen import discover_missing_manifests, format_report
 
-def _render_qc(snapshot) -> None:
+        missing = discover_missing_manifests(snapshot.config)
+        if not missing:
+            st.success("Every participant with skeleton data has a feature manifest CSV.")
+        else:
+            st.warning(f"{len(missing)} participant(s) have skeleton data but no manifest.")
+            for report in missing:
+                st.code(format_report(report), language=None)
+            st.caption(
+                "Generate from the project root: "
+                "`.venv/bin/python scripts/generate_feature_manifest.py --apply`"
+            )
+
+
+def _parse_scope_session(scope: str) -> dict:
+    """Extract participant/timepoint/repetition from a QC scope string."""
+    head = scope.split("::", 1)[0]
+    m = _SCOPE_SESSION_RE.match(head)
+    if not m:
+        return {}
+    return {
+        "participant": m.group(1),
+        "timepoint": m.group(2),
+        "repetition": m.group(4),
+        "session_id": head,
+    }
+
+
+def _filter_qc_df(
+    df: pd.DataFrame,
+    nav: dict,
+    *,
+    resolutions: list[str] | None = None,
+    severities: list[str] | None = None,
+    recommendations: list[str] | None = None,
+    search: str = "",
+) -> pd.DataFrame:
+    if df.empty:
+        return df
+    out = df.copy()
+    parsed = out["scope"].map(_parse_scope_session)
+    out["_participant"] = parsed.map(lambda x: x.get("participant", ""))
+    out["_timepoint"] = parsed.map(lambda x: x.get("timepoint", ""))
+    out["_repetition"] = parsed.map(lambda x: x.get("repetition", ""))
+
+    if nav.get("participants"):
+        out = out[
+            (out["_participant"].isin(nav["participants"]))
+            | (out["resolution"] == "participant")
+        ]
+    if nav.get("timepoints"):
+        out = out[
+            (out["_timepoint"].isin(nav["timepoints"]))
+            | (out["resolution"] == "participant")
+            | (out["_timepoint"] == "")
+        ]
+    if nav.get("repetitions"):
+        out = out[
+            (out["_repetition"].isin(nav["repetitions"]))
+            | (out["resolution"] == "participant")
+            | (out["_repetition"] == "")
+        ]
+    if resolutions:
+        out = out[out["resolution"].isin(resolutions)]
+    if severities:
+        out = out[out["severity"].isin(severities)]
+    if recommendations:
+        out = out[out["recommendation"].isin(recommendations)]
+    if search.strip():
+        needle = search.strip().lower()
+        out = out[out["message"].str.lower().str.contains(needle, na=False)]
+    return out.drop(columns=["_participant", "_timepoint", "_repetition"], errors="ignore")
+
+
+def _filter_qc_findings_for_selection(findings, participant: str, exercise_ids: list[int]):
+    """Keep participant-scoped findings relevant to selected exercises."""
+    allowed_ex = {f"ex{int(i):02d}" for i in exercise_ids}
+
+    def _keep(f) -> bool:
+        if f.resolution == "participant" and f.scope == participant:
+            return True
+        if not f.scope.startswith(f"{participant}_"):
+            return False
+        parts = f.scope.split("::")
+        if len(parts) < 2:
+            return True
+        label = parts[1]
+        if label == "session":
+            return True
+        if label.startswith("ex") and label not in allowed_ex:
+            return False
+        return True
+
+    return [f for f in findings if _keep(f)]
+
+
+def _render_qc(snapshot, nav) -> None:
     st.subheader("QC Review")
     st.markdown(
         "Raw-marker QC translates technical measures into research consequences at "
-        "six resolutions. Findings are advisory: they inform link/region inclusion "
-        "in Tab 4 but do not silently drop data."
+        "segment and body-region resolution. Findings are advisory: they inform "
+        "link/region inclusion in Tab 4 but do not silently drop data."
     )
+
+    n_marker_sessions = sum(1 for r in snapshot.inventory.rows if r.has_marker_csv)
+    if n_marker_sessions == 0:
+        st.warning(
+            "No marker CSV files were found. Configure `data.raw_markers` or "
+            "`data.raw_skeleton` in `configs/paths.yaml` (expected layout: "
+            "`data/raw_markers/{participant}/` or linked skeleton exports), then reload."
+        )
+        return
+
+    for msg in snapshot.qc_parse_warnings:
+        st.warning(msg)
+
     issues = [i for i in snapshot.inventory.naming_issues if i.kind == "marker_set_difference"]
     if issues:
         for i in issues:
             st.warning(f"**Comparability** — {i.subject}: {i.message}")
-    st.info(
-        "Per-segment marker QC runs against the embedded marker columns in each "
-        "raw skeleton CSV (`configs/paths.yaml` → `data.raw_skeleton`). When skeleton "
-        "files are linked, per-region gap/artifact findings appear here with include / "
-        "exclude / caution recommendations."
+
+    df = snapshot.qc_summary_df
+    if df.empty:
+        st.info("Marker files are present but QC produced no findings.")
+        return
+
+    col1, col2, col3, col4, col5 = st.columns(5)
+    filtered_for_metrics = _filter_qc_df(df, nav)
+    col1.metric("Total findings", len(filtered_for_metrics))
+    col2.metric(
+        "Soft warnings",
+        int((filtered_for_metrics["severity"] == "soft_warning").sum()),
     )
-    with st.expander("QC thresholds in effect"):
+    col3.metric(
+        "Exclude recommendations",
+        int((filtered_for_metrics["recommendation"] == "exclude").sum()),
+    )
+    col4.metric(
+        "Critical gap flags",
+        int(
+            filtered_for_metrics["message"]
+            .str.contains("critical", case=False, na=False)
+            .sum()
+        ),
+    )
+    col5.metric(
+        "Velocity artifact findings",
+        int((filtered_for_metrics["metric"] == "velocity_artifact_frames").sum()),
+    )
+
+    fcol1, fcol2, fcol3 = st.columns(3)
+    all_res = sorted(df["resolution"].unique())
+    all_sev = sorted(df["severity"].unique())
+    all_rec = sorted(df["recommendation"].unique())
+    sel_res = fcol1.multiselect("Resolution", all_res, default=all_res, key="qc_res")
+    sel_sev = fcol2.multiselect("Severity", all_sev, default=all_sev, key="qc_sev")
+    sel_rec = fcol3.multiselect("Recommendation", all_rec, default=all_rec, key="qc_rec")
+    search = st.text_input("Search message text", key="qc_search")
+
+    filtered = _filter_qc_df(
+        df,
+        nav,
+        resolutions=sel_res,
+        severities=sel_sev,
+        recommendations=sel_rec,
+        search=search,
+    )
+    show_cols = [
+        "resolution",
+        "scope",
+        "metric",
+        "value",
+        "severity",
+        "recommendation",
+        "affects_levels",
+        "message",
+    ]
+
+    tab_all, tab_gaps, tab_art, tab_cmp = st.tabs(
+        ["All", "Gaps", "Artifacts", "Comparability"]
+    )
+    with tab_all:
+        st.dataframe(filtered[show_cols], width="stretch", hide_index=True)
+    with tab_gaps:
+        gaps = filtered[filtered["metric"] == "marker_missing_percent"]
+        st.dataframe(gaps[show_cols], width="stretch", hide_index=True)
+    with tab_art:
+        art = filtered[filtered["metric"] == "velocity_artifact_frames"]
+        st.dataframe(art[show_cols], width="stretch", hide_index=True)
+    with tab_cmp:
+        cmp_df = filtered[
+            (filtered["metric"] == "marker_set_prefixes")
+            | (filtered["resolution"] == "participant")
+        ]
+        st.dataframe(cmp_df[show_cols], width="stretch", hide_index=True)
+
+    cache_path = snapshot.config.resolve_path("outputs.cache") / "qc" / "qc_summary.csv"
+    if cache_path.exists():
+        st.caption(f"Cached QC summary: `{cache_path}`")
+
+    with st.expander("Reference thresholds (config)"):
         st.json(
             {
                 "marker_missing_percent": snapshot.config.get("marker_missing_percent"),
                 "gaps": snapshot.config.get("gaps"),
-                "rotvec": snapshot.config.get("rotvec"),
+                "artifacts": snapshot.config.get("artifacts"),
             }
         )
 
@@ -299,8 +495,17 @@ def _render_selection(snapshot) -> None:
         "Combine selected exercises into one analysis unit", value=True, key="sel_combine"
     )
 
+    qc_filtered = _filter_qc_findings_for_selection(
+        snapshot.qc_findings, participant, exercise_ids
+    )
     default_sel = sel_mod.default_selection(
-        "draft", participant, manifest, cfg, exercise_ids=exercise_ids, combine_exercises=combine
+        "draft",
+        participant,
+        manifest,
+        cfg,
+        exercise_ids=exercise_ids,
+        combine_exercises=combine,
+        qc_findings=qc_filtered,
     )
     st.markdown("**Links** — QC recommendations are advisory; you can override any row.")
     link_df = pd.DataFrame(
@@ -326,12 +531,36 @@ def _render_selection(snapshot) -> None:
 
     name = st.text_input("Selection name", value=f"{participant}_group4_default", key="sel_name")
     notes = st.text_area("Notes (why this selection)", key="sel_notes")
+    override_reason = st.text_input(
+        "Override reason (required when including a QC-excluded link)",
+        key="sel_override_reason",
+    )
     if st.button("Save selection", type="primary", key="sel_save"):
+        override_needed = False
+        for c, (_, row) in zip(default_sel.links, edited.iterrows()):
+            new_included = bool(row["include"])
+            if (
+                new_included
+                and not c.included
+                and c.qc_recommendation == "exclude"
+            ):
+                override_needed = True
+                break
+        if override_needed and not override_reason.strip():
+            st.error(
+                "Provide an override reason when including links QC recommends excluding."
+            )
+            return
+
         for c, (_, row) in zip(default_sel.links, edited.iterrows()):
             new_included = bool(row["include"])
             if new_included != c.included:
                 c.user_override = True
-                c.reason += " (user override)"
+                suffix = override_reason.strip() or notes.strip()
+                if suffix:
+                    c.reason += f" (user override: {suffix})"
+                else:
+                    c.reason += " (user override)"
             c.included = new_included
         default_sel.name = name
         default_sel.notes = notes
