@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import numpy as np
+import pandas as pd
 import pytest
 from pathlib import Path
 
@@ -105,7 +106,51 @@ def test_findings_to_dataframe(thresholds):
     presence = np.ones((300, 2), dtype=bool)
     findings = qc.qc_segment_all_regions(_md(presence, ["ChestTop", "HeadTop"]), thresholds, "S::ex09")
     df = qc.findings_to_dataframe(findings)
-    assert set(["resolution", "severity", "recommendation", "message"]).issubset(df.columns)
+    assert set(["resolution", "severity", "recommendation", "message", "affected_links"]).issubset(
+        df.columns
+    )
+
+
+def test_links_for_marker_maps_to_link_stem():
+    specs = [("LUArm_to_LFArm", "LUArm", "LFArm"), ("Chest_to_Neck", "Chest", "Neck")]
+    assert qc.links_for_marker("671:LUArmOut", specs) == ["LUArm_to_LFArm"]
+    assert qc.links_for_marker("ChestTop", specs) == ["Chest_to_Neck"]
+
+
+def test_qc_segment_populates_affected_links_on_critical_gap(thresholds):
+    n = 1200
+    presence = np.ones((n, 2), dtype=bool)
+    names = ["LUArmOut", "ChestTop"]
+    presence[100:230, 0] = False
+    specs = [("LUArm_to_LFArm", "LUArm", "LFArm")]
+    findings = qc.qc_segment(
+        _md(presence, names),
+        thresholds,
+        "S::ex09",
+        region_filter="left_arm",
+        link_specs=specs,
+    )
+    assert findings[0].affected_links == ["LUArm_to_LFArm"]
+    assert "LUArm_to_LFArm" in findings[0].message
+
+
+def test_build_large_gap_heatmap_marks_critical_frames(thresholds):
+    n = 600
+    presence = np.ones((n, 1), dtype=bool)
+    presence[100:200, 0] = False  # 100 frames ~0.83s at 120Hz
+    md = _md(presence, ["LUArmOut"])
+    specs = [("LUArm_to_LFArm", "LUArm", "LFArm")]
+    heat = qc.build_large_gap_heatmap(md, thresholds, specs)
+    assert heat.loc["LUArm_to_LFArm", 150] == 1
+    assert heat.loc["LUArm_to_LFArm", 50] == 0
+
+
+def test_bin_heatmap_for_display_bins_long_captures():
+    wide = pd.DataFrame(np.zeros((1, 5000), dtype=np.uint8), index=["A"], columns=range(5000))
+    wide.iloc[0, 2500] = 1
+    binned, was_binned = qc.bin_heatmap_for_display(wide, max_cols=100)
+    assert was_binned
+    assert binned.shape[1] <= 100
 
 
 @pytest.mark.slow
@@ -165,12 +210,14 @@ def test_run_marker_qc_synthetic(config, monkeypatch):
         lambda cfg, sid: Path("/fake/marker.csv"),
     )
 
-    findings, df = qc.run_marker_qc(config, inv, write_cache=False)
+    findings, df, heatmaps = qc.run_marker_qc(config, inv, write_cache=False)
     assert findings
     assert not df.empty
+    assert "affected_links" in df.columns
     assert set(["resolution", "severity", "recommendation", "message"]).issubset(df.columns)
     assert any("::session" in f.scope for f in findings)
     assert any("::ex09" in f.scope for f in findings)
+    assert isinstance(heatmaps, dict)
 
 
 def test_run_marker_qc_parse_failure_soft_warning(config, monkeypatch):
@@ -201,7 +248,8 @@ def test_run_marker_qc_parse_failure_soft_warning(config, monkeypatch):
         lambda cfg, sid: Path("/fake/bad.csv"),
     )
 
-    findings, df = qc.run_marker_qc(config, inv, write_cache=False)
+    findings, df, heatmaps = qc.run_marker_qc(config, inv, write_cache=False)
     assert len(findings) == 1
     assert findings[0].metric == "parse_error"
     assert "bad csv" in findings[0].message
+    assert heatmaps == {}

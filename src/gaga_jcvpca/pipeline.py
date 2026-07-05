@@ -32,6 +32,7 @@ class ProjectSnapshot:
     qc_summary_df: pd.DataFrame = field(default_factory=pd.DataFrame)
     qc_summary: dict = field(default_factory=dict)
     qc_parse_warnings: list[str] = field(default_factory=list)
+    qc_gap_heatmaps: dict[str, pd.DataFrame] = field(default_factory=dict)
 
     @property
     def summary(self) -> dict:
@@ -66,10 +67,11 @@ def build_snapshot(config: Optional[Config] = None) -> ProjectSnapshot:
     inv = build_inventory(cfg)
     qc_findings: list[QCFinding] = []
     qc_df = pd.DataFrame()
+    qc_heatmaps: dict[str, pd.DataFrame] = {}
     parse_warnings: list[str] = []
 
     if any(r.has_marker_csv for r in inv.rows):
-        qc_findings, qc_df = qc_markers.run_marker_qc(cfg, inv, write_cache=True)
+        qc_findings, qc_df, qc_heatmaps = qc_markers.run_marker_qc(cfg, inv, write_cache=True)
         parse_warnings = [
             f.message for f in qc_findings if f.metric == "parse_error"
         ]
@@ -84,6 +86,7 @@ def build_snapshot(config: Optional[Config] = None) -> ProjectSnapshot:
         qc_summary_df=qc_df,
         qc_summary=qc_summary,
         qc_parse_warnings=parse_warnings,
+        qc_gap_heatmaps=qc_heatmaps,
     )
 
 

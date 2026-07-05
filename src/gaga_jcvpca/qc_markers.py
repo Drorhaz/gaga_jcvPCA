@@ -187,11 +187,118 @@ def _gap_span_text(gaps: list[Gap]) -> str:
     return f"frames {first:,}-{last:,}"
 
 
+# --- marker -> manifest link stem mapping ---
+
+LinkSpec = tuple[str, str, str]  # (stem, parent_canonical, child_canonical)
+
+
+def link_specs_from_manifest(manifest: pd.DataFrame) -> list[LinkSpec]:
+    """Build unique link specs from a feature manifest."""
+    from gaga_jcvpca.selection import link_stem
+
+    specs: list[LinkSpec] = []
+    seen: set[str] = set()
+    for _, row in manifest.iterrows():
+        stem = link_stem(str(row["feature_name"]))
+        if stem in seen:
+            continue
+        seen.add(stem)
+        parent = str(row.get("parent_canonical", "") or "")
+        child = str(row.get("child_canonical", "") or "")
+        if parent and child:
+            specs.append((stem, parent, child))
+    return specs
+
+
+def _marker_short_name(marker_name: str) -> str:
+    return marker_name.split(":")[-1]
+
+
+def links_for_marker(marker_name: str, link_specs: list[LinkSpec]) -> list[str]:
+    """Return manifest link stems whose parent/child tokens appear in the marker name."""
+    short = _marker_short_name(marker_name)
+    return [stem for stem, parent, child in link_specs if parent in short or child in short]
+
+
+def links_for_gaps(gaps: list[Gap], link_specs: list[LinkSpec]) -> list[str]:
+    """Unique link stems affected by the given marker gaps."""
+    stems: set[str] = set()
+    for g in gaps:
+        stems.update(links_for_marker(g.marker, link_specs))
+    return sorted(stems)
+
+
+def load_link_specs_for_participant(config, participant: str) -> list[LinkSpec]:
+    """Load link specs from the participant feature manifest, if available."""
+    from gaga_jcvpca import project_io
+    from gaga_jcvpca.feature_manifest_gen import resolve_manifest_path
+
+    try:
+        manifest_dir = config.resolve_path("data.feature_manifests")
+    except KeyError:
+        return []
+    path = resolve_manifest_path(participant, manifest_dir)
+    if path is None:
+        return []
+    return link_specs_from_manifest(project_io.load_feature_manifest(path))
+
+
+def build_large_gap_heatmap(
+    md: MarkerData,
+    cfg: dict,
+    link_specs: list[LinkSpec],
+) -> pd.DataFrame:
+    """Binary matrix: rows = link stems, columns = frame index, 1 = critical gap frame."""
+    if not link_specs or md.n_frames == 0:
+        return pd.DataFrame()
+
+    large_gap_s = float(cfg["gaps"]["large_gap_seconds"])
+    frame_rate = md.frame_rate_hz
+    stems = [s[0] for s in link_specs]
+    stem_idx = {s: i for i, s in enumerate(stems)}
+    matrix = np.zeros((len(stems), md.n_frames), dtype=np.uint8)
+
+    marker_link_map = [links_for_marker(n, link_specs) for n in md.marker_names]
+    gaps = detect_gaps(md.presence, md.marker_names)
+    for g in gaps:
+        if g.length_seconds(frame_rate) <= large_gap_s:
+            continue
+        mi = md.marker_names.index(g.marker)
+        start = max(0, g.start_frame)
+        end = min(md.n_frames - 1, g.end_frame)
+        for stem in marker_link_map[mi]:
+            row = stem_idx.get(stem)
+            if row is not None:
+                matrix[row, start : end + 1] = 1
+
+    return pd.DataFrame(matrix, index=stems, columns=list(range(md.n_frames)))
+
+
+def bin_heatmap_for_display(heatmap: pd.DataFrame, max_cols: int = 500) -> tuple[pd.DataFrame, bool]:
+    """Bin frame columns for UI display when captures are very long."""
+    if heatmap.empty or heatmap.shape[1] <= max_cols:
+        return heatmap, False
+    n_frames = heatmap.shape[1]
+    bin_size = int(np.ceil(n_frames / max_cols))
+    cols: list[str] = []
+    data: list[np.ndarray] = []
+    for b in range(max_cols):
+        start = b * bin_size
+        end = min(n_frames, (b + 1) * bin_size)
+        if start >= n_frames:
+            break
+        chunk = heatmap.iloc[:, start:end]
+        data.append((chunk.max(axis=1) > 0).astype(np.uint8).values)
+        cols.append(f"{start}-{end - 1}")
+    return pd.DataFrame(np.column_stack(data), index=heatmap.index, columns=cols), True
+
+
 def qc_segment(
     md: MarkerData,
     cfg: dict,
     scope_label: str,
     region_filter: Optional[str] = None,
+    link_specs: Optional[list[LinkSpec]] = None,
 ) -> list[QCFinding]:
     """Produce QC findings for one segment window across all resolutions below dataset.
 
@@ -253,6 +360,13 @@ def qc_segment(
     )
     if recommendation == Recommendation.INCLUDE_WITH_CAUTION and region_filter:
         parts.append(f"Consider excluding {region_filter.replace('_', ' ')} links from JcvPCA.")
+
+    specs = link_specs or []
+    affected = links_for_gaps(large, specs) if large and specs else []
+    if affected:
+        parts.append(
+            f"Affected links for exclusion review: {', '.join(affected)}."
+        )
     message = " ".join(parts)
 
     findings.append(
@@ -265,6 +379,7 @@ def qc_segment(
             recommendation=recommendation,
             message=message,
             affects_levels=affects,
+            affected_links=affected,
         )
     )
     return findings
@@ -276,12 +391,20 @@ def _affected_levels(region_filter: Optional[str]) -> list[str]:
     return ["region-level", "functional-space", "null-space"]
 
 
-def qc_segment_all_regions(md: MarkerData, cfg: dict, scope_label: str) -> list[QCFinding]:
+def qc_segment_all_regions(
+    md: MarkerData,
+    cfg: dict,
+    scope_label: str,
+    link_specs: Optional[list[LinkSpec]] = None,
+) -> list[QCFinding]:
     """Segment-level finding plus one per body region present in the segment."""
-    findings = qc_segment(md, cfg, scope_label)
+    specs = link_specs or []
+    findings = qc_segment(md, cfg, scope_label, link_specs=specs)
     regions = sorted({region_of_marker(m) for m in md.marker_names} - {"other"})
     for region in regions:
-        findings.extend(qc_segment(md, cfg, scope_label, region_filter=region))
+        findings.extend(
+            qc_segment(md, cfg, scope_label, region_filter=region, link_specs=specs)
+        )
     # artifact note
     n_artifact = detect_velocity_artifacts(md, cfg)
     if n_artifact:
@@ -340,6 +463,7 @@ def findings_to_dataframe(findings: list[QCFinding]) -> pd.DataFrame:
                 "severity": f.severity.value,
                 "recommendation": f.recommendation.value,
                 "affects_levels": ";".join(f.affects_levels),
+                "affected_links": ";".join(f.affected_links),
                 "message": f.message,
             }
             for f in findings
@@ -427,14 +551,16 @@ def _qc_one_session(
     inventory,
     session_id: str,
     thresholds: dict,
-) -> list[QCFinding]:
+) -> tuple[list[QCFinding], Optional[pd.DataFrame]]:
     """Run session-level and per-segment QC for one capture."""
     from gaga_jcvpca import project_io
 
     path = project_io.resolve_session_marker_csv(config, session_id)
     if path is None:
-        return []
+        return [], None
 
+    participant = session_id.split("_", 1)[0]
+    link_specs = load_link_specs_for_participant(config, participant)
     frame_rate = float(thresholds.get("capture", {}).get("frame_rate_hz", 120.0))
     try:
         md = parse_motive_marker_csv(path, frame_rate_hz=frame_rate)
@@ -454,11 +580,15 @@ def _qc_one_session(
                 ),
                 affects_levels=["region-level", "functional-space", "null-space"],
             )
-        ]
+        ], None
+
+    heatmap = build_large_gap_heatmap(md, thresholds, link_specs)
 
     findings: list[QCFinding] = []
     findings.extend(
-        qc_segment_all_regions(md, thresholds, scope_label=f"{session_id}::session")
+        qc_segment_all_regions(
+            md, thresholds, scope_label=f"{session_id}::session", link_specs=link_specs
+        )
     )
 
     segments = [s for s in inventory.segments if s.session.as_str() == session_id]
@@ -467,8 +597,10 @@ def _qc_one_session(
         if seg_md is None:
             continue
         label = f"{session_id}::{seg.canonical_label}"
-        findings.extend(qc_segment_all_regions(seg_md, thresholds, label))
-    return findings
+        findings.extend(
+            qc_segment_all_regions(seg_md, thresholds, label, link_specs=link_specs)
+        )
+    return findings, heatmap if not heatmap.empty else None
 
 
 def run_marker_qc(
@@ -477,7 +609,7 @@ def run_marker_qc(
     *,
     session_ids: Optional[list[str]] = None,
     write_cache: bool = True,
-) -> tuple[list[QCFinding], pd.DataFrame]:
+) -> tuple[list[QCFinding], pd.DataFrame, dict[str, pd.DataFrame]]:
     """Run raw-marker QC across inventory sessions and optionally persist qc_summary.csv."""
     thresholds = config.data
     if session_ids is None:
@@ -486,8 +618,12 @@ def run_marker_qc(
         )
 
     all_findings: list[QCFinding] = []
+    heatmaps: dict[str, pd.DataFrame] = {}
     for sid in session_ids:
-        all_findings.extend(_qc_one_session(config, inventory, sid, thresholds))
+        findings, heatmap = _qc_one_session(config, inventory, sid, thresholds)
+        all_findings.extend(findings)
+        if heatmap is not None:
+            heatmaps[sid] = heatmap
 
     if session_ids is None or len(session_ids) > 1:
         all_findings.extend(_comparability_findings(inventory))
@@ -497,7 +633,7 @@ def run_marker_qc(
         qc_dir = config.resolve_path("outputs.cache") / "qc"
         qc_dir.mkdir(parents=True, exist_ok=True)
         df.to_csv(qc_dir / "qc_summary.csv", index=False)
-    return all_findings, df
+    return all_findings, df, heatmaps
 
 
 def marker_source_cache_key(config, inventory) -> str:

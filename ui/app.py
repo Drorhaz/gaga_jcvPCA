@@ -244,6 +244,57 @@ def _filter_qc_findings_for_selection(findings, participant: str, exercise_ids: 
     return [f for f in findings if _keep(f)]
 
 
+def _sessions_for_nav(snapshot, nav) -> list[str]:
+    sessions = []
+    for row in snapshot.inventory.rows:
+        if not row.has_marker_csv:
+            continue
+        if nav.get("participants") and row.participant not in nav["participants"]:
+            continue
+        if nav.get("timepoints") and row.timepoint not in nav["timepoints"]:
+            continue
+        if nav.get("repetitions") and row.repetition not in nav["repetitions"]:
+            continue
+        sessions.append(row.session_id)
+    return sorted(sessions)
+
+
+def _render_qc_gap_heatmaps(snapshot, nav) -> None:
+    from gaga_jcvpca import qc_markers
+
+    heatmaps = snapshot.qc_gap_heatmaps
+    sessions = _sessions_for_nav(snapshot, nav)
+    available = [s for s in sessions if s in heatmaps]
+    st.subheader("Critical gap heatmap (>= 0.5 s)")
+    if not available:
+        st.info("No session heatmaps available (need marker CSV + feature manifest).")
+        return
+
+    session_id = st.selectbox("Session", available, key="qc_heatmap_session")
+    raw = heatmaps[session_id]
+    display, binned = qc_markers.bin_heatmap_for_display(raw)
+    if binned:
+        st.caption("Frames binned for display; cell = any critical gap in that frame range.")
+
+    try:
+        import matplotlib.pyplot as plt
+    except ImportError:
+        st.warning('Install UI extras (`pip install -e ".[ui]"`) to render heatmaps.')
+        st.dataframe(display, width="stretch")
+        return
+
+    fig, ax = plt.subplots(figsize=(12, max(3, len(display) * 0.35)))
+    ax.imshow(display.values, aspect="auto", interpolation="nearest", cmap="Reds")
+    ax.set_yticks(range(len(display.index)))
+    ax.set_yticklabels(display.index)
+    ax.set_xlabel("Frame" if not binned else "Frame range (binned)")
+    ax.set_ylabel("Link")
+    ax.set_title(f"Critical gaps — {session_id}")
+    fig.tight_layout()
+    st.pyplot(fig)
+    plt.close(fig)
+
+
 def _render_qc(snapshot, nav) -> None:
     st.subheader("QC Review")
     st.markdown(
@@ -273,6 +324,9 @@ def _render_qc(snapshot, nav) -> None:
     if df.empty:
         st.info("Marker files are present but QC produced no findings.")
         return
+    if "affected_links" not in df.columns:
+        df = df.copy()
+        df["affected_links"] = ""
 
     col1, col2, col3, col4, col5 = st.columns(5)
     filtered_for_metrics = _filter_qc_df(df, nav)
@@ -322,18 +376,35 @@ def _render_qc(snapshot, nav) -> None:
         "value",
         "severity",
         "recommendation",
+        "affected_links",
         "affects_levels",
         "message",
     ]
+    col_config = {
+        "affected_links": st.column_config.TextColumn(
+            "Links with gaps (exclude if needed)",
+            width="medium",
+        ),
+    }
 
     tab_all, tab_gaps, tab_art, tab_cmp = st.tabs(
         ["All", "Gaps", "Artifacts", "Comparability"]
     )
     with tab_all:
-        st.dataframe(filtered[show_cols], width="stretch", hide_index=True)
+        st.dataframe(
+            filtered[show_cols],
+            column_config=col_config,
+            width="stretch",
+            hide_index=True,
+        )
     with tab_gaps:
         gaps = filtered[filtered["metric"] == "marker_missing_percent"]
-        st.dataframe(gaps[show_cols], width="stretch", hide_index=True)
+        st.dataframe(
+            gaps[show_cols],
+            column_config=col_config,
+            width="stretch",
+            hide_index=True,
+        )
     with tab_art:
         art = filtered[filtered["metric"] == "velocity_artifact_frames"]
         st.dataframe(art[show_cols], width="stretch", hide_index=True)
@@ -347,6 +418,8 @@ def _render_qc(snapshot, nav) -> None:
     cache_path = snapshot.config.resolve_path("outputs.cache") / "qc" / "qc_summary.csv"
     if cache_path.exists():
         st.caption(f"Cached QC summary: `{cache_path}`")
+
+    _render_qc_gap_heatmaps(snapshot, nav)
 
     with st.expander("Reference thresholds (config)"):
         st.json(

@@ -240,6 +240,9 @@ and shown to match `MASTER_PLAN.md`.
 - **How to use Tab 3:** link marker CSVs in `configs/paths.yaml` (`data/raw_markers/{pid}/`
   or `data/raw_skeleton/`), optionally run `python scripts/run_qc.py`, then open the
   dashboard Tab 3 and filter by participant/timepoint/severity/recommendation.
+- Tab 3 now includes an **`affected_links`** column (manifest link stems with critical
+  gaps, e.g. `LUArm_to_LFArm`) and a per-session **critical gap heatmap** (links x frames)
+  at the bottom of the page.
 - Status: COMPLETE.
 
 ---

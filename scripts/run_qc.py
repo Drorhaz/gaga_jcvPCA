@@ -24,7 +24,7 @@ def main() -> None:
         )
         return
 
-    findings, df = run_marker_qc(cfg, inv, write_cache=True)
+    findings, df, _heatmaps = run_marker_qc(cfg, inv, write_cache=True)
     out_path = cfg.resolve_path("outputs.cache") / "qc" / "qc_summary.csv"
     print(f"wrote {out_path} ({len(findings)} findings, {len(df)} rows)")
 

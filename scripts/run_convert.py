@@ -86,7 +86,7 @@ def convert_one_session(config, session_id: str, skeleton_path: Path) -> None:
     print(f"wrote {out_path} ({matrix.shape})")
 
     inv = build_inventory(config)
-    findings, _ = qc_markers.run_marker_qc(
+    findings, _, _ = qc_markers.run_marker_qc(
         config, inv, session_ids=[session_id], write_cache=False
     )
     if findings:

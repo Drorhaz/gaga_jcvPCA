@@ -3,6 +3,10 @@
 Scans the standalone data/ folder and builds a clear picture of which
 participants / timepoints / exercises / repetitions exist, which files are
 present or missing, naming inconsistencies, and the canonical<->alias mapping.
+
+Raw marker/skeleton/description captures are listed even when no segmentation
+workbook exists (status ``partial``) so session-level QC can run before exercise
+windows are authored.
 """
 
 from __future__ import annotations
@@ -122,7 +126,6 @@ def build_inventory(config: Config) -> Inventory:
     description_files = _index_descriptions(desc_dir)
 
     workbooks = project_io.find_segmentation_workbooks(seg_dir)
-    workbook_pids = set(workbooks.keys())
 
     # Collect segments + build per-session segment counts.
     segments: list[ExerciseSegment] = []
@@ -141,10 +144,12 @@ def build_inventory(config: Config) -> Inventory:
         segments.extend(wb_segments)
 
     # Union of all discovered session ids (in-scope task part only for rows).
+    # Segmentation workbooks define exercise windows; raw marker/skeleton/description
+    # files are included even without a workbook so session-level QC can run.
     all_session_ids = set(sessions_with_sheet)
-    for sid in list(skeleton_files) + list(description_files):
+    for sid in list(marker_files) + list(skeleton_files) + list(description_files):
         key = parse_session_id(sid)
-        if key and key.task_part == task_part_scope and key.participant in workbook_pids:
+        if key and key.task_part == task_part_scope:
             all_session_ids.add(sid)
 
     rows: list[InventoryRow] = []

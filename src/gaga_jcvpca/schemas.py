@@ -112,3 +112,4 @@ class QCFinding:
     recommendation: Recommendation
     message: str                  # research-language sentence
     affects_levels: list[str] = field(default_factory=list)  # link/region/functional/null
+    affected_links: list[str] = field(default_factory=list)  # manifest link stems with critical gaps

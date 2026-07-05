@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-ui = ["streamlit"]
+ui = ["streamlit", "matplotlib"]
 dev = ["pytest"]
 
 [build-system]
