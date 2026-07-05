@@ -1,0 +1,30 @@
+# Body-region definitions for region-level JcvPCA aggregation and QC rollups.
+# A region is a set of canonical link names (parent->child). Matching is done on
+# the link stem (feature name without the _rx/_ry/_rz axis suffix), and is
+# tolerant of the child token so both 14-link (671) and 16-link (252) manifests map.
+#
+# Regions are matched by substring tokens against the link stem, so links present
+# in one participant but not another still land in the right region.
+
+regions:
+  head_neck:
+    label: "Head / Neck"
+    match_any: ["Neck_to_Head", "Chest_to_Neck", "Neck2_to_Head"]
+  trunk_spine:
+    label: "Trunk / Spine"
+    match_any: ["Hip_to_", "_to_Chest", "Spine", "Ab_to_", "Chest_to_Neck"]
+  left_arm:
+    label: "Left arm"
+    match_any: ["LShoulder", "LUArm", "LFArm", "LHand"]
+  right_arm:
+    label: "Right arm"
+    match_any: ["RShoulder", "RUArm", "RFArm", "RHand"]
+  left_leg:
+    label: "Left leg"
+    match_any: ["LThigh", "LShin", "LFoot", "_to_LThigh"]
+  right_leg:
+    label: "Right leg"
+    match_any: ["RThigh", "RShin", "RFoot", "_to_RThigh"]
+
+# Distal links excluded from analysis scope (noisy).
+exclude_tokens: ["Finger", "Thumb", "Toe", "Pinky", "Index", "Middle", "Ring"]

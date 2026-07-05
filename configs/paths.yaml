@@ -1,0 +1,28 @@
+# Canonical path registry for the standalone gaga_jcvpca project.
+# All paths are relative to the project root (the gaga_jcvpca/ folder) unless absolute.
+# This project is standalone: it reads inputs from its own data/ folder.
+
+project_root: "."
+
+data:
+  # Raw Motive solved-skeleton CSVs: bone quaternions + embedded marker columns.
+  # Single canonical source for marker QC and rotation-vector conversion.
+  raw_skeleton: "data/raw_skeleton"
+  # Motive *_DataDescriptions.csv skeleton hierarchy sidecars.
+  descriptions: "data/descriptions"
+  # Per-participant exercise segmentation workbooks ({pid}_ex_segmentatios_frames.xlsx).
+  segmentation: "data/segmentation"
+  # Frozen per-participant feature manifests (link -> rx/ry/rz feature columns).
+  feature_manifests: "data/feature_manifests"
+  # Motive calibration exports (.mcal), recorded but not consumed.
+  calibration: "data/calibration"
+  # Windowed rotation-vector feature matrices per session, named
+  # {pid}_T{t}_R{r}.parquet (feature columns = link stems x rx/ry/rz). These are
+  # produced from raw skeleton CSVs (rotations.py) + segmentation windows, or by
+  # the smoke-test generator. The analysis stage consumes these.
+  matrices: "outputs/cache/matrices"
+
+outputs:
+  root: "outputs"
+  runs: "outputs/runs"          # one self-contained folder per analysis run
+  cache: "outputs/cache"        # rotation-vector cache keyed by session + filter hash

@@ -1,0 +1,55 @@
+# QC thresholds (ported from the legacy config/qc_rules.yaml, curated).
+# All values are configurable here and exposed (key subset) in the UI.
+# Fixed CATEGORIES (hard-block vs soft-warning) live in code; the numeric
+# thresholds that decide tiers live here.
+
+version: 1
+
+capture:
+  frame_rate_hz: 120.0        # Motive capture rate; used to convert gap frames -> seconds
+
+# Raw-marker missingness tiers (percent of markers missing).
+marker_missing_percent:
+  pass_max: 1.0               # <= clean
+  warn_max: 5.0               # <= minor issue
+  caution_max: 10.0           # <= caution; above => poor
+
+# Per-frame missing-labeled marker percent.
+frame_missing_labeled_percent:
+  caution: 10.0               # frames above contribute to window warnings
+  exclude: 20.0               # frames above are analysis-ineligible
+
+# Marker gap policy.
+gaps:
+  large_gap_seconds: 0.5      # gaps longer than this are CRITICAL, highlighted for review
+  cluster_window_seconds: 2.0 # short gaps within this window count as a cluster
+  cluster_min_count: 3        # this many short gaps in a window => clustered warning
+  pass_max_large_gaps: 0      # large gaps allowed at pass tier
+  caution_max_large_gaps: 1   # large gaps allowed at caution tier
+
+# Marker artifact detection (velocity / acceleration spikes).
+artifacts:
+  velocity_percentile_threshold: 99.97
+  acceleration_percentile_threshold: 99.97
+  sigma: 8.0
+
+# Session-level readiness gate.
+session:
+  min_marker_coverage_pct: 90.0
+  acceptable_max_labeled_missing_percent: 5.0
+  caution_max_labeled_missing_percent: 10.0
+
+# Rotation-vector (Stage 07) diagnostics.
+rotvec:
+  jump_warning_rad: 0.5       # frame-to-frame rotvec jump warning
+  jump_fail_rad: 1.0          # large jump => branch-cut / tracking failure flag
+  near_pi_warning_fraction: 0.95  # branch-cut warning when |rotvec| > fraction*pi
+
+# Quaternion validity (Stage 04).
+quaternion:
+  pass_max_abs_norm_error: 0.001
+  warning_max_abs_norm_error: 0.01
+
+# Minimum frames required for stable PCA after QC/filtering.
+analysis:
+  min_frames_for_pca: 10

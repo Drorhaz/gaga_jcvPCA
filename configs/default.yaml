@@ -1,0 +1,22 @@
+# Top-level config that composes the others.
+# Loaded by src/gaga_jcvpca/config.py, which merges these files and computes a
+# single science_hash over the science-affecting values (everything except UI-only).
+
+includes:
+  - paths.yaml
+  - exercise_map.yaml
+  - body_regions.yaml
+  - qc_thresholds.yaml
+  - analysis_defaults.yaml
+
+# Participants known to the project (informational; the real cohort comes from
+# discovery of segmentation workbooks + raw files).
+participants:
+  - "671"
+  - "252"
+  - "651"
+  - "790"
+
+# Keys excluded from the science_hash (display-only, do not affect results).
+non_science_keys:
+  - "outputs"

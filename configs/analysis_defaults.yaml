@@ -1,0 +1,52 @@
+# JcvPCA analysis + rotation-vector filter defaults.
+# Everything here is configurable and the key items are exposed in the UI
+# (Analysis Setup tab). Every run logs the resolved values.
+
+# --- selected_m / variance threshold (decision 1) ---
+pca:
+  variance_threshold: 0.80        # DEFAULT 0.80 (canonical-batch compatible)
+  min_pcs: 2
+  max_pcs: 10
+  # Optional threshold-sweep diagnostic.
+  threshold_sweep:
+    enabled: false                # opt-in; UI/CLI can turn on per run
+    candidates: [0.70, 0.80, 0.90]
+
+# --- PC focus (functional vs null space) ---
+pc_focus:
+  sensitivity_p: 2                # functional = PC1..p ; null space = PC(p+1)..selected_m
+
+# --- optional A-explained-variance weighting (secondary outputs only) ---
+weighting:
+  explained_variance_weighting: false
+
+# --- rotation-vector filtering / smoothing (decision 5) ---
+# These drive the ported quaternion->rotation-vector conversion. Changing any of
+# them changes the rotvec cache key and forces recomputation.
+filter:
+  cutoff_hz: 10.0                 # Butterworth low-pass cutoff (tangent space)
+  order: 4
+  filter_type: "butterworth_lowpass"
+  jump_context_window_frames: 30  # mask +/- frames around jump/branch-cut events
+
+# --- analysis mode (decisions 3 & 4) ---
+mode:
+  task_part: "P1"                 # V1 supports Task Part 1 only
+  participant_specific: true      # primary mode; never merge participants in V1
+  allow_cross_participant_exploratory: false  # optional exploratory UI mode only
+
+# --- statistical validation (decision 6) ---
+# Validation is an OPTIONAL stage run after per-participant results exist.
+validation:
+  enabled: false                  # opt-in
+  # Methods considered, in order of defensibility for this data.
+  methods:
+    natural_variability_baseline: true
+    sensitivity_analysis: true
+    pca_stability: true
+    bootstrap: true               # runs ONLY when sufficiency check passes
+    permutation: false            # exploratory only; gated by sufficiency
+  bootstrap:
+    n_resamples: 1000
+    min_windows_for_bootstrap: 4  # below this => descriptive-only / insufficient-data
+  random_seed: 12345

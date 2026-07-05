@@ -1,0 +1,373 @@
+"""Raw-marker QC that translates technical measures into research consequences.
+
+QC is computed at six resolutions (dataset, participant, timepoint, segment,
+link/body-region, frame). Every finding is both a structured record and a
+plain-language sentence, and carries a fixed severity plus an include / exclude /
+include_with_caution recommendation. Thresholds come from qc_thresholds.yaml;
+severity CATEGORIES are fixed (decision 5).
+
+The heavy raw-marker matrices are parsed elsewhere; this module operates on a
+compact ``MarkerData`` object so the logic is fully testable with synthetic data.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Optional
+
+import numpy as np
+import pandas as pd
+
+from gaga_jcvpca.schemas import QCFinding, Recommendation, Severity
+
+# --- marker -> body-region mapping (raw marker names, not link stems) ---
+# Ordered so more specific tokens win.
+_REGION_TOKENS: list[tuple[str, list[str]]] = [
+    ("head_neck", ["Head", "Neck"]),
+    ("left_arm", ["LShoulder", "LUArm", "LElbow", "LWrist", "LFArm", "LHand", "LArm"]),
+    ("right_arm", ["RShoulder", "RUArm", "RElbow", "RWrist", "RFArm", "RHand", "RArm"]),
+    ("left_leg", ["LThigh", "LKnee", "LShin", "LAnkle", "LFoot", "LToe", "LHeel", "LLeg"]),
+    ("right_leg", ["RThigh", "RKnee", "RShin", "RAnkle", "RFoot", "RToe", "RHeel", "RLeg"]),
+    ("trunk_spine", ["Chest", "Back", "Waist", "Hip", "Ab", "Spine", "Sternum"]),
+]
+
+
+def region_of_marker(marker_name: str) -> str:
+    for region, tokens in _REGION_TOKENS:
+        for tok in tokens:
+            if tok in marker_name:
+                return region
+    return "other"
+
+
+@dataclass
+class MarkerData:
+    """Compact raw-marker representation.
+
+    ``presence`` is a boolean array (n_frames x n_markers): True when the marker
+    is tracked in that frame. ``positions`` (optional) is (n_frames x n_markers x 3)
+    used for artifact (velocity) detection. ``frame_rate_hz`` converts frames->seconds.
+    """
+
+    marker_names: list[str]
+    presence: np.ndarray
+    frame_rate_hz: float
+    positions: Optional[np.ndarray] = None
+    session_id: str = ""
+
+    @property
+    def n_frames(self) -> int:
+        return int(self.presence.shape[0])
+
+    @property
+    def n_markers(self) -> int:
+        return int(self.presence.shape[1])
+
+
+# --- gap detection ---
+
+@dataclass
+class Gap:
+    marker: str
+    start_frame: int
+    end_frame: int      # inclusive
+
+    @property
+    def length_frames(self) -> int:
+        return self.end_frame - self.start_frame + 1
+
+    def length_seconds(self, frame_rate_hz: float) -> float:
+        return self.length_frames / frame_rate_hz
+
+
+def detect_gaps(
+    presence: np.ndarray,
+    marker_names: list[str],
+    frame_start: int = 0,
+) -> list[Gap]:
+    """Find contiguous runs of missing frames per marker.
+
+    ``frame_start`` offsets reported frame indices (for segment-relative windows).
+    """
+    gaps: list[Gap] = []
+    n_frames, n_markers = presence.shape
+    for m in range(n_markers):
+        col = presence[:, m]
+        f = 0
+        while f < n_frames:
+            if not col[f]:
+                start = f
+                while f < n_frames and not col[f]:
+                    f += 1
+                gaps.append(
+                    Gap(
+                        marker=marker_names[m],
+                        start_frame=frame_start + start,
+                        end_frame=frame_start + f - 1,
+                    )
+                )
+            else:
+                f += 1
+    return gaps
+
+
+def _cluster_flags(
+    gaps: list[Gap],
+    frame_rate_hz: float,
+    cfg: dict,
+) -> tuple[list[Gap], dict[str, int]]:
+    """Split gaps into large (critical) and count short-gap clusters per marker."""
+    large_gap_s = float(cfg["gaps"]["large_gap_seconds"])
+    cluster_window_s = float(cfg["gaps"]["cluster_window_seconds"])
+    cluster_min = int(cfg["gaps"]["cluster_min_count"])
+
+    large = [g for g in gaps if g.length_seconds(frame_rate_hz) > large_gap_s]
+
+    # cluster short gaps per marker within a sliding time window
+    window_frames = cluster_window_s * frame_rate_hz
+    by_marker: dict[str, list[Gap]] = {}
+    for g in gaps:
+        if g.length_seconds(frame_rate_hz) <= large_gap_s:
+            by_marker.setdefault(g.marker, []).append(g)
+    clustered: dict[str, int] = {}
+    for marker, mgaps in by_marker.items():
+        mgaps.sort(key=lambda x: x.start_frame)
+        for i in range(len(mgaps)):
+            window = [mgaps[i]]
+            for j in range(i + 1, len(mgaps)):
+                if mgaps[j].start_frame - mgaps[i].start_frame <= window_frames:
+                    window.append(mgaps[j])
+            if len(window) >= cluster_min:
+                clustered[marker] = max(clustered.get(marker, 0), len(window))
+    return large, clustered
+
+
+# --- artifact (velocity spike) detection ---
+
+def detect_velocity_artifacts(md: MarkerData, cfg: dict) -> int:
+    """Count frames with implausible marker velocity spikes (percentile-based)."""
+    if md.positions is None:
+        return 0
+    pct = float(cfg["artifacts"]["velocity_percentile_threshold"])
+    pos = md.positions
+    # per-marker speed magnitude between consecutive frames
+    diffs = np.diff(pos, axis=0)  # (n-1, m, 3)
+    speed = np.linalg.norm(diffs, axis=2)  # (n-1, m)
+    finite = speed[np.isfinite(speed)]
+    if finite.size == 0:
+        return 0
+    threshold = np.percentile(finite, pct)
+    spike_frames = np.any(speed > threshold, axis=1)
+    return int(np.sum(spike_frames))
+
+
+# --- resolution rollups + findings ---
+
+def _missing_percent(presence: np.ndarray) -> float:
+    total = presence.size
+    if total == 0:
+        return 0.0
+    return 100.0 * float(np.sum(~presence)) / total
+
+
+def _tier_and_recommendation(missing_pct: float, cfg: dict) -> tuple[Severity, Recommendation]:
+    tiers = cfg["marker_missing_percent"]
+    if missing_pct <= tiers["warn_max"]:
+        return Severity.INFO, Recommendation.INCLUDE
+    if missing_pct <= tiers["caution_max"]:
+        return Severity.SOFT_WARNING, Recommendation.INCLUDE_WITH_CAUTION
+    return Severity.SOFT_WARNING, Recommendation.EXCLUDE
+
+
+def _gap_span_text(gaps: list[Gap]) -> str:
+    if not gaps:
+        return ""
+    first, last = min(g.start_frame for g in gaps), max(g.end_frame for g in gaps)
+    return f"frames {first:,}-{last:,}"
+
+
+def qc_segment(
+    md: MarkerData,
+    cfg: dict,
+    scope_label: str,
+    region_filter: Optional[str] = None,
+) -> list[QCFinding]:
+    """Produce QC findings for one segment window across all resolutions below dataset.
+
+    ``scope_label`` is like '671_T1_P1_R1::ex09'. If ``region_filter`` is given,
+    only that region's markers are considered (link/region resolution).
+    """
+    findings: list[QCFinding] = []
+    frame_rate = md.frame_rate_hz
+
+    # select marker columns for the region if requested
+    if region_filter:
+        idx = [i for i, m in enumerate(md.marker_names) if region_of_marker(m) == region_filter]
+        if not idx:
+            return findings
+        presence = md.presence[:, idx]
+        names = [md.marker_names[i] for i in idx]
+        res = "link"
+        scope = f"{scope_label}::{region_filter}"
+    else:
+        presence = md.presence
+        names = md.marker_names
+        res = "segment"
+        scope = scope_label
+
+    missing_pct = _missing_percent(presence)
+    gaps = detect_gaps(presence, names)
+    large, clustered = _cluster_flags(gaps, frame_rate, cfg)
+    severity, recommendation = _tier_and_recommendation(missing_pct, cfg)
+
+    # escalate on critical large gaps
+    if large:
+        severity = Severity.SOFT_WARNING
+        if recommendation == Recommendation.INCLUDE:
+            recommendation = Recommendation.INCLUDE_WITH_CAUTION
+
+    # build the research-language sentence
+    where = f"the {region_filter.replace('_', ' ')} region" if region_filter else "this segment"
+    span = _gap_span_text(large or gaps)
+    n_gaps = len(gaps)
+    largest_s = max((g.length_seconds(frame_rate) for g in gaps), default=0.0)
+    clustered_note = (
+        f" Short gaps cluster in markers {sorted(clustered)[:3]}." if clustered else ""
+    )
+    analyzable = recommendation != Recommendation.EXCLUDE
+    affects = _affected_levels(region_filter)
+
+    parts = [
+        f"{scope}: {missing_pct:.1f}% marker gaps in {where}"
+        + (f" (mainly {span})" if span else "")
+        + f"; {n_gaps} gap(s), largest {largest_s:.2f}s.{clustered_note}"
+    ]
+    if large:
+        parts.append(
+            f"{len(large)} gap(s) exceed {cfg['gaps']['large_gap_seconds']}s and are flagged critical for review."
+        )
+    parts.append(
+        "Analyzable, but interpret with care." if analyzable and severity != Severity.INFO
+        else ("Good coverage." if severity == Severity.INFO else "Recommend excluding this unit.")
+    )
+    if recommendation == Recommendation.INCLUDE_WITH_CAUTION and region_filter:
+        parts.append(f"Consider excluding {region_filter.replace('_', ' ')} links from JcvPCA.")
+    message = " ".join(parts)
+
+    findings.append(
+        QCFinding(
+            resolution=res,
+            scope=scope,
+            metric="marker_missing_percent",
+            value=round(missing_pct, 3),
+            severity=severity,
+            recommendation=recommendation,
+            message=message,
+            affects_levels=affects,
+        )
+    )
+    return findings
+
+
+def _affected_levels(region_filter: Optional[str]) -> list[str]:
+    if region_filter:
+        return ["link-level", "region-level", "functional-space", "null-space"]
+    return ["region-level", "functional-space", "null-space"]
+
+
+def qc_segment_all_regions(md: MarkerData, cfg: dict, scope_label: str) -> list[QCFinding]:
+    """Segment-level finding plus one per body region present in the segment."""
+    findings = qc_segment(md, cfg, scope_label)
+    regions = sorted({region_of_marker(m) for m in md.marker_names} - {"other"})
+    for region in regions:
+        findings.extend(qc_segment(md, cfg, scope_label, region_filter=region))
+    # artifact note
+    n_artifact = detect_velocity_artifacts(md, cfg)
+    if n_artifact:
+        findings.append(
+            QCFinding(
+                resolution="segment",
+                scope=scope_label,
+                metric="velocity_artifact_frames",
+                value=float(n_artifact),
+                severity=Severity.SOFT_WARNING,
+                recommendation=Recommendation.INCLUDE_WITH_CAUTION,
+                message=(
+                    f"{scope_label}: {n_artifact} frame(s) show implausible marker "
+                    f"velocity spikes (>{cfg['artifacts']['velocity_percentile_threshold']} "
+                    f"percentile). These frames may distort rotation-vector estimates."
+                ),
+                affects_levels=["link-level", "functional-space", "null-space"],
+            )
+        )
+    return findings
+
+
+def marker_set_finding(
+    participant: str,
+    prefixes_by_session: dict[str, str],
+) -> Optional[QCFinding]:
+    """Comparability finding when a participant's marker-set prefix differs across sessions."""
+    prefixes = sorted(set(prefixes_by_session.values()))
+    if len(prefixes) <= 1:
+        return None
+    return QCFinding(
+        resolution="participant",
+        scope=participant,
+        metric="marker_set_prefixes",
+        value=float(len(prefixes)),
+        severity=Severity.SOFT_WARNING,
+        recommendation=Recommendation.INCLUDE_WITH_CAUTION,
+        message=(
+            f"Participant {participant} uses different marker-set prefixes across "
+            f"timepoints ({prefixes}). Cross-timepoint comparisons are allowed but "
+            f"must be interpreted with this context; analysis is restricted to the "
+            f"shared valid link intersection and the difference is recorded in the run manifest."
+        ),
+        affects_levels=["link-level", "region-level"],
+    )
+
+
+def findings_to_dataframe(findings: list[QCFinding]) -> pd.DataFrame:
+    return pd.DataFrame(
+        [
+            {
+                "resolution": f.resolution,
+                "scope": f.scope,
+                "metric": f.metric,
+                "value": f.value,
+                "severity": f.severity.value,
+                "recommendation": f.recommendation.value,
+                "affects_levels": ";".join(f.affects_levels),
+                "message": f.message,
+            }
+            for f in findings
+        ]
+    )
+
+
+# --- Motive marker CSV parsing (skeleton CSV is the canonical source) ---
+
+def marker_data_from_take(take, frame_rate_hz: Optional[float] = None) -> MarkerData:
+    """Build MarkerData from an already-parsed MotiveTake (avoids re-reading the CSV)."""
+    from gaga_jcvpca.project_io import MotiveTake
+
+    if not isinstance(take, MotiveTake):
+        raise TypeError("take must be a MotiveTake instance")
+    rate = float(frame_rate_hz) if frame_rate_hz is not None else take.frame_rate_hz
+    return MarkerData(
+        marker_names=take.marker_names,
+        presence=take.marker_presence,
+        frame_rate_hz=rate,
+        positions=take.marker_positions_m,
+        session_id=take.path.stem,
+    )
+
+
+def parse_motive_marker_csv(path: str | Path, frame_rate_hz: float) -> MarkerData:
+    """Parse marker channels from a Motive skeleton CSV into MarkerData (meters)."""
+    from gaga_jcvpca import project_io
+
+    take = project_io.parse_motive_take(path)
+    return marker_data_from_take(take, frame_rate_hz=frame_rate_hz)

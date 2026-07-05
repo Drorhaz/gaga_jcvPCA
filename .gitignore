@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+outputs/runs/
+outputs/cache/
+# Large raw captures are referenced via configs/paths.yaml, not committed.
+data/raw_skeleton/
+data/raw_markers/
+*.mcal
+*.avi
