@@ -1,0 +1,308 @@
+{
+  "view_id": "671_T1_vs_T2_null",
+  "participant": "671",
+  "comparison_id": "671_T1_vs_T2",
+  "comparison": "T1_vs_T2",
+  "reference_timepoint": "T1",
+  "target_timepoint": "T2",
+  "space": "null",
+  "regions": [
+    {
+      "region_id": "head_neck",
+      "region_label": "Head / Neck",
+      "exceeds_nv_region": true,
+      "dominance": "null_only",
+      "fill_color": "#9ECAE1",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 2.1089,
+      "strongest_link": {
+        "link_id": "Chest_to_Neck",
+        "canonical_link_name": "Chest->Neck",
+        "effect_ratio_vs_nv": 2.109,
+        "long_jcvpca_mean": -0.002868,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "671_T1_R1_vs_R2"
+      },
+      "dominant_direction": "decreased",
+      "mixed_sign": false,
+      "strongest_positive_link": null,
+      "strongest_negative_link": {
+        "link_id": "Chest_to_Neck",
+        "canonical_link_name": "Chest->Neck",
+        "effect_ratio_vs_nv": 2.109,
+        "long_jcvpca_mean": -0.002868,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "671_T1_R1_vs_R2"
+      }
+    },
+    {
+      "region_id": "left_arm",
+      "region_label": "Left arm",
+      "exceeds_nv_region": true,
+      "dominance": "neutral",
+      "fill_color": "#B0B0B0",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 1.6992,
+      "strongest_link": {
+        "link_id": "LUArm_to_LFArm",
+        "canonical_link_name": "LUArm->LFArm",
+        "effect_ratio_vs_nv": 2.5729,
+        "long_jcvpca_mean": 0.112925,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "671_T1_R1_vs_R2"
+      },
+      "dominant_direction": "increased",
+      "mixed_sign": true,
+      "strongest_positive_link": {
+        "link_id": "LUArm_to_LFArm",
+        "canonical_link_name": "LUArm->LFArm",
+        "effect_ratio_vs_nv": 2.5729,
+        "long_jcvpca_mean": 0.112925,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "671_T1_R1_vs_R2"
+      },
+      "strongest_negative_link": {
+        "link_id": "LShoulder_to_LUArm",
+        "canonical_link_name": "LShoulder->LUArm",
+        "effect_ratio_vs_nv": 1.7276,
+        "long_jcvpca_mean": -0.047369,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "671_T1_R1_vs_R2"
+      },
+      "mixed_direction_warning": "Region left_arm: mixed-sign above-NV links (1 increased, 3 decreased); links retain individual signed colors."
+    },
+    {
+      "region_id": "right_arm",
+      "region_label": "Right arm",
+      "exceeds_nv_region": true,
+      "dominance": "neutral",
+      "fill_color": "#B0B0B0",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 1.6248,
+      "strongest_link": {
+        "link_id": "RFArm_to_RHand",
+        "canonical_link_name": "RFArm->RHand",
+        "effect_ratio_vs_nv": 2.2466,
+        "long_jcvpca_mean": 0.068331,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "671_T1_R1_vs_R2"
+      },
+      "dominant_direction": "increased",
+      "mixed_sign": true,
+      "strongest_positive_link": {
+        "link_id": "RFArm_to_RHand",
+        "canonical_link_name": "RFArm->RHand",
+        "effect_ratio_vs_nv": 2.2466,
+        "long_jcvpca_mean": 0.068331,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "671_T1_R1_vs_R2"
+      },
+      "strongest_negative_link": {
+        "link_id": "Chest_to_RShoulder",
+        "canonical_link_name": "Chest->RShoulder",
+        "effect_ratio_vs_nv": 2.1156,
+        "long_jcvpca_mean": -0.015755,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "671_T1_R1_vs_R2"
+      },
+      "mixed_direction_warning": "Region right_arm: mixed-sign above-NV links (1 increased, 2 decreased); links retain individual signed colors."
+    },
+    {
+      "region_id": "left_leg",
+      "region_label": "Left leg",
+      "exceeds_nv_region": true,
+      "dominance": "null_only",
+      "fill_color": "#FFD700",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 1.083,
+      "strongest_link": {
+        "link_id": "LThigh_to_LShin",
+        "canonical_link_name": "LThigh->LShin",
+        "effect_ratio_vs_nv": 1.1637,
+        "long_jcvpca_mean": 0.015802,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "671_T1_R1_vs_R2"
+      },
+      "dominant_direction": "increased",
+      "mixed_sign": false,
+      "strongest_positive_link": {
+        "link_id": "LThigh_to_LShin",
+        "canonical_link_name": "LThigh->LShin",
+        "effect_ratio_vs_nv": 1.1637,
+        "long_jcvpca_mean": 0.015802,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "671_T1_R1_vs_R2"
+      },
+      "strongest_negative_link": null
+    },
+    {
+      "region_id": "right_leg",
+      "region_label": "Right leg",
+      "exceeds_nv_region": true,
+      "dominance": "functional_and_null",
+      "fill_color": "#9ECAE1",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 0.9892,
+      "strongest_link": {
+        "link_id": "RThigh_to_RShin",
+        "canonical_link_name": "RThigh->RShin",
+        "effect_ratio_vs_nv": 1.2979,
+        "long_jcvpca_mean": -0.022511,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "671_T1_R1_vs_R2"
+      },
+      "dominant_direction": "decreased",
+      "mixed_sign": false,
+      "strongest_positive_link": null,
+      "strongest_negative_link": {
+        "link_id": "RThigh_to_RShin",
+        "canonical_link_name": "RThigh->RShin",
+        "effect_ratio_vs_nv": 1.2979,
+        "long_jcvpca_mean": -0.022511,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "671_T1_R1_vs_R2"
+      }
+    }
+  ],
+  "top_links": [
+    {
+      "rank": 1,
+      "link_id": "LUArm_to_LFArm",
+      "canonical_link_name": "LUArm->LFArm",
+      "effect_ratio_vs_nv": 2.5729,
+      "long_jcvpca_mean": 0.112925,
+      "signed_direction": "increased"
+    },
+    {
+      "rank": 2,
+      "link_id": "RFArm_to_RHand",
+      "canonical_link_name": "RFArm->RHand",
+      "effect_ratio_vs_nv": 2.2466,
+      "long_jcvpca_mean": 0.068331,
+      "signed_direction": "increased"
+    },
+    {
+      "rank": 3,
+      "link_id": "Chest_to_RShoulder",
+      "canonical_link_name": "Chest->RShoulder",
+      "effect_ratio_vs_nv": 2.1156,
+      "long_jcvpca_mean": -0.015755,
+      "signed_direction": "decreased"
+    }
+  ],
+  "null_dominant_links": [
+    {
+      "link_id": "LUArm_to_LFArm",
+      "canonical_link_name": "LUArm->LFArm",
+      "effect_ratio_vs_nv": 2.5729,
+      "long_jcvpca_mean": 0.112925
+    },
+    {
+      "link_id": "RFArm_to_RHand",
+      "canonical_link_name": "RFArm->RHand",
+      "effect_ratio_vs_nv": 2.2466,
+      "long_jcvpca_mean": 0.068331
+    },
+    {
+      "link_id": "Chest_to_RShoulder",
+      "canonical_link_name": "Chest->RShoulder",
+      "effect_ratio_vs_nv": 2.1156,
+      "long_jcvpca_mean": -0.015755
+    },
+    {
+      "link_id": "Chest_to_Neck",
+      "canonical_link_name": "Chest->Neck",
+      "effect_ratio_vs_nv": 2.109,
+      "long_jcvpca_mean": -0.002868
+    },
+    {
+      "link_id": "Neck_to_Head",
+      "canonical_link_name": "Neck->Head",
+      "effect_ratio_vs_nv": 2.109,
+      "long_jcvpca_mean": -0.002868
+    },
+    {
+      "link_id": "RUArm_to_RFArm",
+      "canonical_link_name": "RUArm->RFArm",
+      "effect_ratio_vs_nv": 1.8512,
+      "long_jcvpca_mean": -0.081335
+    },
+    {
+      "link_id": "LShoulder_to_LUArm",
+      "canonical_link_name": "LShoulder->LUArm",
+      "effect_ratio_vs_nv": 1.7276,
+      "long_jcvpca_mean": -0.047369
+    },
+    {
+      "link_id": "RThigh_to_RShin",
+      "canonical_link_name": "RThigh->RShin",
+      "effect_ratio_vs_nv": 1.2979,
+      "long_jcvpca_mean": -0.022511
+    },
+    {
+      "link_id": "LFArm_to_LHand",
+      "canonical_link_name": "LFArm->LHand",
+      "effect_ratio_vs_nv": 1.2749,
+      "long_jcvpca_mean": -0.135802
+    },
+    {
+      "link_id": "Chest_to_LShoulder",
+      "canonical_link_name": "Chest->LShoulder",
+      "effect_ratio_vs_nv": 1.2564,
+      "long_jcvpca_mean": -0.011009
+    },
+    {
+      "link_id": "LThigh_to_LShin",
+      "canonical_link_name": "LThigh->LShin",
+      "effect_ratio_vs_nv": 1.1637,
+      "long_jcvpca_mean": 0.015802
+    }
+  ],
+  "stats": {
+    "regions_above_nv": 5,
+    "regions_total": 5,
+    "links_above_nv": 11,
+    "links_total": 14,
+    "max_ratio": 2.5729,
+    "regions_increased": 1,
+    "regions_decreased": 2,
+    "regions_mixed": 2,
+    "links_increased": 3,
+    "links_decreased": 8
+  },
+  "warnings": "Marker-set prefix differs across timepoints (['671', 'T3']). Cross-timepoint comparisons restricted to shared valid links; interpret with care.",
+  "t3_confound": true,
+  "source_tables": [
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/region_space/671_T1_vs_T2_region_space.csv",
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/link_level/671_T1_vs_T2_links.csv"
+  ],
+  "render_mode": "signed_nv",
+  "signed_callouts": {
+    "strongest_increased": {
+      "rank": 1,
+      "link_id": "LUArm_to_LFArm",
+      "canonical_link_name": "LUArm->LFArm",
+      "effect_ratio_vs_nv": 2.5729,
+      "long_jcvpca_mean": 0.112925,
+      "signed_direction": "increased"
+    },
+    "strongest_decreased": {
+      "rank": 1,
+      "link_id": "Chest_to_RShoulder",
+      "canonical_link_name": "Chest->RShoulder",
+      "effect_ratio_vs_nv": 2.1156,
+      "long_jcvpca_mean": -0.015755,
+      "signed_direction": "decreased"
+    }
+  },
+  "mixed_sign_regions": [
+    "left_arm",
+    "right_arm"
+  ],
+  "strong_ratio_threshold": 3.0,
+  "derived_tables": [
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/link_level/671_T1_vs_T2_links.csv",
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/671_T1_vs_T2_region_space.csv",
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_level/671_T1_vs_T2_regions.csv"
+  ]
+}

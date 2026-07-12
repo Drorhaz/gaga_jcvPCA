@@ -1,0 +1,87 @@
+{
+  "generated_at": "2026-07-07T19:48:36",
+  "git_hash": "e243a72fa5a6dd6ade968dd9b5953a38155ff4b4",
+  "exercise_window": "ex10_15_contiguous",
+  "repetition_mode": "pooled",
+  "participants": [
+    "671",
+    "252"
+  ],
+  "longitudinal_comparisons": [
+    "671_T1_vs_T2",
+    "671_T1_vs_T3",
+    "252_T1_vs_T2",
+    "252_T1_vs_T3"
+  ],
+  "nv_comparison_pattern": "{participant}_T1_R1_vs_R2",
+  "source_runs": {
+    "671": "results_exploration_671_252/runs/671/ex10_15_contiguous/pooled",
+    "252": "results_exploration_671_252/runs/252/ex10_15_contiguous/pooled"
+  },
+  "output_files": [
+    "avater_671_252/tables/group_summary.csv",
+    "avater_671_252/tables/link_level/252_T1_vs_T2_links.csv",
+    "avater_671_252/tables/link_level/252_T1_vs_T3_links.csv",
+    "avater_671_252/tables/link_level/671_T1_vs_T2_links.csv",
+    "avater_671_252/tables/link_level/671_T1_vs_T3_links.csv",
+    "avater_671_252/tables/region_level/252_T1_vs_T2_regions.csv",
+    "avater_671_252/tables/region_level/252_T1_vs_T3_regions.csv",
+    "avater_671_252/tables/region_level/671_T1_vs_T2_regions.csv",
+    "avater_671_252/tables/region_level/671_T1_vs_T3_regions.csv",
+    "avater_671_252/tables/region_space/252_T1_vs_T2_region_space.csv",
+    "avater_671_252/tables/region_space/252_T1_vs_T3_region_space.csv",
+    "avater_671_252/tables/region_space/671_T1_vs_T2_region_space.csv",
+    "avater_671_252/tables/region_space/671_T1_vs_T3_region_space.csv",
+    "avater_671_252/tables/signed_nv/group_summary.csv",
+    "avater_671_252/tables/signed_nv/link_level/252_T1_vs_T2_links.csv",
+    "avater_671_252/tables/signed_nv/link_level/252_T1_vs_T3_links.csv",
+    "avater_671_252/tables/signed_nv/link_level/671_T1_vs_T2_links.csv",
+    "avater_671_252/tables/signed_nv/link_level/671_T1_vs_T3_links.csv",
+    "avater_671_252/tables/signed_nv/region_level/252_T1_vs_T2_regions.csv",
+    "avater_671_252/tables/signed_nv/region_level/252_T1_vs_T3_regions.csv",
+    "avater_671_252/tables/signed_nv/region_level/671_T1_vs_T2_regions.csv",
+    "avater_671_252/tables/signed_nv/region_level/671_T1_vs_T3_regions.csv",
+    "avater_671_252/tables/signed_nv/region_space/252_T1_vs_T2_region_space.csv",
+    "avater_671_252/tables/signed_nv/region_space/252_T1_vs_T3_region_space.csv",
+    "avater_671_252/tables/signed_nv/region_space/671_T1_vs_T2_region_space.csv",
+    "avater_671_252/tables/signed_nv/region_space/671_T1_vs_T3_region_space.csv"
+  ],
+  "interpretation": "Above-NV descriptive change only; not a treatment effect. Data are blinded/timepoint-based.",
+  "build_issues": [],
+  "signed_nv_tables": {
+    "generated_at": "2026-07-07T18:57:06Z",
+    "derived_from": "avater_671_252/tables/",
+    "render_config": "avater_671_252/render_config.yaml",
+    "render_mode": "signed_nv",
+    "output_files": [
+      "avater_671_252/tables/signed_nv/group_summary.csv",
+      "avater_671_252/tables/signed_nv/link_level/252_T1_vs_T2_links.csv",
+      "avater_671_252/tables/signed_nv/link_level/252_T1_vs_T3_links.csv",
+      "avater_671_252/tables/signed_nv/link_level/671_T1_vs_T2_links.csv",
+      "avater_671_252/tables/signed_nv/link_level/671_T1_vs_T3_links.csv",
+      "avater_671_252/tables/signed_nv/region_level/252_T1_vs_T2_regions.csv",
+      "avater_671_252/tables/signed_nv/region_level/252_T1_vs_T3_regions.csv",
+      "avater_671_252/tables/signed_nv/region_level/671_T1_vs_T2_regions.csv",
+      "avater_671_252/tables/signed_nv/region_level/671_T1_vs_T3_regions.csv",
+      "avater_671_252/tables/signed_nv/region_space/252_T1_vs_T2_region_space.csv",
+      "avater_671_252/tables/signed_nv/region_space/252_T1_vs_T3_region_space.csv",
+      "avater_671_252/tables/signed_nv/region_space/671_T1_vs_T2_region_space.csv",
+      "avater_671_252/tables/signed_nv/region_space/671_T1_vs_T3_region_space.csv"
+    ],
+    "row_counts": {
+      "avater_671_252/tables/signed_nv/group_summary.csv": 12,
+      "avater_671_252/tables/signed_nv/link_level/252_T1_vs_T2_links.csv": 48,
+      "avater_671_252/tables/signed_nv/link_level/252_T1_vs_T3_links.csv": 48,
+      "avater_671_252/tables/signed_nv/link_level/671_T1_vs_T2_links.csv": 42,
+      "avater_671_252/tables/signed_nv/link_level/671_T1_vs_T3_links.csv": 42,
+      "avater_671_252/tables/signed_nv/region_level/252_T1_vs_T2_regions.csv": 5,
+      "avater_671_252/tables/signed_nv/region_level/252_T1_vs_T3_regions.csv": 5,
+      "avater_671_252/tables/signed_nv/region_level/671_T1_vs_T2_regions.csv": 5,
+      "avater_671_252/tables/signed_nv/region_level/671_T1_vs_T3_regions.csv": 5,
+      "avater_671_252/tables/signed_nv/region_space/252_T1_vs_T2_region_space.csv": 15,
+      "avater_671_252/tables/signed_nv/region_space/252_T1_vs_T3_region_space.csv": 15,
+      "avater_671_252/tables/signed_nv/region_space/671_T1_vs_T2_region_space.csv": 15,
+      "avater_671_252/tables/signed_nv/region_space/671_T1_vs_T3_region_space.csv": 15
+    }
+  }
+}

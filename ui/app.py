@@ -53,6 +53,7 @@ def main() -> None:
             "5 · Analysis Setup",
             "6 · Results",
             "7 · Run History",
+            "8 · Avatar Views",
         ]
     )
 
@@ -70,6 +71,8 @@ def main() -> None:
         _render_results(snapshot)
     with tabs[6]:
         _render_history(snapshot)
+    with tabs[7]:
+        _render_avatars(snapshot)
 
 
 def _render_overview(snapshot) -> None:
@@ -451,6 +454,25 @@ def _render_setup(snapshot) -> None:
         default=snapshot.inventory.timepoints(), key="setup_tps"
     )
     reference = st.selectbox("Reference timepoint (defines PCA space)", timepoints or ["T1"], key="setup_ref")
+
+    cola, colb = st.columns(2)
+    repetition_mode = cola.selectbox(
+        "Repetition mode",
+        ["single", "pooled"],
+        index=0,
+        format_func=lambda m: {
+            "single": "single — T1_R1 vs Tk_R1 (fallback)",
+            "pooled": "pooled — T1(R1+R2) vs Tk(R1+R2) (ideal)",
+        }[m],
+        key="setup_repmode",
+    )
+    ex_ids = selection.exercise_ids
+    colb.markdown(
+        f"**Exercise windows:** {'combined' if selection.combine_exercises else 'per-exercise'} "
+        f"over exercise_id {ex_ids or 'all (full session)'}.\n\n"
+        f"Rows are sliced to these segmentation windows per session before JcvPCA."
+    )
+
     col1, col2, col3 = st.columns(3)
     vt = col1.number_input(
         "variance_threshold", min_value=0.5, max_value=0.99,
@@ -459,10 +481,14 @@ def _render_setup(snapshot) -> None:
     run_sweep = col2.checkbox("Run threshold sweep", key="setup_sweep")
     run_val = col3.checkbox("Run statistical validation", key="setup_val")
 
+    long_sides = (
+        f"{reference}(R1+R2) vs " + ", ".join(f"{t}(R1+R2)" for t in timepoints if t != reference)
+        if repetition_mode == "pooled"
+        else f"{reference}_R1 vs " + ", ".join(f"{t}_R1" for t in timepoints if t != reference)
+    )
     st.caption(
-        f"Will run: reference {reference} vs "
-        f"{[t for t in timepoints if t != reference]} (longitudinal) + "
-        f"{reference} R1-vs-R2 (natural variability). Participant-specific (N-of-1)."
+        f"Will run: {long_sides} (longitudinal) + {reference} R1-vs-R2 "
+        f"(natural variability, never pooled). Participant-specific (N-of-1)."
     )
 
     if st.button("Run analysis", type="primary", key="setup_run"):
@@ -473,6 +499,7 @@ def _render_setup(snapshot) -> None:
                 selection,
                 timepoints=timepoints,
                 reference_timepoint=reference,
+                repetition_mode=repetition_mode,
                 run_threshold_sweep=run_sweep,
                 run_validation=run_val,
             )
@@ -649,6 +676,93 @@ def _render_selection(snapshot) -> None:
         with st.expander(f"Saved selections ({len(existing)})"):
             for p in existing:
                 st.code(p.name)
+
+
+def _render_avatars(snapshot) -> None:
+    """Interactive body-avatar views built from avater_671_252/tables/ (Phase 7)."""
+    import json
+    from pathlib import Path
+
+    st.subheader("Avatar Views")
+    st.caption(
+        "Descriptive above-NV body change vs natural variability, rendered from the "
+        "built tables under `avater_671_252/tables/`. Timepoints blinded; not a "
+        "treatment effect."
+    )
+
+    try:
+        from avater_671_252.render.config import (
+            RENDER_MODE_MAGNITUDE,
+            RENDER_MODE_SIGNED,
+            load_render_config,
+        )
+        from avater_671_252.render.live import SPACES, get_manifest, render_live_figure
+    except ImportError as exc:
+        st.error(f"Avatar render package unavailable: {exc}")
+        return
+
+    avatar_dir = Path(snapshot.config.project_root) / "avater_671_252"
+    if not (avatar_dir / "tables").exists():
+        st.info("No `avater_671_252/tables/` directory found.")
+        return
+
+    config = load_render_config()
+    manifest = get_manifest(avatar_dir)
+    if not manifest.table_sets:
+        st.info("No renderable tables discovered (need link_level + region_space CSVs).")
+        return
+
+    participants = manifest.participants
+    c1, c2, c3, c4 = st.columns(4)
+    participant = c1.selectbox("Participant", participants, key="avatar_participant")
+    comparisons = [ts.comparison for ts in manifest.table_sets if ts.participant == participant]
+    comparison = c2.selectbox("Comparison", comparisons, key="avatar_comparison")
+    space = c3.selectbox("Space", list(SPACES), key="avatar_space")
+    render_mode = c4.selectbox(
+        "Render mode",
+        [RENDER_MODE_MAGNITUDE, RENDER_MODE_SIGNED],
+        format_func=lambda m: "Magnitude above NV (default)" if m == RENDER_MODE_MAGNITUDE else "Signed contribution vs T1",
+        key="avatar_render_mode",
+    )
+
+    try:
+        fig, meta = render_live_figure(
+            avatar_dir, participant, comparison, space, config, mode=render_mode,
+        )
+    except Exception as exc:  # noqa: BLE001 - surface any render issue to the user
+        st.error(f"Render failed: {exc}")
+        return
+
+    st.pyplot(fig)
+    import matplotlib.pyplot as plt
+    plt.close(fig)
+
+    view_id = f"{participant}_{comparison}_{space}"
+    renders_dir = config.renders_dir_for_mode(avatar_dir, render_mode)
+    png_path = renders_dir / f"{view_id}.png"
+    dcol1, dcol2 = st.columns(2)
+    if png_path.exists():
+        with open(png_path, "rb") as fh:
+            dcol1.download_button(
+                "Download PNG", fh.read(), file_name=f"{view_id}.png",
+                mime="image/png", key="avatar_dl_png",
+            )
+    dcol2.download_button(
+        "Download metadata JSON", json.dumps(meta, indent=2),
+        file_name=f"{view_id}.meta.json", mime="application/json", key="avatar_dl_meta",
+    )
+
+    with st.expander("View metadata (traceability)"):
+        st.json(meta)
+
+    summary_mag = avatar_dir / "renders" / "summary_2x2_combined.png"
+    summary_signed = config.renders_dir_for_mode(avatar_dir, RENDER_MODE_SIGNED) / "summary_2x2_combined.png"
+    if summary_mag.exists():
+        with st.expander("Investor 2×2 summary (magnitude_nv)"):
+            st.image(str(summary_mag))
+    if summary_signed.exists():
+        with st.expander("Investor 2×2 summary (signed_nv)"):
+            st.image(str(summary_signed))
 
 
 def _render_results(snapshot) -> None:

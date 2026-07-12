@@ -1,0 +1,288 @@
+{
+  "view_id": "671_T1_vs_T2_functional",
+  "participant": "671",
+  "comparison_id": "671_T1_vs_T2",
+  "comparison": "T1_vs_T2",
+  "reference_timepoint": "T1",
+  "target_timepoint": "T2",
+  "space": "functional",
+  "regions": [
+    {
+      "region_id": "head_neck",
+      "region_label": "Head / Neck",
+      "exceeds_nv_region": false,
+      "dominance": "neutral",
+      "fill_color": "#B0B0B0",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 0.1257,
+      "strongest_link": null,
+      "dominant_direction": "neutral",
+      "mixed_sign": false,
+      "strongest_positive_link": null,
+      "strongest_negative_link": null
+    },
+    {
+      "region_id": "left_arm",
+      "region_label": "Left arm",
+      "exceeds_nv_region": true,
+      "dominance": "colored",
+      "fill_color": "#DC143C",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 4.2889,
+      "strongest_link": {
+        "link_id": "LShoulder_to_LUArm",
+        "effect_ratio_vs_nv": 36.933,
+        "long_jcvpca_mean": 0.119574
+      },
+      "dominant_direction": "increased",
+      "mixed_sign": true,
+      "strongest_positive_link": null,
+      "strongest_negative_link": null,
+      "mixed_direction_warning": "Region left_arm: mixed-sign above-NV links (3 increased, 1 decreased); region color uses dominant signed direction."
+    },
+    {
+      "region_id": "right_arm",
+      "region_label": "Right arm",
+      "exceeds_nv_region": true,
+      "dominance": "colored",
+      "fill_color": "#5E96C4",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 1.8525,
+      "strongest_link": {
+        "link_id": "RFArm_to_RHand",
+        "effect_ratio_vs_nv": 19.3818,
+        "long_jcvpca_mean": -0.130458
+      },
+      "dominant_direction": "decreased",
+      "mixed_sign": true,
+      "strongest_positive_link": null,
+      "strongest_negative_link": null,
+      "mixed_direction_warning": "Region right_arm: mixed-sign above-NV links (2 increased, 1 decreased); region color uses dominant signed direction."
+    },
+    {
+      "region_id": "left_leg",
+      "region_label": "Left leg",
+      "exceeds_nv_region": true,
+      "dominance": "colored",
+      "fill_color": "#B0B0B0",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 0.2931,
+      "strongest_link": {
+        "link_id": "LShin_to_LFoot",
+        "effect_ratio_vs_nv": 2.8764,
+        "long_jcvpca_mean": 0.030353
+      },
+      "dominant_direction": "increased",
+      "mixed_sign": false,
+      "strongest_positive_link": null,
+      "strongest_negative_link": null
+    },
+    {
+      "region_id": "right_leg",
+      "region_label": "Right leg",
+      "exceeds_nv_region": true,
+      "dominance": "colored",
+      "fill_color": "#E75129",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 2.3729,
+      "strongest_link": {
+        "link_id": "RThigh_to_RShin",
+        "effect_ratio_vs_nv": 3.5482,
+        "long_jcvpca_mean": 0.10173
+      },
+      "dominant_direction": "increased",
+      "mixed_sign": false,
+      "strongest_positive_link": null,
+      "strongest_negative_link": null
+    }
+  ],
+  "top_links": [
+    {
+      "rank": 1,
+      "link_id": "LShoulder_to_LUArm",
+      "canonical_link_name": "LShoulder->LUArm",
+      "effect_ratio_vs_nv": 36.933,
+      "long_jcvpca_mean": 0.119574,
+      "signed_direction": "increased"
+    },
+    {
+      "rank": 2,
+      "link_id": "Chest_to_LShoulder",
+      "canonical_link_name": "Chest->LShoulder",
+      "effect_ratio_vs_nv": 22.5187,
+      "long_jcvpca_mean": 0.027079,
+      "signed_direction": "increased"
+    },
+    {
+      "rank": 3,
+      "link_id": "RFArm_to_RHand",
+      "canonical_link_name": "RFArm->RHand",
+      "effect_ratio_vs_nv": 19.3818,
+      "long_jcvpca_mean": -0.130458,
+      "signed_direction": "decreased"
+    }
+  ],
+  "null_dominant_links": [
+    {
+      "link_id": "LUArm_to_LFArm",
+      "canonical_link_name": "LUArm->LFArm",
+      "effect_ratio_vs_nv": 2.5729,
+      "long_jcvpca_mean": 0.112925
+    },
+    {
+      "link_id": "RFArm_to_RHand",
+      "canonical_link_name": "RFArm->RHand",
+      "effect_ratio_vs_nv": 2.2466,
+      "long_jcvpca_mean": 0.068331
+    },
+    {
+      "link_id": "Chest_to_RShoulder",
+      "canonical_link_name": "Chest->RShoulder",
+      "effect_ratio_vs_nv": 2.1156,
+      "long_jcvpca_mean": -0.015755
+    },
+    {
+      "link_id": "Chest_to_Neck",
+      "canonical_link_name": "Chest->Neck",
+      "effect_ratio_vs_nv": 2.109,
+      "long_jcvpca_mean": -0.002868
+    },
+    {
+      "link_id": "Neck_to_Head",
+      "canonical_link_name": "Neck->Head",
+      "effect_ratio_vs_nv": 2.109,
+      "long_jcvpca_mean": -0.002868
+    },
+    {
+      "link_id": "RUArm_to_RFArm",
+      "canonical_link_name": "RUArm->RFArm",
+      "effect_ratio_vs_nv": 1.8512,
+      "long_jcvpca_mean": -0.081335
+    },
+    {
+      "link_id": "LShoulder_to_LUArm",
+      "canonical_link_name": "LShoulder->LUArm",
+      "effect_ratio_vs_nv": 1.7276,
+      "long_jcvpca_mean": -0.047369
+    },
+    {
+      "link_id": "RThigh_to_RShin",
+      "canonical_link_name": "RThigh->RShin",
+      "effect_ratio_vs_nv": 1.2979,
+      "long_jcvpca_mean": -0.022511
+    },
+    {
+      "link_id": "LFArm_to_LHand",
+      "canonical_link_name": "LFArm->LHand",
+      "effect_ratio_vs_nv": 1.2749,
+      "long_jcvpca_mean": -0.135802
+    },
+    {
+      "link_id": "Chest_to_LShoulder",
+      "canonical_link_name": "Chest->LShoulder",
+      "effect_ratio_vs_nv": 1.2564,
+      "long_jcvpca_mean": -0.011009
+    },
+    {
+      "link_id": "LThigh_to_LShin",
+      "canonical_link_name": "LThigh->LShin",
+      "effect_ratio_vs_nv": 1.1637,
+      "long_jcvpca_mean": 0.015802
+    }
+  ],
+  "stats": {
+    "regions_above_nv": 4,
+    "regions_total": 5,
+    "links_above_nv": 10,
+    "links_total": 14,
+    "max_ratio": 36.933,
+    "regions_increased": 2,
+    "regions_decreased": 0,
+    "regions_mixed": 2,
+    "links_increased": 8,
+    "links_decreased": 2
+  },
+  "warnings": "Marker-set prefix differs across timepoints (['671', 'T3']). Cross-timepoint comparisons restricted to shared valid links; interpret with care.",
+  "t3_confound": true,
+  "source_tables": [
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/671_T1_vs_T2_region_space.csv",
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/link_level/671_T1_vs_T2_links.csv"
+  ],
+  "render_mode": "signed_nv",
+  "signed_callouts": {
+    "strongest_increased": {
+      "rank": 1,
+      "link_id": "LShoulder_to_LUArm",
+      "canonical_link_name": "LShoulder->LUArm",
+      "effect_ratio_vs_nv": 36.933,
+      "long_jcvpca_mean": 0.119574,
+      "signed_direction": "increased"
+    },
+    "strongest_decreased": {
+      "rank": 1,
+      "link_id": "RFArm_to_RHand",
+      "canonical_link_name": "RFArm->RHand",
+      "effect_ratio_vs_nv": 19.3818,
+      "long_jcvpca_mean": -0.130458,
+      "signed_direction": "decreased"
+    }
+  },
+  "mixed_sign_regions": [
+    "left_arm",
+    "right_arm"
+  ],
+  "strong_ratio_threshold": 3.0,
+  "derived_tables": [
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/link_level/671_T1_vs_T2_links.csv",
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/671_T1_vs_T2_region_space.csv",
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_level/671_T1_vs_T2_regions.csv"
+  ],
+  "region_fill": true,
+  "region_styles": {
+    "head_neck": {
+      "fill_color": "#B0B0B0",
+      "exceeds_nv": false,
+      "effect_ratio_vs_nv_region": 0.1257,
+      "signed_value": 0.0,
+      "signed_direction": "neutral",
+      "mixed_sign": false,
+      "dominant_direction": "neutral"
+    },
+    "left_arm": {
+      "fill_color": "#DC143C",
+      "exceeds_nv": true,
+      "effect_ratio_vs_nv_region": 4.2889,
+      "signed_value": 0.119574,
+      "signed_direction": "increased",
+      "mixed_sign": true,
+      "dominant_direction": "increased"
+    },
+    "left_leg": {
+      "fill_color": "#B0B0B0",
+      "exceeds_nv": true,
+      "effect_ratio_vs_nv_region": 0.2931,
+      "signed_value": 0.030353,
+      "signed_direction": "increased",
+      "mixed_sign": false,
+      "dominant_direction": "increased"
+    },
+    "right_arm": {
+      "fill_color": "#5E96C4",
+      "exceeds_nv": true,
+      "effect_ratio_vs_nv_region": 1.8525,
+      "signed_value": -0.130458,
+      "signed_direction": "decreased",
+      "mixed_sign": true,
+      "dominant_direction": "decreased"
+    },
+    "right_leg": {
+      "fill_color": "#E75129",
+      "exceeds_nv": true,
+      "effect_ratio_vs_nv_region": 2.3729,
+      "signed_value": 0.10173,
+      "signed_direction": "increased",
+      "mixed_sign": false,
+      "dominant_direction": "increased"
+    }
+  }
+}

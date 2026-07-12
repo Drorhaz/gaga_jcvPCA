@@ -25,6 +25,11 @@ def main() -> None:
     parser.add_argument("--selection", required=True, help="selection name (without .yaml)")
     parser.add_argument("--timepoints", nargs="+", default=["T1", "T2", "T3"])
     parser.add_argument("--reference", default="T1")
+    parser.add_argument("--repetitions", nargs="+", default=["R1", "R2"])
+    parser.add_argument(
+        "--repetition-mode", choices=["single", "pooled"], default="single",
+        help="single: T1_R1 vs Tk_R1 (fallback). pooled: T1(R1+R2) vs Tk(R1+R2) (ideal).",
+    )
     parser.add_argument("--sweep", action="store_true")
     parser.add_argument("--validate", action="store_true")
     args = parser.parse_args()
@@ -40,7 +45,9 @@ def main() -> None:
         cfg,
         selection,
         timepoints=args.timepoints,
+        repetitions=args.repetitions,
         reference_timepoint=args.reference,
+        repetition_mode=args.repetition_mode,
         run_threshold_sweep=args.sweep,
         run_validation=args.validate,
     )

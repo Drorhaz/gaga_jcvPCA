@@ -53,11 +53,17 @@ def _as_int(value) -> int | None:
 # --- segmentation workbooks ---
 
 def find_segmentation_workbooks(segmentation_dir: Path) -> dict[str, Path]:
-    """Map participant id -> segmentation workbook path."""
+    """Map participant id -> segmentation workbook path.
+
+    Excel writes transient lock files (``~$<name>.xlsx``) while a workbook is open;
+    those and hidden dotfiles are skipped so discovery never tries to parse them.
+    """
     out: dict[str, Path] = {}
     if not segmentation_dir.exists():
         return out
     for path in sorted(segmentation_dir.glob(SEGMENTATION_GLOB)):
+        if path.name.startswith("~$") or path.name.startswith("."):
+            continue
         pid = path.name.split("_", 1)[0]
         out[pid] = path
     return out
@@ -164,6 +170,55 @@ def marker_set_prefix(path: Path) -> Optional[str]:
         if "_" in bone.name:
             return bone.name.split("_", 1)[0]
     return None
+
+
+def sidecar_has_bones(path: Optional[Path]) -> bool:
+    """True when a DataDescriptions sidecar exists and parses to >=1 bone.
+
+    Several sidecars in the cohort are 0-byte placeholders; treating them as
+    present would silently skip conversion, so callers must check this first.
+    """
+    if path is None or not path.exists():
+        return False
+    try:
+        if path.stat().st_size == 0:
+            return False
+    except OSError:
+        return False
+    return len(load_skeleton_bones(path)) > 0
+
+
+def read_skeleton_hierarchy_from_take(path: Path) -> dict[str, str]:
+    """Bone -> parent-bone name map read from a raw Motive skeleton CSV header.
+
+    The solved-skeleton export carries the full hierarchy in its header block
+    (a ``Type`` row of ``Bone`` tokens, a ``Name`` row, and a ``Parent`` row), so
+    the parent/child topology is available directly from the session's own file
+    without any DataDescriptions sidecar. Names are returned exactly as they
+    appear in the take (e.g. ``671:Chest``), so they match ``MotiveTake.bone_names``.
+    Root bones map to themselves.
+    """
+    rows = _read_motive_header_rows(path)
+    type_row_idx = _find_type_row(rows)
+    type_row = rows[type_row_idx]
+    name_row = rows[type_row_idx + 1]
+    parent_row = None
+    for r in rows:
+        if len(r) > 1 and r[1].strip() == "Parent":
+            parent_row = r
+            break
+    if parent_row is None:
+        return {}
+    hierarchy: dict[str, str] = {}
+    for i, token in enumerate(type_row):
+        if token.strip() != "Bone":
+            continue
+        name = name_row[i].strip() if i < len(name_row) else ""
+        parent = parent_row[i].strip() if i < len(parent_row) else ""
+        if not name or name in hierarchy:
+            continue
+        hierarchy[name] = name if parent in ("", "Root") else parent
+    return hierarchy
 
 
 # --- feature manifests ---

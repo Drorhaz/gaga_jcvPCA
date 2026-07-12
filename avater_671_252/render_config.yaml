@@ -1,0 +1,137 @@
+# Render configuration for the 671/252 body-avatar views.
+# All visual thresholds, palette, and layout live here (no hidden constants in code).
+# Locks the decisions in RENDER_PLAN.md sections E1-E10.
+
+# --- render mode (default unchanged) ---
+# magnitude_nv = existing above-NV intensity scale (E1)
+# signed_nv    = optional signed contribution change vs T1, thresholded by NV
+render_mode: magnitude_nv
+
+# --- E1: intensity scale (effect_ratio_vs_nv -> fill color) ---
+# Bands are half-open [lo, hi); the last band is [lo, inf).
+intensity:
+  bands:
+    - {max: 1.0, color: "#B0B0B0", label: "within NV"}          # <= 1.0
+    - {max: 1.5, color: "#FFD700", label: "slightly above NV"}  # 1.0 - 1.5
+    - {max: 3.0, color: "#FF8C00", label: "moderate above NV"}  # 1.5 - 3.0
+    - {max: null, color: "#DC143C", label: "strong above NV"}   # > 3.0
+  neutral_color: "#B0B0B0"        # within NV / not exceeding
+  unavailable_color: "#B0B0B0"    # dashed segments use this stroke, never a fill
+
+# --- E2: combined-view dual encoding ---
+dominance:
+  outline_color: "#4A90D9"        # null-space contribution ring
+  outline_width: 3.0
+  # Which avatar_color_category values draw a fill vs an outline ring.
+  fill_categories: ["functional_only", "functional_and_null", "combined_only"]
+  outline_categories: ["null_only", "functional_and_null"]
+
+# --- E7: unavailable / not-measured state ---
+unavailable:
+  line_style: "--"
+  line_color: "#9AA0A6"
+  line_width: 1.5
+  marker: "dagger"                # rendered as the '†' footnote symbol
+  footnote: "† not in analysis scope — layout only"
+
+# --- palette / theme ---
+theme:
+  background: "#FFFFFF"
+  bone_color: "#404040"
+  bone_width: 2.0
+  joint_color: "#303030"
+  joint_size: 18
+  capsule_alpha: 0.85
+  text_color: "#1A1A1A"
+  muted_text_color: "#666666"
+
+# --- layout (matplotlib figure) ---
+layout:
+  figure_width_in: 12.0
+  figure_height_in: 8.0
+  dpi: 150
+  title_fontsize: 15
+  stats_fontsize: 11         # E5 corner stats
+  callout_fontsize: 10       # E3 top-3 links
+  legend_fontsize: 8         # E4 legend
+  footer_fontsize: 8
+  side_strip_fontsize: 8     # E9 null-space strip
+
+# --- E3: top-N link callouts ---
+callouts:
+  top_n: 3
+
+# --- E6: 2x2 investor summary ---
+summary_2x2:
+  figure_width_in: 14.0
+  figure_height_in: 11.0
+  dpi: 150
+  title: "JcvPCA body change vs natural variability | ex10–15 pooled"
+  quadrant_order:                 # (participant, comparison suffix); space fixed to combined
+    - {participant: "671", comparison: "T1_vs_T2"}
+    - {participant: "671", comparison: "T1_vs_T3"}
+    - {participant: "252", comparison: "T1_vs_T2"}
+    - {participant: "252", comparison: "T1_vs_T3"}
+
+# --- E4: legend text (fixed template) ---
+legend_lines:
+  - "Gray     = within natural variability (≤ NV)"
+  - "Yellow   = slightly above NV"
+  - "Orange   = moderate above NV"
+  - "Red      = strong above NV"
+  - "Outline  = null-space contribution (combined view)"
+  - "Dashed   = unavailable / not measured"
+nv_source_line: "NV floor: T1 R1 vs R2 repetition variability"
+
+# --- disclaimers / footers ---
+footer:
+  disclaimer: "Descriptive above-NV change only — not a treatment effect. Timepoints blinded."
+  # Participants whose T3 marker-set differs; a warning is stamped on all their views.
+  t3_confound_participants: ["671"]
+  t3_confound_text: "⚠ 671 T3 marker-set prefix differs; cross-timepoint links restricted to shared valid set."
+
+# --- reference pose extraction (E10) ---
+pose:
+  reference_timepoint: "T1"
+  reference_repetition: "R1"
+  exercise_window: [10, 15]        # inclusive ex ids used for the mean pose
+  task_part: "P1"
+
+# --- analytic regions (label + draw order) ---
+regions:
+  order: ["head_neck", "left_arm", "right_arm", "left_leg", "right_leg"]
+
+# --- signed-NV mode (optional; outputs under renders/signed_nv/) ---
+signed_nv:
+  output_subdir: signed_nv
+  tables_subdir: signed_nv
+  # Moderate vs strong split reuses the existing "strong above NV" ratio (E1 red band).
+  strong_ratio_threshold: 3.0
+  palette:
+    dark_blue: "#08519C"           # strong decreased contribution vs T1, beyond NV
+    light_blue: "#9ECAE1"          # moderate decreased contribution vs T1, beyond NV
+    neutral: "#B0B0B0"             # within NV
+    moderate_positive: "#FFD700"   # moderate increased contribution vs T1, beyond NV
+    strong_positive: "#DC143C"     # strong increased contribution vs T1, beyond NV
+  legend_lines:
+    - "Dark blue  = strong decreased contribution vs T1, beyond NV"
+    - "Light blue = moderate decreased contribution vs T1, beyond NV"
+    - "Gray       = within natural variability"
+    - "Yellow     = moderate increased contribution vs T1, beyond NV"
+    - "Red        = strong increased contribution vs T1, beyond NV"
+    - "Outline    = null-space contribution (combined view)"
+    - "Dashed     = unavailable / not measured"
+  caption: >-
+    Blue = reduced JcvPCA coordination contribution vs T1 (not "bad" or "cold").
+    Yellow/red = increased contribution vs T1. Gray = within NV.
+  summary_title: "JcvPCA signed contribution change vs T1 | ex10–15 pooled"
+
+# --- region heatmap (signed region_space rollups, full-region fill) ---
+region_heatmap:
+  output_subdir: signed_nv/region_heatmap
+  legend_lines:
+    - "Full-region fill from signed region_space tables."
+    - "Blue gradient  = decreased JcvPCA vs T1, beyond NV."
+    - "Yellow/red     = increased JcvPCA vs T1, beyond NV."
+    - "Gray           = within natural variability."
+    - "Intensity      = continuous ratio vs NV (1×–3×+)."
