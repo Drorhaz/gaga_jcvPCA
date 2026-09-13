@@ -22,6 +22,7 @@ import yaml
 
 from gaga_jcvpca.config import Config
 from gaga_jcvpca.jcvpca import ComparisonResult
+from gaga_jcvpca.marker_gap_policy import partition_excluded_links
 from gaga_jcvpca.selection import AnalysisSelection
 
 
@@ -69,6 +70,8 @@ class RunContext:
     validation_summary_md: Optional[str] = None
     input_files: list[Path] = field(default_factory=list)
     marker_set_notes: dict = field(default_factory=dict)
+    marker_gap_policy_enabled: bool = False
+    marker_gap_removals_path: str = ""
 
 
 def _kind_label(kind: str) -> str:
@@ -117,6 +120,11 @@ def build_run_summary_md(ctx: RunContext) -> str:
         f"filter cutoff {ctx.filter_settings.get('cutoff_hz')} Hz "
         f"(order {ctx.filter_settings.get('order')})"
     )
+    if ctx.marker_gap_policy_enabled:
+        lines.append(
+            f"- Marker-gap policy: **on** (`{ctx.marker_gap_removals_path}`) — "
+            "session-scoped exclusions listed per comparison when applicable."
+        )
     lines.append("")
 
     if ctx.marker_set_notes:
@@ -142,8 +150,13 @@ def build_run_summary_md(ctx: RunContext) -> str:
             )
             lines.append(f"- Largest contribution changes (mean |ΔJcvPCA|): {names}")
         if c.excluded_links:
-            excl = "; ".join(f"{k} — {v}" for k, v in c.excluded_links.items())
-            lines.append(f"- Excluded links: {excl}")
+            marker_excl, other_excl = partition_excluded_links(c.excluded_links)
+            if marker_excl:
+                excl = "; ".join(f"{k} — {v}" for k, v in marker_excl.items())
+                lines.append(f"- Excluded (marker-gap policy): {excl}")
+            if other_excl:
+                excl = "; ".join(f"{k} — {v}" for k, v in other_excl.items())
+                lines.append(f"- Excluded (matrix / rotvec QC): {excl}")
         lines.append("")
 
     if ctx.threshold_sweep is not None and not ctx.threshold_sweep.empty:
@@ -188,6 +201,8 @@ def build_manifest(ctx: RunContext) -> dict:
                 "variance_threshold": c.variance_threshold,
                 "included_links": c.included_links,
                 "excluded_links": c.excluded_links,
+                "excluded_links_marker_gap": partition_excluded_links(c.excluded_links)[0],
+                "excluded_links_other": partition_excluded_links(c.excluded_links)[1],
                 "warnings": c.warnings,
             }
         )
@@ -202,6 +217,10 @@ def build_manifest(ctx: RunContext) -> dict:
         "filter_settings": ctx.filter_settings,
         "selection": ctx.selection.to_dict(),
         "comparisons": per_comparison,
+        "marker_gap_policy": {
+            "enabled": ctx.marker_gap_policy_enabled,
+            "removals_csv": ctx.marker_gap_removals_path,
+        },
         "marker_set_difference_notes": ctx.marker_set_notes,
         "input_files": [
             {"path": str(p), "sha256_16": _file_checksum(p)} for p in ctx.input_files
@@ -264,6 +283,15 @@ def write_run(ctx: RunContext) -> Path:
     if ctx.validation_summary_md:
         with open(run_dir / "validation_summary.md", "w", encoding="utf-8") as fh:
             fh.write(ctx.validation_summary_md)
+
+    marker_gap_audit = {
+        c.comparison_id: partition_excluded_links(c.excluded_links)[0]
+        for c in ctx.comparisons
+        if partition_excluded_links(c.excluded_links)[0]
+    }
+    if marker_gap_audit:
+        with open(run_dir / "marker_gap_excluded_links.json", "w", encoding="utf-8") as fh:
+            json.dump(marker_gap_audit, fh, indent=2)
 
     # interpretation + manifest
     with open(run_dir / "run_summary.md", "w", encoding="utf-8") as fh:

@@ -1,0 +1,4 @@
+comparison_id,kind,selected_m,variance_threshold,n_included_links,n_excluded_links
+671_T1_vs_T2,longitudinal,9,0.8,14,0
+671_T1_vs_T3,longitudinal,9,0.8,14,0
+671_T1_R1_vs_R2,natural_variability,7,0.8,14,0

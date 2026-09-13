@@ -1,0 +1,6 @@
+participant,comparison_id,reference_timepoint,target_timepoint,space,region_id,region_label,n_links_in_region,long_jcvpca_abs_mean_region,nv_jcvpca_abs_mean_region,effect_ratio_vs_nv,exceeds_nv,top_link_id,top_link_effect_ratio,avatar_color_category,interpretation,warnings
+252,252_T1_vs_T2,T1,T2,combined,head_neck,Head / Neck,2,0.014186,0.020393,0.6957,False,Neck_to_Head,0.6973,neutral,Above-NV descriptive change only; not a treatment effect. Data are blinded/timepoint-based.,
+252,252_T1_vs_T2,T1,T2,combined,left_arm,Left arm,4,0.091875,0.066106,1.3898,True,LShoulder_to_LUArm,2.5385,colored,Above-NV descriptive change only; not a treatment effect. Data are blinded/timepoint-based.,
+252,252_T1_vs_T2,T1,T2,combined,left_leg,Left leg,3,0.093508,0.094679,0.9876,True,LShin_to_LFoot,2.3285,colored,Above-NV descriptive change only; not a treatment effect. Data are blinded/timepoint-based.,
+252,252_T1_vs_T2,T1,T2,combined,right_arm,Right arm,4,0.093032,0.08481,1.0969,True,RShoulder_to_RUArm,1.5416,colored,Above-NV descriptive change only; not a treatment effect. Data are blinded/timepoint-based.,
+252,252_T1_vs_T2,T1,T2,combined,right_leg,Right leg,3,0.096837,0.092105,1.0514,True,RShin_to_RFoot,1.7147,colored,Above-NV descriptive change only; not a treatment effect. Data are blinded/timepoint-based.,

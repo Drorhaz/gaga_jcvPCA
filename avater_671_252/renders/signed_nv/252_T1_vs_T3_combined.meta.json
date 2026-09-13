@@ -1,0 +1,344 @@
+{
+  "view_id": "252_T1_vs_T3_combined",
+  "participant": "252",
+  "comparison_id": "252_T1_vs_T3",
+  "comparison": "T1_vs_T3",
+  "reference_timepoint": "T1",
+  "target_timepoint": "T3",
+  "space": "combined",
+  "regions": [
+    {
+      "region_id": "head_neck",
+      "region_label": "Head / Neck",
+      "exceeds_nv_region": true,
+      "dominance": "functional_and_null",
+      "fill_color": "#FFD700",
+      "outline": true,
+      "effect_ratio_vs_nv_region": 1.5252,
+      "strongest_link": {
+        "link_id": "Neck_to_Head",
+        "canonical_link_name": "Neck->Head",
+        "effect_ratio_vs_nv": 1.5262,
+        "long_jcvpca_mean": 0.001737,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "252_T1_R1_vs_R2"
+      },
+      "dominant_direction": "increased",
+      "mixed_sign": false,
+      "strongest_positive_link": {
+        "link_id": "Neck_to_Head",
+        "canonical_link_name": "Neck->Head",
+        "effect_ratio_vs_nv": 1.5262,
+        "long_jcvpca_mean": 0.001737,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "252_T1_R1_vs_R2"
+      },
+      "strongest_negative_link": null
+    },
+    {
+      "region_id": "left_arm",
+      "region_label": "Left arm",
+      "exceeds_nv_region": true,
+      "dominance": "neutral",
+      "fill_color": "#B0B0B0",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 2.6485,
+      "strongest_link": {
+        "link_id": "LShoulder_to_LUArm",
+        "canonical_link_name": "LShoulder->LUArm",
+        "effect_ratio_vs_nv": 5.0351,
+        "long_jcvpca_mean": 0.013487,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "252_T1_R1_vs_R2"
+      },
+      "dominant_direction": "increased",
+      "mixed_sign": true,
+      "strongest_positive_link": {
+        "link_id": "LShoulder_to_LUArm",
+        "canonical_link_name": "LShoulder->LUArm",
+        "effect_ratio_vs_nv": 5.0351,
+        "long_jcvpca_mean": 0.013487,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "252_T1_R1_vs_R2"
+      },
+      "strongest_negative_link": {
+        "link_id": "LFArm_to_LHand",
+        "canonical_link_name": "LFArm->LHand",
+        "effect_ratio_vs_nv": 3.5257,
+        "long_jcvpca_mean": -0.014833,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "252_T1_R1_vs_R2"
+      },
+      "mixed_direction_warning": "Region left_arm: mixed-sign above-NV links (1 increased, 3 decreased); links retain individual signed colors."
+    },
+    {
+      "region_id": "right_arm",
+      "region_label": "Right arm",
+      "exceeds_nv_region": true,
+      "dominance": "neutral",
+      "fill_color": "#B0B0B0",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 2.2612,
+      "strongest_link": {
+        "link_id": "RShoulder_to_RUArm",
+        "canonical_link_name": "RShoulder->RUArm",
+        "effect_ratio_vs_nv": 2.1248,
+        "long_jcvpca_mean": 0.002127,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "252_T1_R1_vs_R2"
+      },
+      "dominant_direction": "decreased",
+      "mixed_sign": true,
+      "strongest_positive_link": {
+        "link_id": "RShoulder_to_RUArm",
+        "canonical_link_name": "RShoulder->RUArm",
+        "effect_ratio_vs_nv": 2.1248,
+        "long_jcvpca_mean": 0.002127,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "252_T1_R1_vs_R2"
+      },
+      "strongest_negative_link": {
+        "link_id": "RUArm_to_RFArm",
+        "canonical_link_name": "RUArm->RFArm",
+        "effect_ratio_vs_nv": 2.5162,
+        "long_jcvpca_mean": -0.006804,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "252_T1_R1_vs_R2"
+      },
+      "mixed_direction_warning": "Region right_arm: mixed-sign above-NV links (1 increased, 3 decreased); links retain individual signed colors."
+    },
+    {
+      "region_id": "left_leg",
+      "region_label": "Left leg",
+      "exceeds_nv_region": true,
+      "dominance": "neutral",
+      "fill_color": "#B0B0B0",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 1.3652,
+      "strongest_link": {
+        "link_id": "LShin_to_LFoot",
+        "canonical_link_name": "LShin->LFoot",
+        "effect_ratio_vs_nv": 3.0767,
+        "long_jcvpca_mean": 0.002004,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "252_T1_R1_vs_R2"
+      },
+      "dominant_direction": "increased",
+      "mixed_sign": true,
+      "strongest_positive_link": {
+        "link_id": "LShin_to_LFoot",
+        "canonical_link_name": "LShin->LFoot",
+        "effect_ratio_vs_nv": 3.0767,
+        "long_jcvpca_mean": 0.002004,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "252_T1_R1_vs_R2"
+      },
+      "strongest_negative_link": {
+        "link_id": "LThigh_to_LShin",
+        "canonical_link_name": "LThigh->LShin",
+        "effect_ratio_vs_nv": 1.364,
+        "long_jcvpca_mean": -0.019289,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "252_T1_R1_vs_R2"
+      },
+      "mixed_direction_warning": "Region left_leg: mixed-sign above-NV links (1 increased, 2 decreased); links retain individual signed colors."
+    },
+    {
+      "region_id": "right_leg",
+      "region_label": "Right leg",
+      "exceeds_nv_region": true,
+      "dominance": "neutral",
+      "fill_color": "#B0B0B0",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 1.0206,
+      "strongest_link": {
+        "link_id": "RShin_to_RFoot",
+        "canonical_link_name": "RShin->RFoot",
+        "effect_ratio_vs_nv": 2.0587,
+        "long_jcvpca_mean": 0.008531,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "252_T1_R1_vs_R2"
+      },
+      "dominant_direction": "increased",
+      "mixed_sign": true,
+      "strongest_positive_link": {
+        "link_id": "RShin_to_RFoot",
+        "canonical_link_name": "RShin->RFoot",
+        "effect_ratio_vs_nv": 2.0587,
+        "long_jcvpca_mean": 0.008531,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "252_T1_R1_vs_R2"
+      },
+      "strongest_negative_link": {
+        "link_id": "RThigh_to_RShin",
+        "canonical_link_name": "RThigh->RShin",
+        "effect_ratio_vs_nv": 1.0788,
+        "long_jcvpca_mean": -0.030537,
+        "nv_source": "T1 within-timepoint R1 vs R2 (never pooled)",
+        "nv_comparison_id": "252_T1_R1_vs_R2"
+      },
+      "mixed_direction_warning": "Region right_leg: mixed-sign above-NV links (1 increased, 1 decreased); links retain individual signed colors."
+    }
+  ],
+  "top_links": [
+    {
+      "rank": 1,
+      "link_id": "LShoulder_to_LUArm",
+      "canonical_link_name": "LShoulder->LUArm",
+      "effect_ratio_vs_nv": 5.0351,
+      "long_jcvpca_mean": 0.013487,
+      "signed_direction": "increased"
+    },
+    {
+      "rank": 2,
+      "link_id": "LFArm_to_LHand",
+      "canonical_link_name": "LFArm->LHand",
+      "effect_ratio_vs_nv": 3.5257,
+      "long_jcvpca_mean": -0.014833,
+      "signed_direction": "decreased"
+    },
+    {
+      "rank": 3,
+      "link_id": "LShin_to_LFoot",
+      "canonical_link_name": "LShin->LFoot",
+      "effect_ratio_vs_nv": 3.0767,
+      "long_jcvpca_mean": 0.002004,
+      "signed_direction": "increased"
+    }
+  ],
+  "null_dominant_links": [
+    {
+      "link_id": "LShoulder_to_LUArm",
+      "canonical_link_name": "LShoulder->LUArm",
+      "effect_ratio_vs_nv": 5.0492,
+      "long_jcvpca_mean": 0.021847
+    },
+    {
+      "link_id": "LFArm_to_LHand",
+      "canonical_link_name": "LFArm->LHand",
+      "effect_ratio_vs_nv": 4.2468,
+      "long_jcvpca_mean": -0.015796
+    },
+    {
+      "link_id": "LShin_to_LFoot",
+      "canonical_link_name": "LShin->LFoot",
+      "effect_ratio_vs_nv": 2.7843,
+      "long_jcvpca_mean": -0.017291
+    },
+    {
+      "link_id": "RUArm_to_RFArm",
+      "canonical_link_name": "RUArm->RFArm",
+      "effect_ratio_vs_nv": 2.6371,
+      "long_jcvpca_mean": 0.011805
+    },
+    {
+      "link_id": "RShoulder_to_RUArm",
+      "canonical_link_name": "RShoulder->RUArm",
+      "effect_ratio_vs_nv": 2.1133,
+      "long_jcvpca_mean": 0.009662
+    },
+    {
+      "link_id": "RFArm_to_RHand",
+      "canonical_link_name": "RFArm->RHand",
+      "effect_ratio_vs_nv": 2.0101,
+      "long_jcvpca_mean": 0.01239
+    },
+    {
+      "link_id": "Chest_to_LShoulder",
+      "canonical_link_name": "Chest->LShoulder",
+      "effect_ratio_vs_nv": 1.8082,
+      "long_jcvpca_mean": -0.004788
+    },
+    {
+      "link_id": "RShin_to_RFoot",
+      "canonical_link_name": "RShin->RFoot",
+      "effect_ratio_vs_nv": 1.7988,
+      "long_jcvpca_mean": -0.008985
+    },
+    {
+      "link_id": "LUArm_to_LFArm",
+      "canonical_link_name": "LUArm->LFArm",
+      "effect_ratio_vs_nv": 1.7618,
+      "long_jcvpca_mean": -0.013006
+    },
+    {
+      "link_id": "Chest_to_RShoulder",
+      "canonical_link_name": "Chest->RShoulder",
+      "effect_ratio_vs_nv": 1.7035,
+      "long_jcvpca_mean": 0.000492
+    },
+    {
+      "link_id": "Neck_to_Head",
+      "canonical_link_name": "Neck->Head",
+      "effect_ratio_vs_nv": 1.579,
+      "long_jcvpca_mean": 3e-05
+    },
+    {
+      "link_id": "Chest_to_Neck",
+      "canonical_link_name": "Chest->Neck",
+      "effect_ratio_vs_nv": 1.5753,
+      "long_jcvpca_mean": 0.000118
+    },
+    {
+      "link_id": "RThigh_to_RShin",
+      "canonical_link_name": "RThigh->RShin",
+      "effect_ratio_vs_nv": 1.48,
+      "long_jcvpca_mean": -0.03607
+    },
+    {
+      "link_id": "LThigh_to_LShin",
+      "canonical_link_name": "LThigh->LShin",
+      "effect_ratio_vs_nv": 1.1309,
+      "long_jcvpca_mean": -0.072166
+    }
+  ],
+  "stats": {
+    "regions_above_nv": 5,
+    "regions_total": 5,
+    "links_above_nv": 15,
+    "links_total": 16,
+    "max_ratio": 5.0351,
+    "regions_increased": 1,
+    "regions_decreased": 0,
+    "regions_mixed": 4,
+    "links_increased": 6,
+    "links_decreased": 9
+  },
+  "warnings": "",
+  "t3_confound": false,
+  "source_tables": [
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/region_space/252_T1_vs_T3_region_space.csv",
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/link_level/252_T1_vs_T3_links.csv"
+  ],
+  "render_mode": "signed_nv",
+  "signed_callouts": {
+    "strongest_increased": {
+      "rank": 1,
+      "link_id": "LShoulder_to_LUArm",
+      "canonical_link_name": "LShoulder->LUArm",
+      "effect_ratio_vs_nv": 5.0351,
+      "long_jcvpca_mean": 0.013487,
+      "signed_direction": "increased"
+    },
+    "strongest_decreased": {
+      "rank": 1,
+      "link_id": "LFArm_to_LHand",
+      "canonical_link_name": "LFArm->LHand",
+      "effect_ratio_vs_nv": 3.5257,
+      "long_jcvpca_mean": -0.014833,
+      "signed_direction": "decreased"
+    }
+  },
+  "mixed_sign_regions": [
+    "left_arm",
+    "right_arm",
+    "left_leg",
+    "right_leg"
+  ],
+  "strong_ratio_threshold": 3.0,
+  "derived_tables": [
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/link_level/252_T1_vs_T3_links.csv",
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/252_T1_vs_T3_region_space.csv",
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_level/252_T1_vs_T3_regions.csv"
+  ]
+}

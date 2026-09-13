@@ -1,0 +1,387 @@
+{
+  "participants": [
+    "252",
+    "671"
+  ],
+  "modes": {
+    "magnitude_nv": {
+      "output_dir": "renders",
+      "n_views": 12,
+      "views": [
+        {
+          "view_id": "252_T1_vs_T2_functional",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/252_T1_vs_T2_functional.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/252_T1_vs_T2_functional.meta.json"
+        },
+        {
+          "view_id": "252_T1_vs_T2_null",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/252_T1_vs_T2_null.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/252_T1_vs_T2_null.meta.json"
+        },
+        {
+          "view_id": "252_T1_vs_T2_combined",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/252_T1_vs_T2_combined.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/252_T1_vs_T2_combined.meta.json"
+        },
+        {
+          "view_id": "252_T1_vs_T3_functional",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/252_T1_vs_T3_functional.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/252_T1_vs_T3_functional.meta.json"
+        },
+        {
+          "view_id": "252_T1_vs_T3_null",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/252_T1_vs_T3_null.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/252_T1_vs_T3_null.meta.json"
+        },
+        {
+          "view_id": "252_T1_vs_T3_combined",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/252_T1_vs_T3_combined.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/252_T1_vs_T3_combined.meta.json"
+        },
+        {
+          "view_id": "671_T1_vs_T2_functional",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/671_T1_vs_T2_functional.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/671_T1_vs_T2_functional.meta.json"
+        },
+        {
+          "view_id": "671_T1_vs_T2_null",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/671_T1_vs_T2_null.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/671_T1_vs_T2_null.meta.json"
+        },
+        {
+          "view_id": "671_T1_vs_T2_combined",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/671_T1_vs_T2_combined.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/671_T1_vs_T2_combined.meta.json"
+        },
+        {
+          "view_id": "671_T1_vs_T3_functional",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/671_T1_vs_T3_functional.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/671_T1_vs_T3_functional.meta.json"
+        },
+        {
+          "view_id": "671_T1_vs_T3_null",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/671_T1_vs_T3_null.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/671_T1_vs_T3_null.meta.json"
+        },
+        {
+          "view_id": "671_T1_vs_T3_combined",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/671_T1_vs_T3_combined.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/671_T1_vs_T3_combined.meta.json"
+        }
+      ]
+    },
+    "signed_nv": {
+      "output_dir": "renders/signed_nv",
+      "n_views": 12,
+      "views": [
+        {
+          "view_id": "252_T1_vs_T2_functional",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/252_T1_vs_T2_functional.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/252_T1_vs_T2_functional.meta.json"
+        },
+        {
+          "view_id": "252_T1_vs_T2_null",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/252_T1_vs_T2_null.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/252_T1_vs_T2_null.meta.json"
+        },
+        {
+          "view_id": "252_T1_vs_T2_combined",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/252_T1_vs_T2_combined.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/252_T1_vs_T2_combined.meta.json"
+        },
+        {
+          "view_id": "252_T1_vs_T3_functional",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/252_T1_vs_T3_functional.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/252_T1_vs_T3_functional.meta.json"
+        },
+        {
+          "view_id": "252_T1_vs_T3_null",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/252_T1_vs_T3_null.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/252_T1_vs_T3_null.meta.json"
+        },
+        {
+          "view_id": "252_T1_vs_T3_combined",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/252_T1_vs_T3_combined.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/252_T1_vs_T3_combined.meta.json"
+        },
+        {
+          "view_id": "671_T1_vs_T2_functional",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/671_T1_vs_T2_functional.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/671_T1_vs_T2_functional.meta.json"
+        },
+        {
+          "view_id": "671_T1_vs_T2_null",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/671_T1_vs_T2_null.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/671_T1_vs_T2_null.meta.json"
+        },
+        {
+          "view_id": "671_T1_vs_T2_combined",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/671_T1_vs_T2_combined.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/671_T1_vs_T2_combined.meta.json"
+        },
+        {
+          "view_id": "671_T1_vs_T3_functional",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/671_T1_vs_T3_functional.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/671_T1_vs_T3_functional.meta.json"
+        },
+        {
+          "view_id": "671_T1_vs_T3_null",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/671_T1_vs_T3_null.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/671_T1_vs_T3_null.meta.json"
+        },
+        {
+          "view_id": "671_T1_vs_T3_combined",
+          "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/671_T1_vs_T3_combined.png",
+          "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/671_T1_vs_T3_combined.meta.json"
+        }
+      ],
+      "mixed_sign_regions_by_view": {
+        "252_T1_vs_T2_functional": [
+          "right_leg"
+        ],
+        "252_T1_vs_T2_null": [
+          "left_leg"
+        ],
+        "252_T1_vs_T2_combined": [
+          "left_arm",
+          "left_leg",
+          "right_leg"
+        ],
+        "252_T1_vs_T3_functional": [
+          "left_arm"
+        ],
+        "252_T1_vs_T3_null": [
+          "left_arm"
+        ],
+        "252_T1_vs_T3_combined": [
+          "left_arm",
+          "right_arm",
+          "left_leg",
+          "right_leg"
+        ],
+        "671_T1_vs_T2_functional": [
+          "left_arm",
+          "right_arm"
+        ],
+        "671_T1_vs_T2_null": [
+          "left_arm",
+          "right_arm"
+        ],
+        "671_T1_vs_T2_combined": [
+          "left_arm",
+          "right_arm"
+        ],
+        "671_T1_vs_T3_functional": [
+          "left_arm",
+          "right_arm"
+        ],
+        "671_T1_vs_T3_null": [
+          "left_arm",
+          "right_arm"
+        ],
+        "671_T1_vs_T3_combined": [
+          "left_arm",
+          "right_arm"
+        ]
+      },
+      "strong_ratio_threshold": 3.0,
+      "signed_nv_tables": {
+        "output_dir": "tables/signed_nv",
+        "n_files": 13,
+        "files": [
+          {
+            "path": "avater_671_252/tables/signed_nv/link_level/252_T1_vs_T2_links.csv",
+            "row_count": 48
+          },
+          {
+            "path": "avater_671_252/tables/signed_nv/region_space/252_T1_vs_T2_region_space.csv",
+            "row_count": 15
+          },
+          {
+            "path": "avater_671_252/tables/signed_nv/region_level/252_T1_vs_T2_regions.csv",
+            "row_count": 5
+          },
+          {
+            "path": "avater_671_252/tables/signed_nv/link_level/252_T1_vs_T3_links.csv",
+            "row_count": 48
+          },
+          {
+            "path": "avater_671_252/tables/signed_nv/region_space/252_T1_vs_T3_region_space.csv",
+            "row_count": 15
+          },
+          {
+            "path": "avater_671_252/tables/signed_nv/region_level/252_T1_vs_T3_regions.csv",
+            "row_count": 5
+          },
+          {
+            "path": "avater_671_252/tables/signed_nv/link_level/671_T1_vs_T2_links.csv",
+            "row_count": 42
+          },
+          {
+            "path": "avater_671_252/tables/signed_nv/region_space/671_T1_vs_T2_region_space.csv",
+            "row_count": 15
+          },
+          {
+            "path": "avater_671_252/tables/signed_nv/region_level/671_T1_vs_T2_regions.csv",
+            "row_count": 5
+          },
+          {
+            "path": "avater_671_252/tables/signed_nv/link_level/671_T1_vs_T3_links.csv",
+            "row_count": 42
+          },
+          {
+            "path": "avater_671_252/tables/signed_nv/region_space/671_T1_vs_T3_region_space.csv",
+            "row_count": 15
+          },
+          {
+            "path": "avater_671_252/tables/signed_nv/region_level/671_T1_vs_T3_regions.csv",
+            "row_count": 5
+          },
+          {
+            "path": "avater_671_252/tables/signed_nv/group_summary.csv",
+            "row_count": 12
+          }
+        ]
+      }
+    }
+  },
+  "signed_nv_tables": {
+    "output_dir": "tables/signed_nv",
+    "n_files": 13,
+    "files": [
+      {
+        "path": "avater_671_252/tables/signed_nv/link_level/252_T1_vs_T2_links.csv",
+        "row_count": 48
+      },
+      {
+        "path": "avater_671_252/tables/signed_nv/region_space/252_T1_vs_T2_region_space.csv",
+        "row_count": 15
+      },
+      {
+        "path": "avater_671_252/tables/signed_nv/region_level/252_T1_vs_T2_regions.csv",
+        "row_count": 5
+      },
+      {
+        "path": "avater_671_252/tables/signed_nv/link_level/252_T1_vs_T3_links.csv",
+        "row_count": 48
+      },
+      {
+        "path": "avater_671_252/tables/signed_nv/region_space/252_T1_vs_T3_region_space.csv",
+        "row_count": 15
+      },
+      {
+        "path": "avater_671_252/tables/signed_nv/region_level/252_T1_vs_T3_regions.csv",
+        "row_count": 5
+      },
+      {
+        "path": "avater_671_252/tables/signed_nv/link_level/671_T1_vs_T2_links.csv",
+        "row_count": 42
+      },
+      {
+        "path": "avater_671_252/tables/signed_nv/region_space/671_T1_vs_T2_region_space.csv",
+        "row_count": 15
+      },
+      {
+        "path": "avater_671_252/tables/signed_nv/region_level/671_T1_vs_T2_regions.csv",
+        "row_count": 5
+      },
+      {
+        "path": "avater_671_252/tables/signed_nv/link_level/671_T1_vs_T3_links.csv",
+        "row_count": 42
+      },
+      {
+        "path": "avater_671_252/tables/signed_nv/region_space/671_T1_vs_T3_region_space.csv",
+        "row_count": 15
+      },
+      {
+        "path": "avater_671_252/tables/signed_nv/region_level/671_T1_vs_T3_regions.csv",
+        "row_count": 5
+      },
+      {
+        "path": "avater_671_252/tables/signed_nv/group_summary.csv",
+        "row_count": 12
+      }
+    ]
+  },
+  "summary_2x2_magnitude_nv": "renders/summary_2x2_combined.png",
+  "summary_2x2_signed_nv": "renders/signed_nv/summary_2x2_combined.png",
+  "region_heatmap": {
+    "output_dir": "renders/signed_nv/region_heatmap",
+    "source_tables_dir": "tables/signed_nv/region_space",
+    "n_views": 12,
+    "views": [
+      {
+        "view_id": "252_T1_vs_T2_functional",
+        "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/252_T1_vs_T2_functional.png",
+        "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/252_T1_vs_T2_functional.meta.json",
+        "source_csv": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/252_T1_vs_T2_region_space.csv"
+      },
+      {
+        "view_id": "252_T1_vs_T2_null",
+        "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/252_T1_vs_T2_null.png",
+        "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/252_T1_vs_T2_null.meta.json",
+        "source_csv": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/252_T1_vs_T2_region_space.csv"
+      },
+      {
+        "view_id": "252_T1_vs_T2_combined",
+        "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/252_T1_vs_T2_combined.png",
+        "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/252_T1_vs_T2_combined.meta.json",
+        "source_csv": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/252_T1_vs_T2_region_space.csv"
+      },
+      {
+        "view_id": "252_T1_vs_T3_functional",
+        "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/252_T1_vs_T3_functional.png",
+        "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/252_T1_vs_T3_functional.meta.json",
+        "source_csv": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/252_T1_vs_T3_region_space.csv"
+      },
+      {
+        "view_id": "252_T1_vs_T3_null",
+        "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/252_T1_vs_T3_null.png",
+        "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/252_T1_vs_T3_null.meta.json",
+        "source_csv": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/252_T1_vs_T3_region_space.csv"
+      },
+      {
+        "view_id": "252_T1_vs_T3_combined",
+        "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/252_T1_vs_T3_combined.png",
+        "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/252_T1_vs_T3_combined.meta.json",
+        "source_csv": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/252_T1_vs_T3_region_space.csv"
+      },
+      {
+        "view_id": "671_T1_vs_T2_functional",
+        "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/671_T1_vs_T2_functional.png",
+        "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/671_T1_vs_T2_functional.meta.json",
+        "source_csv": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/671_T1_vs_T2_region_space.csv"
+      },
+      {
+        "view_id": "671_T1_vs_T2_null",
+        "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/671_T1_vs_T2_null.png",
+        "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/671_T1_vs_T2_null.meta.json",
+        "source_csv": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/671_T1_vs_T2_region_space.csv"
+      },
+      {
+        "view_id": "671_T1_vs_T2_combined",
+        "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/671_T1_vs_T2_combined.png",
+        "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/671_T1_vs_T2_combined.meta.json",
+        "source_csv": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/671_T1_vs_T2_region_space.csv"
+      },
+      {
+        "view_id": "671_T1_vs_T3_functional",
+        "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/671_T1_vs_T3_functional.png",
+        "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/671_T1_vs_T3_functional.meta.json",
+        "source_csv": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/671_T1_vs_T3_region_space.csv"
+      },
+      {
+        "view_id": "671_T1_vs_T3_null",
+        "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/671_T1_vs_T3_null.png",
+        "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/671_T1_vs_T3_null.meta.json",
+        "source_csv": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/671_T1_vs_T3_region_space.csv"
+      },
+      {
+        "view_id": "671_T1_vs_T3_combined",
+        "png": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/671_T1_vs_T3_combined.png",
+        "meta": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/renders/signed_nv/region_heatmap/671_T1_vs_T3_combined.meta.json",
+        "source_csv": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/671_T1_vs_T3_region_space.csv"
+      }
+    ]
+  }
+}

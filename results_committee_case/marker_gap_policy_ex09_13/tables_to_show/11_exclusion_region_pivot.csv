@@ -1,0 +1,8 @@
+region,252,651,671,790
+head_neck,0,2,0,0
+trunk_spine,0,1,1,2
+left_arm,0,1,0,0
+right_arm,0,1,0,2
+left_leg,2,2,2,0
+right_leg,0,1,0,0
+other,0,1,0,0

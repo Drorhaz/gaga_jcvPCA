@@ -13,9 +13,10 @@ from typing import Optional
 
 import pandas as pd
 
-from gaga_jcvpca import jcvpca, reporting, validation
+from gaga_jcvpca import jcvpca, marker_gap_policy, qc_markers, reporting, validation
 from gaga_jcvpca.config import Config, load_config
 from gaga_jcvpca.inventory import Inventory, build_inventory
+from gaga_jcvpca.schemas import QCFinding
 from gaga_jcvpca.selection import AnalysisSelection, region_of_link
 
 
@@ -27,33 +28,65 @@ class ProjectSnapshot:
     inventory: Inventory
     science_hash: str = ""
     recommended_next_action: str = ""
+    qc_findings: list[QCFinding] = field(default_factory=list)
+    qc_summary_df: pd.DataFrame = field(default_factory=pd.DataFrame)
+    qc_summary: dict = field(default_factory=dict)
+    qc_parse_warnings: list[str] = field(default_factory=list)
+    qc_gap_heatmaps: dict[str, pd.DataFrame] = field(default_factory=dict)
 
     @property
     def summary(self) -> dict:
-        return self.inventory.summary()
+        base = self.inventory.summary()
+        base.update(self.qc_summary)
+        return base
 
 
-def _recommend_next_action(inv: Inventory) -> str:
-    ready = [r for r in inv.rows if r.status == "ready"]
+def _recommend_next_action(inv: Inventory, qc_summary: dict) -> str:
+    n_marker_sessions = sum(1 for r in inv.rows if r.has_marker_csv)
     if not inv.rows:
         return "No sessions discovered. Add segmentation workbooks and raw captures to data/."
+    if n_marker_sessions == 0:
+        return (
+            "No marker CSV files found. Set data.raw_markers or data.raw_skeleton in "
+            "configs/paths.yaml (expected layout: data/raw_markers/{participant}/), "
+            "then open Tab 3 for QC review."
+        )
+    ready = [r for r in inv.rows if r.status == "ready"]
     if not ready:
         return (
-            "Sessions are discovered but raw skeleton CSVs are not linked. "
-            "Set data.raw_skeleton in configs/paths.yaml to the capture location, "
-            "then run conversion and marker QC."
+            "Marker files are present but sessions are not analysis-ready "
+            "(need segmentation sheet + skeleton CSV). Review Tab 2 inventory."
         )
-    return "Review QC, then build an analysis selection and run JcvPCA."
+    if qc_summary.get("n_findings", 0) == 0:
+        return "Review QC in Tab 3, then build an analysis selection and run JcvPCA."
+    return "Review QC in Tab 3, then build an analysis selection and run JcvPCA."
 
 
 def build_snapshot(config: Optional[Config] = None) -> ProjectSnapshot:
     cfg = config or load_config()
     inv = build_inventory(cfg)
+    qc_findings: list[QCFinding] = []
+    qc_df = pd.DataFrame()
+    qc_heatmaps: dict[str, pd.DataFrame] = {}
+    parse_warnings: list[str] = []
+
+    if any(r.has_marker_csv for r in inv.rows):
+        qc_findings, qc_df, qc_heatmaps = qc_markers.run_marker_qc(cfg, inv, write_cache=True)
+        parse_warnings = [
+            f.message for f in qc_findings if f.metric == "parse_error"
+        ]
+
+    qc_summary = qc_markers.summarize_qc_findings(qc_findings, inv)
     return ProjectSnapshot(
         config=cfg,
         inventory=inv,
         science_hash=cfg.science_hash,
-        recommended_next_action=_recommend_next_action(inv),
+        recommended_next_action=_recommend_next_action(inv, qc_summary),
+        qc_findings=qc_findings,
+        qc_summary_df=qc_df,
+        qc_summary=qc_summary,
+        qc_parse_warnings=parse_warnings,
+        qc_gap_heatmaps=qc_heatmaps,
     )
 
 
@@ -75,12 +108,55 @@ def _timepoint_session(participant: str, timepoint: str, repetition: str, task_p
     return f"{participant}_{timepoint}_{task_part}_{repetition}"
 
 
+def _segments_by_session(config: Config) -> dict[str, list]:
+    """Map session_id -> its segmentation windows (built once per analysis)."""
+    inv = build_inventory(config)
+    out: dict[str, list] = {}
+    for seg in inv.segments:
+        out.setdefault(seg.session.as_str(), []).append(seg)
+    return out
+
+
+def slice_matrix_to_exercises(
+    df: pd.DataFrame,
+    segments: list,
+    exercise_ids: list[int],
+) -> pd.DataFrame:
+    """Row-slice a full-session matrix to the selected exercise windows.
+
+    Because conversion keeps matrix row index == Motive frame number (0-based,
+    contiguous), each window is simply ``df.iloc[start:end]`` (half-open, matching
+    the segmentation semantics). Windows are concatenated in frame order. Windows
+    outside the matrix bounds are clamped/skipped; if nothing overlaps (e.g. a
+    synthetic short matrix in tests), the full matrix is returned unchanged so the
+    caller still has data to analyze.
+    """
+    if not exercise_ids:
+        return df
+    wanted = set(int(x) for x in exercise_ids)
+    windows = sorted(
+        (s for s in segments if int(s.exercise_id) in wanted),
+        key=lambda s: int(s.start_frame),
+    )
+    n = len(df)
+    parts = []
+    for s in windows:
+        start = max(0, int(s.start_frame))
+        end = min(n, int(s.end_frame))
+        if start < end:
+            parts.append(df.iloc[start:end])
+    if not parts:
+        return df
+    return pd.concat(parts, ignore_index=True)
+
+
 def run_analysis(
     config: Config,
     selection: AnalysisSelection,
     timepoints: list[str],
     repetitions: Optional[list[str]] = None,
     reference_timepoint: str = "T1",
+    repetition_mode: str = "single",
     run_threshold_sweep: bool = False,
     run_validation: bool = False,
     run_id: Optional[str] = None,
@@ -90,7 +166,15 @@ def run_analysis(
 
     ``matrices`` optionally supplies session_id -> feature DataFrame (used by the
     smoke test and UI). When omitted, matrices are loaded from ``data.matrices``.
-    Returns the path to the written run folder.
+
+    ``repetition_mode``:
+      * ``single`` (default/fallback): longitudinal sides use the first repetition
+        only (``T1_R1 vs T2_R1`` / ``T1_R1 vs T3_R1``).
+      * ``pooled`` (ideal): each timepoint side row-concatenates its repetitions
+        (``T1(R1+R2) vs T2(R1+R2)`` / vs ``T3(R1+R2)``).
+    In both modes, matrices are first sliced to ``selection.exercise_ids`` windows,
+    and natural variability stays strictly within-timepoint ``T1_R1 vs T1_R2``
+    (never pooled) so the noise floor is preserved. Returns the run folder path.
     """
     repetitions = repetitions or ["R1", "R2"]
     participant = selection.participant
@@ -99,65 +183,124 @@ def run_analysis(
     vt = float(config.get("pca.variance_threshold", 0.80))
     sensitivity_p = int(config.get("pc_focus.sensitivity_p", 2))
     region_fn = lambda stem: region_of_link(stem, config)
+    exercise_ids = list(selection.exercise_ids or [])
+    segments_by_session = _segments_by_session(config) if exercise_ids else {}
+    gap_policy = marker_gap_policy.load_policy(config)
+
+    def _sessions_for_side(timepoint: str) -> list[str]:
+        return marker_gap_policy.sessions_for_side(
+            participant,
+            timepoint,
+            repetition_mode=repetition_mode,
+            repetitions=repetitions,
+            task_part=task_part,
+        )
+
+    def _gap_pre_excluded(a_sessions: list[str], b_sessions: list[str]) -> dict[str, str]:
+        return marker_gap_policy.pre_excluded_for_comparison(
+            participant, a_sessions, b_sessions, gap_policy
+        )
+
+    def _run_comparison(
+        comparison_id: str,
+        kind: str,
+        a_label: str,
+        b_label: str,
+        a_df: pd.DataFrame,
+        b_df: pd.DataFrame,
+        a_sessions: list[str],
+        b_sessions: list[str],
+    ) -> jcvpca.ComparisonResult:
+        return jcvpca.run_comparison(
+            comparison_id,
+            kind,
+            a_label,
+            b_label,
+            a_df,
+            b_df,
+            features,
+            variance_threshold=vt,
+            region_of_link=region_fn,
+            sensitivity_p=sensitivity_p,
+            pre_excluded_links=_gap_pre_excluded(a_sessions, b_sessions),
+        )
 
     def _get(session_id: str) -> Optional[pd.DataFrame]:
-        if matrices is not None:
-            return matrices.get(session_id)
-        return load_matrix(config, session_id)
+        df = matrices.get(session_id) if matrices is not None else load_matrix(config, session_id)
+        if df is None:
+            return None
+        if exercise_ids:
+            df = slice_matrix_to_exercises(df, segments_by_session.get(session_id, []), exercise_ids)
+        return df
 
-    # Reference A = reference timepoint, R1 (fallback to first available rep).
+    def _side_matrix(timepoint: str) -> Optional[pd.DataFrame]:
+        """Build one timepoint's A/B matrix per the repetition mode (sliced)."""
+        if repetition_mode == "pooled":
+            frames = [_get(_timepoint_session(participant, timepoint, r, task_part)) for r in repetitions]
+            frames = [f for f in frames if f is not None]
+            if not frames:
+                return None
+            return pd.concat(frames, ignore_index=True)
+        return _get(_timepoint_session(participant, timepoint, repetitions[0], task_part))
+
     comparisons: list[jcvpca.ComparisonResult] = []
-    input_sessions: list[str] = []
+    longitudinal_b: dict[str, pd.DataFrame] = {}
 
-    ref_rep = repetitions[0]
-    ref_id = _timepoint_session(participant, reference_timepoint, ref_rep, task_part)
-    a_df = _get(ref_id)
+    a_df = _side_matrix(reference_timepoint)
     if a_df is None:
-        raise FileNotFoundError(f"Reference matrix not found for {ref_id}.")
-    input_sessions.append(ref_id)
+        raise FileNotFoundError(
+            f"Reference matrix not found for {participant} {reference_timepoint} "
+            f"(mode={repetition_mode}, reps={repetitions})."
+        )
+    ref_label = (
+        f"{participant}_{reference_timepoint}_{'+'.join(repetitions)}"
+        if repetition_mode == "pooled"
+        else _timepoint_session(participant, reference_timepoint, repetitions[0], task_part)
+    )
 
-    # Longitudinal comparisons: reference vs each other timepoint (same rep).
+    # Longitudinal comparisons: reference vs each other timepoint.
     for tp in timepoints:
         if tp == reference_timepoint:
             continue
-        b_id = _timepoint_session(participant, tp, ref_rep, task_part)
-        b_df = _get(b_id)
+        b_df = _side_matrix(tp)
         if b_df is None:
             continue
-        input_sessions.append(b_id)
+        b_label = (
+            f"{participant}_{tp}_{'+'.join(repetitions)}"
+            if repetition_mode == "pooled"
+            else _timepoint_session(participant, tp, repetitions[0], task_part)
+        )
+        comparison_id = f"{participant}_{reference_timepoint}_vs_{tp}"
+        longitudinal_b[comparison_id] = b_df
         comparisons.append(
-            jcvpca.run_comparison(
-                f"{participant}_{reference_timepoint}_vs_{tp}",
+            _run_comparison(
+                comparison_id,
                 "longitudinal",
-                ref_id,
-                b_id,
+                ref_label,
+                b_label,
                 a_df,
                 b_df,
-                features,
-                variance_threshold=vt,
-                region_of_link=region_fn,
-                sensitivity_p=sensitivity_p,
+                _sessions_for_side(reference_timepoint),
+                _sessions_for_side(tp),
             )
         )
 
-    # Natural variability: reference timepoint R1 vs R2.
+    # Natural variability: reference timepoint R1 vs R2 (never pooled, sliced).
     nv_comparison = None
     if len(repetitions) >= 2:
         r1_id = _timepoint_session(participant, reference_timepoint, repetitions[0], task_part)
         r2_id = _timepoint_session(participant, reference_timepoint, repetitions[1], task_part)
         r1_df, r2_df = _get(r1_id), _get(r2_id)
         if r1_df is not None and r2_df is not None:
-            nv_comparison = jcvpca.run_comparison(
+            nv_comparison = _run_comparison(
                 f"{participant}_{reference_timepoint}_R1_vs_R2",
                 "natural_variability",
                 r1_id,
                 r2_id,
                 r1_df,
                 r2_df,
-                features,
-                variance_threshold=vt,
-                region_of_link=region_fn,
-                sensitivity_p=sensitivity_p,
+                [r1_id],
+                [r2_id],
             )
             comparisons.append(nv_comparison)
 
@@ -171,10 +314,9 @@ def run_analysis(
     if run_threshold_sweep:
         first_long = next((c for c in comparisons if c.kind == "longitudinal"), None)
         if first_long is not None:
-            b_id = first_long.b_label
             sweep_df = jcvpca.threshold_sweep(
                 a_df,
-                _get(b_id),
+                longitudinal_b[first_long.comparison_id],
                 features,
                 candidates=[float(x) for x in config.get("pca.threshold_sweep.candidates", [0.7, 0.8, 0.9])],
             )
@@ -183,13 +325,13 @@ def run_analysis(
     validation_df = None
     validation_md = None
     if run_validation:
-        first_long = next((c for c in comparisons if c.kind == "longitudinal"), None)
-        if first_long is not None and nv_comparison is not None:
-            b_df = _get(first_long.b_label)
+        longitudinals = [c for c in comparisons if c.kind == "longitudinal"]
+        if longitudinals and nv_comparison is not None:
+            first_long = longitudinals[0]
+            b_df = longitudinal_b[first_long.comparison_id]
             rep_matrices = {}
             for rep in repetitions:
-                sid = _timepoint_session(participant, reference_timepoint, rep, task_part)
-                m = _get(sid)
+                m = _get(_timepoint_session(participant, reference_timepoint, rep, task_part))
                 if m is not None:
                     rep_matrices[rep] = m
             report = validation.run_validation(
@@ -201,6 +343,7 @@ def run_analysis(
                 features,
                 flagged_links=[c.link for c in selection.excluded_links()],
                 repetition_matrices=rep_matrices,
+                additional_longitudinals=longitudinals[1:],
             )
             validation_df = report.to_dataframe()
             validation_md = report.summary_md()
@@ -217,7 +360,10 @@ def run_analysis(
         threshold_sweep=sweep_df,
         validation_results=validation_df,
         validation_summary_md=validation_md,
+        input_files=[gap_policy.removals_path] if gap_policy.enabled else [],
         marker_set_notes=_marker_set_notes(config, participant, timepoints),
+        marker_gap_policy_enabled=gap_policy.enabled,
+        marker_gap_removals_path=str(gap_policy.removals_path) if gap_policy.enabled else "",
     )
     return reporting.write_run(ctx)
 

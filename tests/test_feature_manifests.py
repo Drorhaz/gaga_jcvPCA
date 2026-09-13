@@ -25,10 +25,11 @@ FEATURE_AXES = ("rx", "ry", "rz")
 MANIFEST_DIR = Path(__file__).resolve().parents[1] / "data" / "feature_manifests"
 
 EXPECTED = {
-    "group4_core_14link_within_671_feature_manifest.csv": (14, 42),
-    "group4_core_14link_within_651_feature_manifest.csv": (14, 42),
-    "group4_core_16link_within_252_feature_manifest.csv": (16, 48),
-    "group4_core_16link_within_790_feature_manifest.csv": (16, 48),
+    # Step 2 trunk-inclusive full feasible set (non-distal links only).
+    "group4_core_14link_within_671_feature_manifest.csv": (18, 54),
+    "group4_core_14link_within_651_feature_manifest.csv": (18, 54),
+    "group4_core_16link_within_252_feature_manifest.csv": (22, 66),
+    "group4_core_16link_within_790_feature_manifest.csv": (22, 66),
 }
 
 
@@ -57,6 +58,18 @@ def test_core_manifest_schema(filename):
     _validate_manifest(MANIFEST_DIR / filename)
 
 
+def _normalize_topology_stems(links: set[str], pid: str) -> set[str]:
+    """Collapse participant-prefixed pelvis stems for cross-participant topology compare."""
+    out: set[str] = set()
+    for stem in links:
+        prefix = f"{pid}_to_"
+        if stem.startswith(prefix):
+            out.add("ROOT_to_" + stem[len(prefix) :])
+        else:
+            out.add(stem)
+    return out
+
+
 def test_651_matches_671_link_set():
     m671 = project_io.load_feature_manifest(
         MANIFEST_DIR / "group4_core_14link_within_671_feature_manifest.csv"
@@ -66,7 +79,9 @@ def test_651_matches_671_link_set():
     )
     links_671 = {link_stem(x) for x in project_io.feature_names_from_manifest(m671)}
     links_651 = {link_stem(x) for x in project_io.feature_names_from_manifest(m651)}
-    assert links_671 == links_651
+    assert _normalize_topology_stems(links_671, "671") == _normalize_topology_stems(
+        links_651, "651"
+    )
 
 
 def test_790_includes_pelvis_roots():

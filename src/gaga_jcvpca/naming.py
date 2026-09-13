@@ -1,8 +1,7 @@
 """Naming unification.
 
-Removes the three-namespace "P" ambiguity:
+Two namespaces only:
   * task_part  -> the P in a session key ({pid}_T{t}_P{part}_R{rep}); P1 = Task Part 1.
-  * gaga_alias -> P1..P5 label ONLY for exercise_id 9..13 (inside Group 4).
   * canonical  -> ex{NN}, derived from the authoritative segmentation `exercise_id`.
 
 Exercise identity is ALWAYS taken from the segmentation workbook `exercise_id`
@@ -62,13 +61,10 @@ def parse_sheet_name(text: str) -> Optional[SessionKey]:
 
 
 class NamingMap:
-    """Config-driven mapping between canonical labels, Gaga aliases, and groups."""
+    """Config-driven mapping between canonical labels and movement groups."""
 
     def __init__(self, config: Config):
         self._groups: dict[str, dict] = config.get("movement_groups", {}) or {}
-        self._aliases: dict[str, int] = config.get("gaga_group4_aliases", {}) or {}
-        # id -> alias reverse map (e.g. 9 -> "P1")
-        self._id_to_alias = {int(v): k for k, v in self._aliases.items()}
         # id -> group id (e.g. 9 -> "Group4")
         self._id_to_group: dict[int, str] = {}
         for gid, spec in self._groups.items():
@@ -79,9 +75,6 @@ class NamingMap:
     def group_of(self, exercise_id: int) -> Optional[str]:
         return self._id_to_group.get(int(exercise_id))
 
-    def gaga_alias_of(self, exercise_id: int) -> Optional[str]:
-        return self._id_to_alias.get(int(exercise_id))
-
     def group_exercise_ids(self, group_id: str) -> list[int]:
         spec = self._groups.get(group_id, {})
         return [int(x) for x in spec.get("exercise_ids", []) or []]
@@ -90,15 +83,12 @@ class NamingMap:
         return self._groups.get(group_id, {}).get("name", group_id)
 
     def describe(self, exercise_id: int) -> str:
-        """Human-readable one-liner disambiguating the namespaces."""
+        """Human-readable one-liner with canonical label and movement group."""
         label = canonical_label(exercise_id)
         group = self.group_of(exercise_id)
-        alias = self.gaga_alias_of(exercise_id)
         parts = [f"{label} (exercise_id={exercise_id})"]
         if group:
             parts.append(f"{self.group_label(group)} [{group}]")
-        if alias:
-            parts.append(f"Gaga alias {alias}")
         return " — ".join(parts)
 
 

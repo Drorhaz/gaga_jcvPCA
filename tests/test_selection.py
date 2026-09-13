@@ -49,8 +49,8 @@ def test_qc_exclude_recommendation_excludes_region(config):
     assert left_arm and all(not c.included for c in left_arm)
     # other regions still included
     assert any(c.included for c in sel.links if c.region == "right_arm")
-    # excluded links carry a reason
-    assert all(c.reason for c in sel.excluded_links())
+    # excluded links carry the QC finding message
+    assert all("left arm badly gapped" in c.reason for c in left_arm)
 
 
 def test_selection_roundtrip_yaml(config, tmp_path):

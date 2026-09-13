@@ -1,0 +1,268 @@
+{
+  "view_id": "252_T1_vs_T2_null",
+  "participant": "252",
+  "comparison_id": "252_T1_vs_T2",
+  "comparison": "T1_vs_T2",
+  "reference_timepoint": "T1",
+  "target_timepoint": "T2",
+  "space": "null",
+  "regions": [
+    {
+      "region_id": "head_neck",
+      "region_label": "Head / Neck",
+      "exceeds_nv_region": false,
+      "dominance": "neutral",
+      "fill_color": "#B0B0B0",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 0.7276,
+      "strongest_link": null,
+      "dominant_direction": "neutral",
+      "mixed_sign": false,
+      "strongest_positive_link": null,
+      "strongest_negative_link": null
+    },
+    {
+      "region_id": "left_arm",
+      "region_label": "Left arm",
+      "exceeds_nv_region": true,
+      "dominance": "colored",
+      "fill_color": "#82B3D4",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 1.3793,
+      "strongest_link": {
+        "link_id": "LFArm_to_LHand",
+        "effect_ratio_vs_nv": 2.4852,
+        "long_jcvpca_mean": -0.012635
+      },
+      "dominant_direction": "decreased",
+      "mixed_sign": false,
+      "strongest_positive_link": null,
+      "strongest_negative_link": null
+    },
+    {
+      "region_id": "right_arm",
+      "region_label": "Right arm",
+      "exceeds_nv_region": true,
+      "dominance": "colored",
+      "fill_color": "#FCC406",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 1.1953,
+      "strongest_link": {
+        "link_id": "RShoulder_to_RUArm",
+        "effect_ratio_vs_nv": 1.7979,
+        "long_jcvpca_mean": 0.005896
+      },
+      "dominant_direction": "increased",
+      "mixed_sign": false,
+      "strongest_positive_link": null,
+      "strongest_negative_link": null
+    },
+    {
+      "region_id": "left_leg",
+      "region_label": "Left leg",
+      "exceeds_nv_region": true,
+      "dominance": "colored",
+      "fill_color": "#8BBBD8",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 1.2474,
+      "strongest_link": {
+        "link_id": "LShin_to_LFoot",
+        "effect_ratio_vs_nv": 2.8784,
+        "long_jcvpca_mean": -0.009281
+      },
+      "dominant_direction": "decreased",
+      "mixed_sign": true,
+      "strongest_positive_link": null,
+      "strongest_negative_link": null,
+      "mixed_direction_warning": "Region left_leg: mixed-sign above-NV links (1 increased, 1 decreased); region color uses dominant signed direction."
+    },
+    {
+      "region_id": "right_leg",
+      "region_label": "Right leg",
+      "exceeds_nv_region": true,
+      "dominance": "colored",
+      "fill_color": "#B0B0B0",
+      "outline": false,
+      "effect_ratio_vs_nv_region": 0.8239,
+      "strongest_link": {
+        "link_id": "RShin_to_RFoot",
+        "effect_ratio_vs_nv": 1.4699,
+        "long_jcvpca_mean": -0.00296
+      },
+      "dominant_direction": "decreased",
+      "mixed_sign": false,
+      "strongest_positive_link": null,
+      "strongest_negative_link": null
+    }
+  ],
+  "top_links": [
+    {
+      "rank": 1,
+      "link_id": "LShin_to_LFoot",
+      "canonical_link_name": "LShin->LFoot",
+      "effect_ratio_vs_nv": 2.8784,
+      "long_jcvpca_mean": -0.009281,
+      "signed_direction": "decreased"
+    },
+    {
+      "rank": 2,
+      "link_id": "LFArm_to_LHand",
+      "canonical_link_name": "LFArm->LHand",
+      "effect_ratio_vs_nv": 2.4852,
+      "long_jcvpca_mean": -0.012635,
+      "signed_direction": "decreased"
+    },
+    {
+      "rank": 3,
+      "link_id": "LShoulder_to_LUArm",
+      "canonical_link_name": "LShoulder->LUArm",
+      "effect_ratio_vs_nv": 2.4777,
+      "long_jcvpca_mean": -0.016158,
+      "signed_direction": "decreased"
+    }
+  ],
+  "null_dominant_links": [
+    {
+      "link_id": "LShin_to_LFoot",
+      "canonical_link_name": "LShin->LFoot",
+      "effect_ratio_vs_nv": 2.8784,
+      "long_jcvpca_mean": -0.009281
+    },
+    {
+      "link_id": "LFArm_to_LHand",
+      "canonical_link_name": "LFArm->LHand",
+      "effect_ratio_vs_nv": 2.4852,
+      "long_jcvpca_mean": -0.012635
+    },
+    {
+      "link_id": "LShoulder_to_LUArm",
+      "canonical_link_name": "LShoulder->LUArm",
+      "effect_ratio_vs_nv": 2.4777,
+      "long_jcvpca_mean": -0.016158
+    },
+    {
+      "link_id": "RShoulder_to_RUArm",
+      "canonical_link_name": "RShoulder->RUArm",
+      "effect_ratio_vs_nv": 1.7979,
+      "long_jcvpca_mean": 0.005896
+    },
+    {
+      "link_id": "RShin_to_RFoot",
+      "canonical_link_name": "RShin->RFoot",
+      "effect_ratio_vs_nv": 1.4699,
+      "long_jcvpca_mean": -0.00296
+    },
+    {
+      "link_id": "LThigh_to_LShin",
+      "canonical_link_name": "LThigh->LShin",
+      "effect_ratio_vs_nv": 1.3116,
+      "long_jcvpca_mean": 0.030966
+    },
+    {
+      "link_id": "RFArm_to_RHand",
+      "canonical_link_name": "RFArm->RHand",
+      "effect_ratio_vs_nv": 1.1818,
+      "long_jcvpca_mean": 0.000343
+    },
+    {
+      "link_id": "RThigh_to_RShin",
+      "canonical_link_name": "RThigh->RShin",
+      "effect_ratio_vs_nv": 1.0757,
+      "long_jcvpca_mean": -0.010391
+    }
+  ],
+  "stats": {
+    "regions_above_nv": 4,
+    "regions_total": 5,
+    "links_above_nv": 8,
+    "links_total": 16,
+    "max_ratio": 2.8784,
+    "regions_increased": 1,
+    "regions_decreased": 2,
+    "regions_mixed": 1,
+    "links_increased": 3,
+    "links_decreased": 5
+  },
+  "warnings": "",
+  "t3_confound": false,
+  "source_tables": [
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/252_T1_vs_T2_region_space.csv",
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/link_level/252_T1_vs_T2_links.csv"
+  ],
+  "render_mode": "signed_nv",
+  "signed_callouts": {
+    "strongest_increased": {
+      "rank": 1,
+      "link_id": "RShoulder_to_RUArm",
+      "canonical_link_name": "RShoulder->RUArm",
+      "effect_ratio_vs_nv": 1.7979,
+      "long_jcvpca_mean": 0.005896,
+      "signed_direction": "increased"
+    },
+    "strongest_decreased": {
+      "rank": 1,
+      "link_id": "LShin_to_LFoot",
+      "canonical_link_name": "LShin->LFoot",
+      "effect_ratio_vs_nv": 2.8784,
+      "long_jcvpca_mean": -0.009281,
+      "signed_direction": "decreased"
+    }
+  },
+  "mixed_sign_regions": [
+    "left_leg"
+  ],
+  "strong_ratio_threshold": 3.0,
+  "derived_tables": [
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/link_level/252_T1_vs_T2_links.csv",
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_space/252_T1_vs_T2_region_space.csv",
+    "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/avater_671_252/tables/signed_nv/region_level/252_T1_vs_T2_regions.csv"
+  ],
+  "region_fill": true,
+  "region_styles": {
+    "head_neck": {
+      "fill_color": "#B0B0B0",
+      "exceeds_nv": false,
+      "effect_ratio_vs_nv_region": 0.7276,
+      "signed_value": 0.0,
+      "signed_direction": "neutral",
+      "mixed_sign": false,
+      "dominant_direction": "neutral"
+    },
+    "left_arm": {
+      "fill_color": "#82B3D4",
+      "exceeds_nv": true,
+      "effect_ratio_vs_nv_region": 1.3793,
+      "signed_value": -0.012635,
+      "signed_direction": "decreased",
+      "mixed_sign": false,
+      "dominant_direction": "decreased"
+    },
+    "left_leg": {
+      "fill_color": "#8BBBD8",
+      "exceeds_nv": true,
+      "effect_ratio_vs_nv_region": 1.2474,
+      "signed_value": -0.009281,
+      "signed_direction": "decreased",
+      "mixed_sign": true,
+      "dominant_direction": "decreased"
+    },
+    "right_arm": {
+      "fill_color": "#FCC406",
+      "exceeds_nv": true,
+      "effect_ratio_vs_nv_region": 1.1953,
+      "signed_value": 0.005896,
+      "signed_direction": "increased",
+      "mixed_sign": false,
+      "dominant_direction": "increased"
+    },
+    "right_leg": {
+      "fill_color": "#B0B0B0",
+      "exceeds_nv": true,
+      "effect_ratio_vs_nv_region": 0.8239,
+      "signed_value": -0.00296,
+      "signed_direction": "decreased",
+      "mixed_sign": false,
+      "dominant_direction": "decreased"
+    }
+  }
+}

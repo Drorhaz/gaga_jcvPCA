@@ -1,0 +1,50 @@
+participant,marker_label,bone_token,related_links
+790,CV7,Neck2,Neck2_to_Head; Neck_to_Neck2
+790,LAH,Head,Neck2_to_Head
+790,LCAJ,LUArm,LShoulder_to_LUArm; LUArm_to_LFArm
+790,LDP1,LToe,
+790,LFAL,LFoot,LShin_to_LFoot
+790,LFAX,LShin,LShin_to_LFoot; LThigh_to_LShin
+790,LFCC,LFoot,LShin_to_LFoot
+790,LFLE,LShin,LShin_to_LFoot; LThigh_to_LShin
+790,LFM1,LToe,
+790,LFM5,LToe,
+790,LFTC,LThigh,790_to_LThigh; LThigh_to_LShin
+790,LHGT,LUArm,LShoulder_to_LUArm; LUArm_to_LFArm
+790,LHLE,LFArm,LFArm_to_LHand; LUArm_to_LFArm
+790,LHM2,LThumb3,
+790,LIAS,LThigh,790_to_LThigh; LThigh_to_LShin
+790,LIPS,Spine2,Ab_to_Spine2; Spine2_to_Spine3
+790,LPH,Head,Neck2_to_Head
+790,LRSP,LThumb2,
+790,LSK,LFoot,LShin_to_LFoot
+790,LTH,LShin,LShin_to_LFoot; LThigh_to_LShin
+790,LTTC,LShin,LShin_to_LFoot; LThigh_to_LShin
+790,LUA,LUArm,LShoulder_to_LUArm; LUArm_to_LFArm
+790,LUSP,LHand,LFArm_to_LHand
+790,RAH,Head,Neck2_to_Head
+790,RCAJ,RUArm,RShoulder_to_RUArm; RUArm_to_RFArm
+790,RDP1,RToe,
+790,RFAL,RFoot,RShin_to_RFoot
+790,RFAX,RShin,RShin_to_RFoot; RThigh_to_RShin
+790,RFCC,RFoot,RShin_to_RFoot
+790,RFLE,RShin,RShin_to_RFoot; RThigh_to_RShin
+790,RFM1,RToe,
+790,RFM5,RToe,
+790,RFTC,RThigh,790_to_RThigh; RThigh_to_RShin
+790,RHGT,RUArm,RShoulder_to_RUArm; RUArm_to_RFArm
+790,RHLE,RFArm,RFArm_to_RHand; RUArm_to_RFArm
+790,RHM2,RMiddle1,
+790,RIAS,Spine2,Ab_to_Spine2; Spine2_to_Spine3
+790,RIPS,Spine2,Ab_to_Spine2; Spine2_to_Spine3
+790,RPH,Head,Neck2_to_Head
+790,RRSP,RHand,RFArm_to_RHand
+790,RSK,RFoot,RShin_to_RFoot
+790,RTH,RThigh,790_to_RThigh; RThigh_to_RShin
+790,RTTC,RShin,RShin_to_RFoot; RThigh_to_RShin
+790,RUA,RUArm,RShoulder_to_RUArm; RUArm_to_RFArm
+790,RUSP,RHand,RFArm_to_RHand
+790,SJN,Neck,Chest_to_Neck; Neck_to_Neck2
+790,SXS,Chest,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest
+790,TV2,RShoulder,Chest_to_RShoulder; RShoulder_to_RUArm
+790,TV7,Chest,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest

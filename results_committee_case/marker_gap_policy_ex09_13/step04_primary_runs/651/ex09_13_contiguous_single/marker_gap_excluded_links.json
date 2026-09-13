@@ -1,0 +1,9 @@
+{
+  "651_T1_R1_vs_R2": {
+    "Chest_to_LShoulder": "marker_gap_policy: T1_R2 \u2014 Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s, 4 runs); Motive likely interpolated bone motion.",
+    "Chest_to_Neck": "marker_gap_policy: T1_R2 \u2014 Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s, 4 runs); Motive likely interpolated bone motion.",
+    "Neck_to_Head": "marker_gap_policy: T1_R2 \u2014 Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s, 4 runs); Motive likely interpolated bone motion.",
+    "Chest_to_RShoulder": "marker_gap_policy: T1_R2 \u2014 Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s, 4 runs); Motive likely interpolated bone motion.",
+    "Ab_to_Chest": "marker_gap_policy: T1_R2 \u2014 Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s, 4 runs); Motive likely interpolated bone motion."
+  }
+}

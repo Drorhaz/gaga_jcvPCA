@@ -222,6 +222,31 @@ and shown to match `MASTER_PLAN.md`.
 
 ---
 
+## Raw-marker QC dashboard wiring
+
+- Restored `data.raw_markers` in `configs/paths.yaml` with skeleton fallback via
+  `project_io.resolve_session_marker_csv()`. Inventory rows expose `has_marker_csv`.
+- Added `qc_markers.run_marker_qc()` orchestration: session-level + per-segment QC,
+  comparability findings, soft parse-error handling, `qc_summary.csv` cache under
+  `outputs/cache/qc/`.
+- Extended `pipeline.ProjectSnapshot` with `qc_findings`, `qc_summary_df`, and rollup
+  metrics for Tab 1 overview.
+- Tab 3 QC Review: filterable findings table (gaps, artifacts, comparability tabs),
+  summary metrics, navigator-aligned filters, reference-threshold expander.
+- Tab 4 passes filtered QC findings into `default_selection`; link reasons use QC
+  messages; override reason required when including QC-excluded links.
+- CLI: `python scripts/run_qc.py` writes offline QC cache.
+- Deferred: `qc_flags.parquet` frame-level export (planned for a later phase).
+- **How to use Tab 3:** link marker CSVs in `configs/paths.yaml` (`data/raw_markers/{pid}/`
+  or `data/raw_skeleton/`), optionally run `python scripts/run_qc.py`, then open the
+  dashboard Tab 3 and filter by participant/timepoint/severity/recommendation.
+- Tab 3 now includes an **`affected_links`** column (manifest link stems with critical
+  gaps, e.g. `LUArm_to_LFArm`) and a per-session **critical gap heatmap** (links x frames)
+  at the bottom of the page.
+- Status: COMPLETE.
+
+---
+
 ## Project status: COMPLETE
 
 All ten phases implemented, tested, and verified end-to-end. The standalone

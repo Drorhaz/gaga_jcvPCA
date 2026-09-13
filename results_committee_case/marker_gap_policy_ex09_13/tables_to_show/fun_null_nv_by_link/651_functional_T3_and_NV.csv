@@ -1,0 +1,19 @@
+participant,space,link_id,T1_vs_T3_status,T1_vs_T3_JcvPCA_mean,T1_vs_T3_JcvPCA_abs_mean,T1_vs_T3_n_pcs,T1_vs_T3_QC_exclusion,NV_T1R1_vs_T1R2_status,NV_JcvPCA_mean,NV_JcvPCA_abs_mean,NV_n_pcs,NV_QC_exclusion
+651,functional_PC1-2,651_to_Ab,excluded,,,,shared_features_or_qc: features missing in dataset B,included,-0.019276,0.019276,2.0,
+651,functional_PC1-2,651_to_LThigh,excluded,,,,marker_gap_policy: T3_R2 — Supporting marker `651_T3:WaistLBack` has 14.5% of ex09-13 window in large gaps (>,included,-0.030549,0.053838,2.0,
+651,functional_PC1-2,651_to_RThigh,excluded,,,,shared_features_or_qc: features missing in dataset B,included,-0.069125,0.069125,2.0,
+651,functional_PC1-2,Ab_to_Chest,excluded,,,,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s,excluded,,,,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s
+651,functional_PC1-2,Chest_to_LShoulder,excluded,,,,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s,excluded,,,,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s
+651,functional_PC1-2,Chest_to_Neck,excluded,,,,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s,excluded,,,,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s
+651,functional_PC1-2,Chest_to_RShoulder,excluded,,,,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s,excluded,,,,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s
+651,functional_PC1-2,LFArm_to_LHand,included,-0.016239,0.22403,2.0,,included,0.217483,0.217483,2.0,
+651,functional_PC1-2,LShin_to_LFoot,included,-0.003158,0.067454,2.0,,included,-0.035741,0.035741,2.0,
+651,functional_PC1-2,LShoulder_to_LUArm,included,0.115601,0.115601,2.0,,included,-0.114663,0.114663,2.0,
+651,functional_PC1-2,LThigh_to_LShin,excluded,,,,marker_gap_policy: T3_R2 — Supporting marker `651_T3:WaistLBack` has 14.5% of ex09-13 window in large gaps (>,included,-0.041009,0.066504,2.0,
+651,functional_PC1-2,LUArm_to_LFArm,included,0.069081,0.477655,2.0,,included,0.013777,0.133746,2.0,
+651,functional_PC1-2,Neck_to_Head,excluded,,,,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s,excluded,,,,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-13 window in large gaps (>0.5 s
+651,functional_PC1-2,RFArm_to_RHand,included,-0.158466,0.241703,2.0,,included,0.08004,0.08004,2.0,
+651,functional_PC1-2,RShin_to_RFoot,included,0.004413,0.054612,2.0,,included,-0.024649,0.024649,2.0,
+651,functional_PC1-2,RShoulder_to_RUArm,included,-0.012492,0.120961,2.0,,included,-0.034244,0.041805,2.0,
+651,functional_PC1-2,RThigh_to_RShin,included,0.085041,0.085041,2.0,,included,-0.065146,0.095153,2.0,
+651,functional_PC1-2,RUArm_to_RFArm,included,-0.046384,0.499366,2.0,,included,-0.075685,0.113143,2.0,

@@ -5,8 +5,11 @@
 project_root: "."
 
 data:
+  # Raw Motive marker-only CSV exports (Type=Marker XYZ). Optional when skeleton
+  # exports embed markers; symlink to ../data/raw_layer1 if needed.
+  raw_markers: "data/raw_markers"
   # Raw Motive solved-skeleton CSVs: bone quaternions + embedded marker columns.
-  # Single canonical source for marker QC and rotation-vector conversion.
+  # Fallback marker source for QC; required for rotation-vector conversion.
   raw_skeleton: "data/raw_skeleton"
   # Motive *_DataDescriptions.csv skeleton hierarchy sidecars.
   descriptions: "data/descriptions"

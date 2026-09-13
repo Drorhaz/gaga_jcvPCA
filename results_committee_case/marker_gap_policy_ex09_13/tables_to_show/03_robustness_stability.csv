@@ -1,0 +1,17 @@
+participant,comparison_id,axis,axis_detail,primary_m,top5_overlap,pooled_vs_r1_overlap,pooled_vs_r2_overlap,longitudinal_r1_vs_r2_overlap,robustness_label
+671,671_T1_vs_T2,repetition_mode,pooled_vs_single,9,0.6,0.6,0.4,0.6,
+671,671_T1_vs_T2,qc_drop,drop_1_caution,9,1.0,,,,stable
+671,671_T1_vs_T3,repetition_mode,pooled_vs_single,8,0.6,0.6,0.2,0.4,
+671,671_T1_vs_T3,qc_drop,drop_1_caution,8,1.0,,,,stable
+252,252_T1_vs_T2,repetition_mode,pooled_vs_single,10,0.6,0.6,0.4,0.6,
+252,252_T1_vs_T2,qc_drop,no_caution_links,10,1.0,,,,partial
+252,252_T1_vs_T3,repetition_mode,pooled_vs_single,10,0.6,0.6,0.6,0.2,
+252,252_T1_vs_T3,qc_drop,no_caution_links,10,1.0,,,,stable
+651,651_T1_vs_T2,repetition_mode,pooled_vs_single,6,0.4,0.4,0.4,0.6,
+651,651_T1_vs_T2,qc_drop,drop_4_caution,6,1.0,,,,partial
+651,651_T1_vs_T3,repetition_mode,pooled_vs_single,5,0.8,0.8,0.6,0.8,
+651,651_T1_vs_T3,qc_drop,drop_4_caution,5,1.0,,,,stable
+790,790_T1_vs_T2,repetition_mode,pooled_vs_single,8,0.6,0.6,0.6,0.4,
+790,790_T1_vs_T2,qc_drop,no_caution_links,8,1.0,,,,partial
+790,790_T1_vs_T3,repetition_mode,pooled_vs_single,8,0.4,0.4,0.6,0.4,
+790,790_T1_vs_T3,qc_drop,no_caution_links,8,1.0,,,,partial

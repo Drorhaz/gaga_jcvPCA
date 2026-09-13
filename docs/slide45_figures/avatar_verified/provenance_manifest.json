@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-07-30T11:11:24",
+  "source_nv_profile": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/results_committee_case/marker_gap_policy_ex09_13/step08_nv_and_stability/NV_PROFILE.csv",
+  "comparison": "T1_vs_T2",
+  "exercise_window": "ex09_13_contiguous",
+  "estimand": "A2 matched single-rep (a2_pass)",
+  "participants": [
+    {
+      "participant": "671",
+      "n_links": 18,
+      "n_a2": 8,
+      "n_persistent": 6
+    },
+    {
+      "participant": "252",
+      "n_links": 22,
+      "n_a2": 3,
+      "n_persistent": 0
+    },
+    {
+      "participant": "651",
+      "n_links": 18,
+      "n_a2": 4,
+      "n_persistent": 0
+    },
+    {
+      "participant": "790",
+      "n_links": 22,
+      "n_a2": 7,
+      "n_persistent": 1
+    }
+  ]
+}

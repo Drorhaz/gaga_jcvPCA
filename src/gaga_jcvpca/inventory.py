@@ -3,6 +3,10 @@
 Scans the standalone data/ folder and builds a clear picture of which
 participants / timepoints / exercises / repetitions exist, which files are
 present or missing, naming inconsistencies, and the canonical<->alias mapping.
+
+Raw marker/skeleton/description captures are listed even when no segmentation
+workbook exists (status ``partial``) so session-level QC can run before exercise
+windows are authored.
 """
 
 from __future__ import annotations
@@ -55,7 +59,6 @@ class Inventory:
                     "canonical_label": s.canonical_label,
                     "exercise_name": s.exercise_name,
                     "group_id": s.group_id,
-                    "gaga_alias": s.gaga_alias,
                     "start_frame": s.start_frame,
                     "end_frame": s.end_frame,
                     "n_frames": s.n_frames,
@@ -109,10 +112,15 @@ def build_inventory(config: Config) -> Inventory:
 
     # Raw dirs may not physically exist in a standalone checkout; that's fine.
     try:
+        marker_dir = config.resolve_path("data.raw_markers")
+    except KeyError:
+        marker_dir = Path()
+    try:
         skeleton_dir = config.resolve_path("data.raw_skeleton")
     except KeyError:
         skeleton_dir = Path()
 
+    marker_files = _index_raw_files(marker_dir, "Marker")
     skeleton_files = _index_raw_files(skeleton_dir, "Bone")
     description_files = _index_descriptions(desc_dir)
 
@@ -135,8 +143,10 @@ def build_inventory(config: Config) -> Inventory:
         segments.extend(wb_segments)
 
     # Union of all discovered session ids (in-scope task part only for rows).
+    # Segmentation workbooks define exercise windows; raw marker/skeleton/description
+    # files are included even without a workbook so session-level QC can run.
     all_session_ids = set(sessions_with_sheet)
-    for sid in list(skeleton_files) + list(description_files):
+    for sid in list(marker_files) + list(skeleton_files) + list(description_files):
         key = parse_session_id(sid)
         if key and key.task_part == task_part_scope:
             all_session_ids.add(sid)
@@ -147,6 +157,7 @@ def build_inventory(config: Config) -> Inventory:
         key = parse_session_id(sid)
         if key is None:
             continue
+        has_marker = sid in marker_files or sid in skeleton_files
         has_skel = sid in skeleton_files
         has_desc = sid in description_files
         has_sheet = sid in sessions_with_sheet
@@ -166,6 +177,8 @@ def build_inventory(config: Config) -> Inventory:
                 notes.append("no segmentation sheet")
             if not has_skel:
                 notes.append("no raw skeleton csv")
+            if not has_marker:
+                notes.append("no marker csv")
         else:
             status = "missing"
 
@@ -176,6 +189,7 @@ def build_inventory(config: Config) -> Inventory:
                 task_part=key.task_part,
                 repetition=key.repetition,
                 session_id=sid,
+                has_marker_csv=has_marker,
                 has_skeleton_csv=has_skel,
                 has_description=has_desc,
                 has_segmentation_sheet=has_sheet,

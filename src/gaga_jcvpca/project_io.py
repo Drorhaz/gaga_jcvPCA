@@ -53,11 +53,17 @@ def _as_int(value) -> int | None:
 # --- segmentation workbooks ---
 
 def find_segmentation_workbooks(segmentation_dir: Path) -> dict[str, Path]:
-    """Map participant id -> segmentation workbook path."""
+    """Map participant id -> segmentation workbook path.
+
+    Excel writes transient lock files (``~$<name>.xlsx``) while a workbook is open;
+    those and hidden dotfiles are skipped so discovery never tries to parse them.
+    """
     out: dict[str, Path] = {}
     if not segmentation_dir.exists():
         return out
     for path in sorted(segmentation_dir.glob(SEGMENTATION_GLOB)):
+        if path.name.startswith("~$") or path.name.startswith("."):
+            continue
         pid = path.name.split("_", 1)[0]
         out[pid] = path
     return out
@@ -104,7 +110,6 @@ def load_segments_for_workbook(
                     start_frame=start_v,
                     end_frame=end_v,
                     group_id=naming.group_of(ex_id),
-                    gaga_alias=naming.gaga_alias_of(ex_id),
                 )
             )
     return segments
@@ -164,6 +169,55 @@ def marker_set_prefix(path: Path) -> Optional[str]:
         if "_" in bone.name:
             return bone.name.split("_", 1)[0]
     return None
+
+
+def sidecar_has_bones(path: Optional[Path]) -> bool:
+    """True when a DataDescriptions sidecar exists and parses to >=1 bone.
+
+    Several sidecars in the cohort are 0-byte placeholders; treating them as
+    present would silently skip conversion, so callers must check this first.
+    """
+    if path is None or not path.exists():
+        return False
+    try:
+        if path.stat().st_size == 0:
+            return False
+    except OSError:
+        return False
+    return len(load_skeleton_bones(path)) > 0
+
+
+def read_skeleton_hierarchy_from_take(path: Path) -> dict[str, str]:
+    """Bone -> parent-bone name map read from a raw Motive skeleton CSV header.
+
+    The solved-skeleton export carries the full hierarchy in its header block
+    (a ``Type`` row of ``Bone`` tokens, a ``Name`` row, and a ``Parent`` row), so
+    the parent/child topology is available directly from the session's own file
+    without any DataDescriptions sidecar. Names are returned exactly as they
+    appear in the take (e.g. ``671:Chest``), so they match ``MotiveTake.bone_names``.
+    Root bones map to themselves.
+    """
+    rows = _read_motive_header_rows(path)
+    type_row_idx = _find_type_row(rows)
+    type_row = rows[type_row_idx]
+    name_row = rows[type_row_idx + 1]
+    parent_row = None
+    for r in rows:
+        if len(r) > 1 and r[1].strip() == "Parent":
+            parent_row = r
+            break
+    if parent_row is None:
+        return {}
+    hierarchy: dict[str, str] = {}
+    for i, token in enumerate(type_row):
+        if token.strip() != "Bone":
+            continue
+        name = name_row[i].strip() if i < len(name_row) else ""
+        parent = parent_row[i].strip() if i < len(parent_row) else ""
+        if not name or name in hierarchy:
+            continue
+        hierarchy[name] = name if parent in ("", "Root") else parent
+    return hierarchy
 
 
 # --- feature manifests ---
@@ -383,18 +437,41 @@ def parse_motive_take(path: str | Path, max_frames: Optional[int] = None) -> Mot
     )
 
 
-def resolve_session_skeleton(config: "Config", session_id: str) -> Optional[Path]:
-    """Return the raw skeleton CSV path for a canonical session id, if present."""
-    try:
-        skeleton_dir = config.resolve_path("data.raw_skeleton")
-    except KeyError:
+def _resolve_session_csv_in_dir(dir_path: Path, session_id: str) -> Optional[Path]:
+    """Return the first matching Motive CSV for a session id under ``dir_path``."""
+    if not dir_path or not dir_path.exists():
         return None
-    if not skeleton_dir.exists():
-        return None
-    for path in skeleton_dir.rglob("*.csv"):
+    for path in dir_path.rglob("*.csv"):
         if path.stat().st_size == 0 or "DataDescriptions" in path.name:
             continue
         key = parse_session_id(path.name)
         if key is not None and key.as_str() == session_id:
             return path
     return None
+
+
+def resolve_session_marker_csv(config: "Config", session_id: str) -> Optional[Path]:
+    """Return the marker CSV path for a session (dedicated export or skeleton fallback)."""
+    try:
+        marker_dir = config.resolve_path("data.raw_markers")
+    except KeyError:
+        marker_dir = None
+    if marker_dir is not None:
+        found = _resolve_session_csv_in_dir(marker_dir, session_id)
+        if found is not None:
+            return found
+
+    skel = resolve_session_skeleton(config, session_id)
+    if skel is not None and raw_csv_type(skel) in (None, "Marker", "Bone"):
+        # Skeleton exports embed Type=Marker columns alongside bones.
+        return skel
+    return None
+
+
+def resolve_session_skeleton(config: "Config", session_id: str) -> Optional[Path]:
+    """Return the raw skeleton CSV path for a canonical session id, if present."""
+    try:
+        skeleton_dir = config.resolve_path("data.raw_skeleton")
+    except KeyError:
+        return None
+    return _resolve_session_csv_in_dir(skeleton_dir, session_id)

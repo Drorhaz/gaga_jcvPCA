@@ -1,0 +1,55 @@
+participant,marker_label,bone_token,related_links
+671,BackLeft,Chest,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+671,BackRight,Chest,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+671,BackTop,Neck,Chest_to_Neck; Neck_to_Head
+671,ChestLow,Chest,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+671,ChestTop,LShoulder,Chest_to_LShoulder; LShoulder_to_LUArm
+671,HeadFront,Head,Neck_to_Head
+671,HeadLeft,Head,Neck_to_Head
+671,HeadRight,Head,Neck_to_Head
+671,HeadTop,Head,Neck_to_Head
+671,LAnkleOut,LFoot,LShin_to_LFoot
+671,LElbowOut,LFArm,LFArm_to_LHand; LUArm_to_LFArm
+671,LFArm,LHand,LFArm_to_LHand
+671,LHandIn,LIndex1,
+671,LHandOut,LPinky1,
+671,LHeel,LFoot,LShin_to_LFoot
+671,LIndex,LIndex2,
+671,LKneeOut,LShin,LShin_to_LFoot; LThigh_to_LShin
+671,LPinky,LPinky3,
+671,LShin,LFoot,LShin_to_LFoot
+671,LShoulderBack,LUArm,LShoulder_to_LUArm; LUArm_to_LFArm
+671,LShoulderTop,LUArm,LShoulder_to_LUArm; LUArm_to_LFArm
+671,LThighFront,LThigh,671_to_LThigh; LThigh_to_LShin
+671,LThighSide,LThigh,671_to_LThigh; LThigh_to_LShin
+671,LThumb,LThumb3,
+671,LToeIn,LToe,
+671,LToeOut,LToe,
+671,LToeTip,LToe,
+671,LUArmHigh,LFArm,LFArm_to_LHand; LUArm_to_LFArm
+671,LWristOut,LHand,LFArm_to_LHand
+671,RAnkleOut,RFoot,RShin_to_RFoot
+671,RElbowOut,RFArm,RFArm_to_RHand; RUArm_to_RFArm
+671,RFArm,RFArm,RFArm_to_RHand; RUArm_to_RFArm
+671,RHandIn,RIndex1,
+671,RHandOut,RPinky1,
+671,RHeel,RFoot,RShin_to_RFoot
+671,RIndex,RIndex2,
+671,RKneeOut,RShin,RShin_to_RFoot; RThigh_to_RShin
+671,RPinky,RPinky3,
+671,RShin,RShin,RShin_to_RFoot; RThigh_to_RShin
+671,RShoulderBack,RUArm,RShoulder_to_RUArm; RUArm_to_RFArm
+671,RShoulderTop,RUArm,RShoulder_to_RUArm; RUArm_to_RFArm
+671,RThighFront,RShin,RShin_to_RFoot; RThigh_to_RShin
+671,RThighSide,RThigh,671_to_RThigh; RThigh_to_RShin
+671,RThumb,RThumb2,
+671,RToeIn,RToe,
+671,RToeOut,RToe,
+671,RToeTip,RToe,
+671,RUArmHigh,RFArm,RFArm_to_RHand; RUArm_to_RFArm
+671,RWristOut,RPinky1,
+671,WaistCBack,Chest,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+671,WaistLBack,LThigh,671_to_LThigh; LThigh_to_LShin
+671,WaistLFront,LThigh,671_to_LThigh; LThigh_to_LShin
+671,WaistRBack,RThigh,671_to_RThigh; RThigh_to_RShin
+671,WaistRFront,RThigh,671_to_RThigh; RThigh_to_RShin

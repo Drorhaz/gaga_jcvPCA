@@ -244,6 +244,41 @@ def build_link_map_from_bones(bones) -> dict[str, tuple[str, str]]:
     return links
 
 
+def _segment_token(bone_name: str) -> str:
+    """Strip asset prefixes from a bone name down to its segment token.
+
+    Handles both sidecar-style (``671_Chest``, ``T3_671_Chest``) and take-style
+    (``671:Chest``, ``T3_671:Chest``) names. The segment token is what remains
+    after the marker-set prefix, so single- and double-prefixed assets collapse
+    to the same canonical stem (``Chest``).
+    """
+    base = bone_name.split(":", 1)[1] if ":" in bone_name else bone_name
+    # Take-style segment tokens carry no underscores (e.g. "Chest", "LUArm",
+    # "Neck2"); a sidecar-style residue like "671_Chest" keeps its last token.
+    return base.rsplit("_", 1)[-1] if "_" in base else base
+
+
+def build_link_map_from_hierarchy(
+    child_to_parent: dict[str, str],
+) -> dict[str, tuple[str, str]]:
+    """Canonical link_id -> (parent_name, child_name) from a bone->parent map.
+
+    Mirrors :func:`build_link_map_from_bones` but is driven by a bone-name ->
+    parent-name mapping (as read from a raw take header), and is prefix-aware so
+    double-prefixed assets (671 T3) yield the same canonical stems as clean ones.
+    The returned bone names are passed through unchanged so they still match the
+    take's ``bone_names``.
+    """
+    links: dict[str, tuple[str, str]] = {}
+    for name, parent in child_to_parent.items():
+        if not parent or parent == name:
+            continue
+        child_short = _segment_token(name)
+        parent_short = _segment_token(parent)
+        links[f"{parent_short}_to_{child_short}"] = (parent, name)
+    return links
+
+
 # Manifest canonical stems that may appear under alternate session-native names.
 CANONICAL_LINK_ALIASES: dict[str, tuple[str, ...]] = {
     "Neck_to_Head": ("Neck2_to_Head",),

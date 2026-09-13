@@ -1,0 +1,9 @@
+participant,timepoint,coverage_band,coverage_rel,n_links,n_a2_pass,n_s2_base,n_coverage_limited_links,n_s2_blocked_by_coverage
+671,T2,adequate,0.8056,18,8,8,0,0
+671,T3,limited,0.6972,17,9,9,17,9
+252,T2,adequate,0.8108,20,3,3,0,0
+252,T3,limited,0.6005,20,12,12,20,12
+651,T2,adequate,0.8366,10,4,4,0,0
+651,T3,limited,0.7055,10,2,2,10,2
+790,T2,adequate,0.8666,20,7,7,0,0
+790,T3,adequate,0.8867,18,3,3,0,0

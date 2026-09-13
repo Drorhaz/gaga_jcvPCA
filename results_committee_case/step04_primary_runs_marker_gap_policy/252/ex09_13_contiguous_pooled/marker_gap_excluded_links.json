@@ -1,0 +1,14 @@
+{
+  "252_T1_vs_T2": {
+    "LShin_to_LFoot": "marker_gap_policy: T1_R2 \u2014 Supporting marker `252:LFAX` has 13.2% of ex09-13 window in large gaps (>0.5 s, 2 runs); Motive likely interpolated bone motion.",
+    "LThigh_to_LShin": "marker_gap_policy: T1_R2 \u2014 Supporting marker `252:LFAX` has 13.2% of ex09-13 window in large gaps (>0.5 s, 2 runs); Motive likely interpolated bone motion."
+  },
+  "252_T1_vs_T3": {
+    "LShin_to_LFoot": "marker_gap_policy: T1_R2 \u2014 Supporting marker `252:LFAX` has 13.2% of ex09-13 window in large gaps (>0.5 s, 2 runs); Motive likely interpolated bone motion.",
+    "LThigh_to_LShin": "marker_gap_policy: T1_R2 \u2014 Supporting marker `252:LFAX` has 13.2% of ex09-13 window in large gaps (>0.5 s, 2 runs); Motive likely interpolated bone motion."
+  },
+  "252_T1_R1_vs_R2": {
+    "LShin_to_LFoot": "marker_gap_policy: T1_R2 \u2014 Supporting marker `252:LFAX` has 13.2% of ex09-13 window in large gaps (>0.5 s, 2 runs); Motive likely interpolated bone motion.",
+    "LThigh_to_LShin": "marker_gap_policy: T1_R2 \u2014 Supporting marker `252:LFAX` has 13.2% of ex09-13 window in large gaps (>0.5 s, 2 runs); Motive likely interpolated bone motion."
+  }
+}

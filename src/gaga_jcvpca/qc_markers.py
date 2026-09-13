@@ -162,6 +162,32 @@ def detect_velocity_artifacts(md: MarkerData, cfg: dict) -> int:
     return int(np.sum(spike_frames))
 
 
+def velocity_artifact_threshold(md: MarkerData, cfg: dict) -> Optional[float]:
+    """Shared speed threshold (m/frame) for artifact detection in ``md``."""
+    if md.positions is None or md.n_frames < 2:
+        return None
+    pct = float(cfg["artifacts"]["velocity_percentile_threshold"])
+    speed = np.linalg.norm(np.diff(md.positions, axis=0), axis=2)
+    finite = speed[np.isfinite(speed)]
+    if finite.size == 0:
+        return None
+    return float(np.percentile(finite, pct))
+
+
+def velocity_artifact_counts_per_marker(md: MarkerData, cfg: dict) -> np.ndarray:
+    """Per-marker count of frame intervals where this marker exceeds the shared threshold."""
+    n_markers = md.n_markers
+    if md.positions is None or md.n_frames < 2 or n_markers == 0:
+        return np.zeros(n_markers, dtype=int)
+    threshold = velocity_artifact_threshold(md, cfg)
+    if threshold is None:
+        return np.zeros(n_markers, dtype=int)
+    speed = np.linalg.norm(np.diff(md.positions, axis=0), axis=2)
+    valid = np.isfinite(speed)
+    spikes = (speed > threshold) & valid
+    return np.sum(spikes, axis=0).astype(int)
+
+
 # --- resolution rollups + findings ---
 
 def _missing_percent(presence: np.ndarray) -> float:
@@ -187,11 +213,118 @@ def _gap_span_text(gaps: list[Gap]) -> str:
     return f"frames {first:,}-{last:,}"
 
 
+# --- marker -> manifest link stem mapping ---
+
+LinkSpec = tuple[str, str, str]  # (stem, parent_canonical, child_canonical)
+
+
+def link_specs_from_manifest(manifest: pd.DataFrame) -> list[LinkSpec]:
+    """Build unique link specs from a feature manifest."""
+    from gaga_jcvpca.selection import link_stem
+
+    specs: list[LinkSpec] = []
+    seen: set[str] = set()
+    for _, row in manifest.iterrows():
+        stem = link_stem(str(row["feature_name"]))
+        if stem in seen:
+            continue
+        seen.add(stem)
+        parent = str(row.get("parent_canonical", "") or "")
+        child = str(row.get("child_canonical", "") or "")
+        if parent and child:
+            specs.append((stem, parent, child))
+    return specs
+
+
+def _marker_short_name(marker_name: str) -> str:
+    return marker_name.split(":")[-1]
+
+
+def links_for_marker(marker_name: str, link_specs: list[LinkSpec]) -> list[str]:
+    """Return manifest link stems whose parent/child tokens appear in the marker name."""
+    short = _marker_short_name(marker_name)
+    return [stem for stem, parent, child in link_specs if parent in short or child in short]
+
+
+def links_for_gaps(gaps: list[Gap], link_specs: list[LinkSpec]) -> list[str]:
+    """Unique link stems affected by the given marker gaps."""
+    stems: set[str] = set()
+    for g in gaps:
+        stems.update(links_for_marker(g.marker, link_specs))
+    return sorted(stems)
+
+
+def load_link_specs_for_participant(config, participant: str) -> list[LinkSpec]:
+    """Load link specs from the participant feature manifest, if available."""
+    from gaga_jcvpca import project_io
+    from gaga_jcvpca.feature_manifest_gen import resolve_manifest_path
+
+    try:
+        manifest_dir = config.resolve_path("data.feature_manifests")
+    except KeyError:
+        return []
+    path = resolve_manifest_path(participant, manifest_dir)
+    if path is None:
+        return []
+    return link_specs_from_manifest(project_io.load_feature_manifest(path))
+
+
+def build_large_gap_heatmap(
+    md: MarkerData,
+    cfg: dict,
+    link_specs: list[LinkSpec],
+) -> pd.DataFrame:
+    """Binary matrix: rows = link stems, columns = frame index, 1 = critical gap frame."""
+    if not link_specs or md.n_frames == 0:
+        return pd.DataFrame()
+
+    large_gap_s = float(cfg["gaps"]["large_gap_seconds"])
+    frame_rate = md.frame_rate_hz
+    stems = [s[0] for s in link_specs]
+    stem_idx = {s: i for i, s in enumerate(stems)}
+    matrix = np.zeros((len(stems), md.n_frames), dtype=np.uint8)
+
+    marker_link_map = [links_for_marker(n, link_specs) for n in md.marker_names]
+    gaps = detect_gaps(md.presence, md.marker_names)
+    for g in gaps:
+        if g.length_seconds(frame_rate) <= large_gap_s:
+            continue
+        mi = md.marker_names.index(g.marker)
+        start = max(0, g.start_frame)
+        end = min(md.n_frames - 1, g.end_frame)
+        for stem in marker_link_map[mi]:
+            row = stem_idx.get(stem)
+            if row is not None:
+                matrix[row, start : end + 1] = 1
+
+    return pd.DataFrame(matrix, index=stems, columns=list(range(md.n_frames)))
+
+
+def bin_heatmap_for_display(heatmap: pd.DataFrame, max_cols: int = 500) -> tuple[pd.DataFrame, bool]:
+    """Bin frame columns for UI display when captures are very long."""
+    if heatmap.empty or heatmap.shape[1] <= max_cols:
+        return heatmap, False
+    n_frames = heatmap.shape[1]
+    bin_size = int(np.ceil(n_frames / max_cols))
+    cols: list[str] = []
+    data: list[np.ndarray] = []
+    for b in range(max_cols):
+        start = b * bin_size
+        end = min(n_frames, (b + 1) * bin_size)
+        if start >= n_frames:
+            break
+        chunk = heatmap.iloc[:, start:end]
+        data.append((chunk.max(axis=1) > 0).astype(np.uint8).values)
+        cols.append(f"{start}-{end - 1}")
+    return pd.DataFrame(np.column_stack(data), index=heatmap.index, columns=cols), True
+
+
 def qc_segment(
     md: MarkerData,
     cfg: dict,
     scope_label: str,
     region_filter: Optional[str] = None,
+    link_specs: Optional[list[LinkSpec]] = None,
 ) -> list[QCFinding]:
     """Produce QC findings for one segment window across all resolutions below dataset.
 
@@ -253,6 +386,13 @@ def qc_segment(
     )
     if recommendation == Recommendation.INCLUDE_WITH_CAUTION and region_filter:
         parts.append(f"Consider excluding {region_filter.replace('_', ' ')} links from JcvPCA.")
+
+    specs = link_specs or []
+    affected = links_for_gaps(large, specs) if large and specs else []
+    if affected:
+        parts.append(
+            f"Affected links for exclusion review: {', '.join(affected)}."
+        )
     message = " ".join(parts)
 
     findings.append(
@@ -265,6 +405,7 @@ def qc_segment(
             recommendation=recommendation,
             message=message,
             affects_levels=affects,
+            affected_links=affected,
         )
     )
     return findings
@@ -276,12 +417,20 @@ def _affected_levels(region_filter: Optional[str]) -> list[str]:
     return ["region-level", "functional-space", "null-space"]
 
 
-def qc_segment_all_regions(md: MarkerData, cfg: dict, scope_label: str) -> list[QCFinding]:
+def qc_segment_all_regions(
+    md: MarkerData,
+    cfg: dict,
+    scope_label: str,
+    link_specs: Optional[list[LinkSpec]] = None,
+) -> list[QCFinding]:
     """Segment-level finding plus one per body region present in the segment."""
-    findings = qc_segment(md, cfg, scope_label)
+    specs = link_specs or []
+    findings = qc_segment(md, cfg, scope_label, link_specs=specs)
     regions = sorted({region_of_marker(m) for m in md.marker_names} - {"other"})
     for region in regions:
-        findings.extend(qc_segment(md, cfg, scope_label, region_filter=region))
+        findings.extend(
+            qc_segment(md, cfg, scope_label, region_filter=region, link_specs=specs)
+        )
     # artifact note
     n_artifact = detect_velocity_artifacts(md, cfg)
     if n_artifact:
@@ -340,6 +489,7 @@ def findings_to_dataframe(findings: list[QCFinding]) -> pd.DataFrame:
                 "severity": f.severity.value,
                 "recommendation": f.recommendation.value,
                 "affects_levels": ";".join(f.affects_levels),
+                "affected_links": ";".join(f.affected_links),
                 "message": f.message,
             }
             for f in findings
@@ -370,4 +520,204 @@ def parse_motive_marker_csv(path: str | Path, frame_rate_hz: float) -> MarkerDat
     from gaga_jcvpca import project_io
 
     take = project_io.parse_motive_take(path)
-    return marker_data_from_take(take, frame_rate_hz=frame_rate_hz)
+    md = marker_data_from_take(take, frame_rate_hz=frame_rate_hz)
+    md.session_id = Path(path).stem
+    return md
+
+
+def _slice_marker_data(md: MarkerData, start: int, end: int) -> Optional[MarkerData]:
+    """Return a segment window of marker data (half-open frame interval)."""
+    end = min(int(end), md.n_frames)
+    start = int(start)
+    if start >= end:
+        return None
+    return MarkerData(
+        marker_names=md.marker_names,
+        presence=md.presence[start:end],
+        frame_rate_hz=md.frame_rate_hz,
+        positions=md.positions[start:end] if md.positions is not None else None,
+        session_id=md.session_id,
+    )
+
+
+def _comparability_findings(inventory) -> list[QCFinding]:
+    """Convert inventory naming issues and marker-set checks into QC findings."""
+    findings: list[QCFinding] = []
+    for issue in inventory.naming_issues:
+        if issue.kind != "marker_set_difference":
+            continue
+        findings.append(
+            QCFinding(
+                resolution="participant",
+                scope=issue.subject,
+                metric="marker_set_prefixes",
+                value=1.0,
+                severity=Severity.SOFT_WARNING,
+                recommendation=Recommendation.INCLUDE_WITH_CAUTION,
+                message=issue.message,
+                affects_levels=["link-level", "region-level"],
+            )
+        )
+
+    by_participant: dict[str, dict[str, str]] = {}
+    for sid, prefix in inventory.marker_set_by_session.items():
+        pid = sid.split("_", 1)[0]
+        by_participant.setdefault(pid, {})[sid] = prefix
+    for pid, mapping in by_participant.items():
+        f = marker_set_finding(pid, mapping)
+        if f is not None and not any(
+            x.scope == pid and x.metric == "marker_set_prefixes" for x in findings
+        ):
+            findings.append(f)
+    return findings
+
+
+def _qc_one_session(
+    config,
+    inventory,
+    session_id: str,
+    thresholds: dict,
+) -> tuple[list[QCFinding], Optional[pd.DataFrame]]:
+    """Run session-level and per-segment QC for one capture."""
+    from gaga_jcvpca import project_io
+
+    path = project_io.resolve_session_marker_csv(config, session_id)
+    if path is None:
+        return [], None
+
+    participant = session_id.split("_", 1)[0]
+    link_specs = load_link_specs_for_participant(config, participant)
+    frame_rate = float(thresholds.get("capture", {}).get("frame_rate_hz", 120.0))
+    try:
+        md = parse_motive_marker_csv(path, frame_rate_hz=frame_rate)
+        md.session_id = session_id
+    except Exception as exc:
+        return [
+            QCFinding(
+                resolution="session",
+                scope=session_id,
+                metric="parse_error",
+                value=0.0,
+                severity=Severity.SOFT_WARNING,
+                recommendation=Recommendation.INCLUDE_WITH_CAUTION,
+                message=(
+                    f"Could not parse marker CSV for {session_id} at {path}: {exc}. "
+                    f"Marker QC for this session is unavailable; review the file manually."
+                ),
+                affects_levels=["region-level", "functional-space", "null-space"],
+            )
+        ], None
+
+    heatmap = build_large_gap_heatmap(md, thresholds, link_specs)
+
+    findings: list[QCFinding] = []
+    findings.extend(
+        qc_segment_all_regions(
+            md, thresholds, scope_label=f"{session_id}::session", link_specs=link_specs
+        )
+    )
+
+    segments = [s for s in inventory.segments if s.session.as_str() == session_id]
+    for seg in segments:
+        seg_md = _slice_marker_data(md, seg.start_frame, seg.end_frame)
+        if seg_md is None:
+            continue
+        label = f"{session_id}::{seg.canonical_label}"
+        findings.extend(
+            qc_segment_all_regions(seg_md, thresholds, label, link_specs=link_specs)
+        )
+    return findings, heatmap if not heatmap.empty else None
+
+
+def run_marker_qc(
+    config,
+    inventory,
+    *,
+    session_ids: Optional[list[str]] = None,
+    write_cache: bool = True,
+) -> tuple[list[QCFinding], pd.DataFrame, dict[str, pd.DataFrame]]:
+    """Run raw-marker QC across inventory sessions and optionally persist qc_summary.csv."""
+    thresholds = config.data
+    if session_ids is None:
+        session_ids = sorted(
+            r.session_id for r in inventory.rows if r.has_marker_csv
+        )
+
+    all_findings: list[QCFinding] = []
+    heatmaps: dict[str, pd.DataFrame] = {}
+    for sid in session_ids:
+        findings, heatmap = _qc_one_session(config, inventory, sid, thresholds)
+        all_findings.extend(findings)
+        if heatmap is not None:
+            heatmaps[sid] = heatmap
+
+    if session_ids is None or len(session_ids) > 1:
+        all_findings.extend(_comparability_findings(inventory))
+
+    df = findings_to_dataframe(all_findings)
+    if write_cache and not df.empty:
+        qc_dir = config.resolve_path("outputs.cache") / "qc"
+        qc_dir.mkdir(parents=True, exist_ok=True)
+        df.to_csv(qc_dir / "qc_summary.csv", index=False)
+    return all_findings, df, heatmaps
+
+
+def marker_source_cache_key(config, inventory) -> str:
+    """Hash marker input paths + mtimes for Streamlit cache invalidation."""
+    import hashlib
+
+    from gaga_jcvpca import project_io
+
+    parts: list[str] = []
+    for row in sorted(inventory.rows, key=lambda r: r.session_id):
+        if not row.has_marker_csv:
+            continue
+        path = project_io.resolve_session_marker_csv(config, row.session_id)
+        if path is None:
+            continue
+        try:
+            mtime = path.stat().st_mtime
+        except OSError:
+            mtime = 0
+        parts.append(f"{row.session_id}:{path}:{mtime}")
+    blob = "|".join(parts)
+    return hashlib.sha256(blob.encode()).hexdigest()[:16]
+
+
+def summarize_qc_findings(findings: list[QCFinding], inventory) -> dict:
+    """Roll up QC metrics for the dashboard overview."""
+    n_sessions = sum(1 for r in inventory.rows if r.has_marker_csv)
+    if not findings:
+        return {
+            "n_findings": 0,
+            "n_sessions_with_markers": n_sessions,
+            "n_soft_warnings": 0,
+            "n_large_gaps": 0,
+            "n_velocity_artifact_findings": 0,
+            "by_severity": {},
+            "by_recommendation": {},
+        }
+
+    by_severity: dict[str, int] = {}
+    by_recommendation: dict[str, int] = {}
+    n_large_gaps = 0
+    n_velocity = 0
+    for f in findings:
+        by_severity[f.severity.value] = by_severity.get(f.severity.value, 0) + 1
+        by_recommendation[f.recommendation.value] = (
+            by_recommendation.get(f.recommendation.value, 0) + 1
+        )
+        if f.metric == "velocity_artifact_frames":
+            n_velocity += 1
+        if f.metric == "marker_missing_percent" and "critical" in f.message.lower():
+            n_large_gaps += 1
+
+    return {
+        "n_findings": len(findings),
+        "n_sessions_with_markers": n_sessions,
+        "n_soft_warnings": by_severity.get(Severity.SOFT_WARNING.value, 0),
+        "n_large_gaps": n_large_gaps,
+        "n_velocity_artifact_findings": n_velocity,
+        "by_severity": by_severity,
+        "by_recommendation": by_recommendation,
+    }

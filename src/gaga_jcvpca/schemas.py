@@ -64,7 +64,6 @@ class ExerciseSegment:
     start_frame: int
     end_frame: int
     group_id: Optional[str] = None      # Group1..Group6 if the id falls in a group range
-    gaga_alias: Optional[str] = None    # P1..P5 for exercise_id 9..13, else None
 
     @property
     def n_frames(self) -> int:
@@ -82,6 +81,7 @@ class InventoryRow:
     task_part: str
     repetition: str
     session_id: str
+    has_marker_csv: bool = False
     has_skeleton_csv: bool = False
     has_description: bool = False
     has_segmentation_sheet: bool = False
@@ -111,3 +111,4 @@ class QCFinding:
     recommendation: Recommendation
     message: str                  # research-language sentence
     affects_levels: list[str] = field(default_factory=list)  # link/region/functional/null
+    affected_links: list[str] = field(default_factory=list)  # manifest link stems with critical gaps

@@ -1,0 +1,183 @@
+project_root: .
+data:
+  raw_markers: data/raw_markers
+  raw_skeleton: data/raw_skeleton
+  descriptions: data/descriptions
+  segmentation: data/segmentation
+  feature_manifests: data/feature_manifests
+  calibration: data/calibration
+  matrices: outputs/cache/matrices
+outputs:
+  root: outputs
+  runs: outputs/runs
+  cache: outputs/cache
+canonical_label_format: ex{exercise_id:02d}
+session_key:
+  pattern: '{participant}_T{timepoint}_P{task_part}_R{repetition}'
+  sheet_pattern: '{participant} - T{timepoint}P{task_part}R{repetition}'
+  task_part_note: P here is the Task Part. V1 supports Task Part 1 (P1) only.
+movement_groups:
+  Group1:
+    name: Trunk sagittal movement
+    exercise_ids:
+    - 1
+    - 2
+  Group2:
+    name: Upper-limb elevation and arm wave
+    exercise_ids:
+    - 3
+    - 4
+    - 5
+  Group3:
+    name: Axial rotation and reciprocal arm rotation
+    exercise_ids:
+    - 6
+    - 7
+    - 8
+  Group4:
+    name: Curvilinear exploration
+    exercise_ids:
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
+  Group5:
+    name: Single-leg balance with whole-body curves
+    exercise_ids:
+    - 14
+    - 15
+  Group6:
+    name: Whole-body shaking / dance
+    exercise_ids:
+    - 16
+    - 17
+primary_group: Group4
+regions:
+  head_neck:
+    label: Head / Neck
+    match_any:
+    - Neck_to_Head
+    - Chest_to_Neck
+    - Neck2_to_Head
+  trunk_spine:
+    label: Trunk / Spine
+    match_any:
+    - Hip_to_
+    - _to_Chest
+    - Spine
+    - Ab_to_
+    - Chest_to_Neck
+  left_arm:
+    label: Left arm
+    match_any:
+    - LShoulder
+    - LUArm
+    - LFArm
+    - LHand
+  right_arm:
+    label: Right arm
+    match_any:
+    - RShoulder
+    - RUArm
+    - RFArm
+    - RHand
+  left_leg:
+    label: Left leg
+    match_any:
+    - LThigh
+    - LShin
+    - LFoot
+    - _to_LThigh
+  right_leg:
+    label: Right leg
+    match_any:
+    - RThigh
+    - RShin
+    - RFoot
+    - _to_RThigh
+exclude_tokens:
+- Finger
+- Thumb
+- Toe
+- Pinky
+- Index
+- Middle
+- Ring
+version: 1
+capture:
+  frame_rate_hz: 120.0
+marker_missing_percent:
+  pass_max: 1.0
+  warn_max: 5.0
+  caution_max: 10.0
+frame_missing_labeled_percent:
+  caution: 10.0
+  exclude: 20.0
+gaps:
+  large_gap_seconds: 0.5
+  cluster_window_seconds: 2.0
+  cluster_min_count: 3
+  pass_max_large_gaps: 0
+  caution_max_large_gaps: 1
+artifacts:
+  velocity_percentile_threshold: 99.97
+  acceleration_percentile_threshold: 99.97
+  sigma: 8.0
+session:
+  min_marker_coverage_pct: 90.0
+  acceptable_max_labeled_missing_percent: 5.0
+  caution_max_labeled_missing_percent: 10.0
+rotvec:
+  jump_warning_rad: 0.5
+  jump_fail_rad: 1.0
+  near_pi_warning_fraction: 0.95
+quaternion:
+  pass_max_abs_norm_error: 0.001
+  warning_max_abs_norm_error: 0.01
+analysis:
+  min_frames_for_pca: 10
+  apply_marker_gap_removals: true
+  marker_gap_removals_csv: results_committee_case/step03_trunk_extension/marker_gap_link_removals_ex09_13.csv
+pca:
+  variance_threshold: 0.8
+  min_pcs: 2
+  max_pcs: 10
+  threshold_sweep:
+    enabled: false
+    candidates:
+    - 0.7
+    - 0.8
+    - 0.9
+pc_focus:
+  sensitivity_p: 2
+weighting:
+  explained_variance_weighting: false
+filter:
+  cutoff_hz: 10.0
+  order: 4
+  filter_type: butterworth_lowpass
+  jump_context_window_frames: 30
+mode:
+  task_part: P1
+  participant_specific: true
+  allow_cross_participant_exploratory: false
+validation:
+  enabled: false
+  methods:
+    natural_variability_baseline: true
+    sensitivity_analysis: true
+    pca_stability: true
+    bootstrap: true
+    permutation: false
+  bootstrap:
+    n_resamples: 1000
+    min_windows_for_bootstrap: 4
+  random_seed: 12345
+participants:
+- '671'
+- '252'
+- '651'
+- '790'
+non_science_keys:
+- outputs

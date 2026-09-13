@@ -1,0 +1,9 @@
+participant,followup,n_links_in_analysis,exceed_both_R1_and_R2,exceed_R1_only,exceed_R2_only,exceed_neither,rep_stable_fraction,any_rep_fraction
+671,T2,18,7,2,1,8,0.389,0.556
+671,T3,15,5,2,2,6,0.333,0.6
+252,T2,20,5,1,1,13,0.25,0.35
+252,T3,20,6,4,1,9,0.3,0.55
+651,T2,10,4,1,2,3,0.4,0.7
+651,T3,9,0,0,1,8,0.0,0.111
+790,T2,20,0,3,0,17,0.0,0.15
+790,T3,18,0,0,1,17,0.0,0.056

@@ -1,0 +1,6 @@
+{
+  "671_T1_vs_T3": {
+    "LThigh_to_LShin": "marker_gap_policy: T3_R2 \u2014 Supporting marker `T3_671:LThighFront` has 99.0% of ex09-13 window in large gaps (>0.5 s, 6 runs); Motive likely interpolated bone motion.",
+    "671_to_LThigh": "marker_gap_policy: T3_R2 \u2014 Supporting marker `T3_671:LThighFront` has 99.0% of ex09-13 window in large gaps (>0.5 s, 6 runs); Motive likely interpolated bone motion."
+  }
+}

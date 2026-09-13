@@ -19,14 +19,14 @@ SMOKE_SESSIONS = {
         ROOT
         / "data/descriptions/651_T1_P1_R1_Take 2026-01-15 04.35.25 PM_002_DataDescriptions.csv",
         "group4_core_14link_within_651_feature_manifest.csv",
-        42,
+        54,
     ),
     "790": (
         ROOT / "data/raw_skeleton/790/790_T1_P1_R1_Take 2026-04-26 06.09.29 PM_000.csv",
         ROOT
         / "data/descriptions/790_T1_P1_R1_Take 2026-04-26 06.09.29 PM_000_DataDescriptions.csv",
         "group4_core_16link_within_790_feature_manifest.csv",
-        48,
+        66,
     ),
 }
 

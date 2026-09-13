@@ -1,0 +1,73 @@
+participant,panel,followup,rep_match,link_id,long_signed,nv_signed_t1,magnitude_exceed,same_sign_exceed,qc_exclusion
+651,T1_R1 vs T2_R1,T2,R1,LUArm_to_LFArm,0.035538,0.004829,True,True,
+651,T1_R1 vs T2_R1,T2,R1,RShoulder_to_RUArm,-0.036104,-0.005973,True,True,
+651,T1_R1 vs T2_R1,T2,R1,LFArm_to_LHand,0.062507,0.041373,True,True,
+651,T1_R1 vs T2_R1,T2,R1,RThigh_to_RShin,-0.01988,-0.000682,True,True,
+651,T1_R1 vs T2_R1,T2,R1,LShoulder_to_LUArm,-0.025173,-0.020892,True,True,
+651,T1_R1 vs T2_R1,T2,R1,RShin_to_RFoot,0.004086,-0.002556,True,False,
+651,T1_R1 vs T2_R1,T2,R1,RUArm_to_RFArm,0.03338,0.039986,False,False,
+651,T1_R1 vs T2_R1,T2,R1,RFArm_to_RHand,-0.022604,0.024692,False,False,
+651,T1_R1 vs T2_R1,T2,R1,LShin_to_LFoot,-0.008033,-0.009251,False,False,
+651,T1_R1 vs T2_R1,T2,R1,LThigh_to_LShin,-0.004371,0.00711,False,False,
+651,T1_R1 vs T2_R1,T2,R1,651_to_Ab,,,False,False,shared_features_or_qc: features missing in dataset B
+651,T1_R1 vs T2_R1,T2,R1,651_to_LThigh,,,False,False,shared_features_or_qc: features missing in dataset B
+651,T1_R1 vs T2_R1,T2,R1,651_to_RThigh,,,False,False,shared_features_or_qc: features missing in dataset B
+651,T1_R1 vs T2_R1,T2,R1,Ab_to_Chest,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R1 vs T2_R1,T2,R1,Chest_to_LShoulder,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R1 vs T2_R1,T2,R1,Chest_to_Neck,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R1 vs T2_R1,T2,R1,Chest_to_RShoulder,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R1 vs T2_R1,T2,R1,Neck_to_Head,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R2 vs T2_R2,T2,R2,LUArm_to_LFArm,0.00923202781223676,0.004829,True,True,
+651,T1_R2 vs T2_R2,T2,R2,RShoulder_to_RUArm,-0.02504939859236634,-0.005973,True,True,
+651,T1_R2 vs T2_R2,T2,R2,LFArm_to_LHand,0.05633940741889701,0.041373,True,True,
+651,T1_R2 vs T2_R2,T2,R2,RThigh_to_RShin,-0.03499098987905518,-0.000682,True,True,
+651,T1_R2 vs T2_R2,T2,R2,LShoulder_to_LUArm,0.02520593534269049,-0.020892,True,False,
+651,T1_R2 vs T2_R2,T2,R2,RShin_to_RFoot,-0.009807868240844722,-0.002556,True,True,
+651,T1_R2 vs T2_R2,T2,R2,RUArm_to_RFArm,-0.03503363093870099,0.039986,False,False,
+651,T1_R2 vs T2_R2,T2,R2,RFArm_to_RHand,-0.036594673353833165,0.024692,True,False,
+651,T1_R2 vs T2_R2,T2,R2,LShin_to_LFoot,-0.011310711957619752,-0.009251,True,True,
+651,T1_R2 vs T2_R2,T2,R2,LThigh_to_LShin,-0.032951563942629054,0.00711,True,False,
+651,T1_R2 vs T2_R2,T2,R2,651_to_Ab,,,False,False,shared_features_or_qc: features missing in dataset B
+651,T1_R2 vs T2_R2,T2,R2,651_to_LThigh,,,False,False,shared_features_or_qc: features missing in dataset B
+651,T1_R2 vs T2_R2,T2,R2,651_to_RThigh,,,False,False,shared_features_or_qc: features missing in dataset B
+651,T1_R2 vs T2_R2,T2,R2,Ab_to_Chest,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R2 vs T2_R2,T2,R2,Chest_to_LShoulder,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R2 vs T2_R2,T2,R2,Chest_to_Neck,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R2 vs T2_R2,T2,R2,Chest_to_RShoulder,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R2 vs T2_R2,T2,R2,Neck_to_Head,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R1 vs T3_R1,T3,R1,LUArm_to_LFArm,-0.002597,0.004829,False,False,
+651,T1_R1 vs T3_R1,T3,R1,RShoulder_to_RUArm,0.007167,-0.005973,True,False,
+651,T1_R1 vs T3_R1,T3,R1,LFArm_to_LHand,0.034205,0.041373,False,False,
+651,T1_R1 vs T3_R1,T3,R1,RThigh_to_RShin,-4.8e-05,-0.000682,False,False,
+651,T1_R1 vs T3_R1,T3,R1,LShoulder_to_LUArm,0.0285,-0.020892,True,False,
+651,T1_R1 vs T3_R1,T3,R1,RShin_to_RFoot,0.011924,-0.002556,True,False,
+651,T1_R1 vs T3_R1,T3,R1,RUArm_to_RFArm,0.021792,0.039986,False,False,
+651,T1_R1 vs T3_R1,T3,R1,RFArm_to_RHand,-0.000703,0.024692,False,False,
+651,T1_R1 vs T3_R1,T3,R1,LShin_to_LFoot,-0.007151,-0.009251,False,False,
+651,T1_R1 vs T3_R1,T3,R1,LThigh_to_LShin,0.01533,0.00711,True,True,marker_gap_policy: T3_R2 — Supporting marker `651_T3:WaistLBack` has 14.5% of e
+651,T1_R1 vs T3_R1,T3,R1,651_to_Ab,,,False,False,shared_features_or_qc: features missing in dataset B
+651,T1_R1 vs T3_R1,T3,R1,651_to_LThigh,,,False,False,marker_gap_policy: T3_R2 — Supporting marker `651_T3:WaistLBack` has 14.5% of e
+651,T1_R1 vs T3_R1,T3,R1,651_to_RThigh,,,False,False,shared_features_or_qc: features missing in dataset B
+651,T1_R1 vs T3_R1,T3,R1,Ab_to_Chest,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R1 vs T3_R1,T3,R1,Chest_to_LShoulder,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R1 vs T3_R1,T3,R1,Chest_to_Neck,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R1 vs T3_R1,T3,R1,Chest_to_RShoulder,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R1 vs T3_R1,T3,R1,Neck_to_Head,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R2 vs T3_R2,T3,R2,LUArm_to_LFArm,-0.07001720598115774,0.004829,True,False,
+651,T1_R2 vs T3_R2,T3,R2,RShoulder_to_RUArm,-0.00417696918600678,-0.005973,False,False,
+651,T1_R2 vs T3_R2,T3,R2,LFArm_to_LHand,-0.005109837983924304,0.041373,False,False,
+651,T1_R2 vs T3_R2,T3,R2,RThigh_to_RShin,0.022488144387374863,-0.000682,True,False,
+651,T1_R2 vs T3_R2,T3,R2,LShoulder_to_LUArm,0.07287375397512455,-0.020892,True,False,
+651,T1_R2 vs T3_R2,T3,R2,RShin_to_RFoot,-0.0047017560930917995,-0.002556,True,True,
+651,T1_R2 vs T3_R2,T3,R2,RUArm_to_RFArm,0.012130264024110349,0.039986,False,False,
+651,T1_R2 vs T3_R2,T3,R2,RFArm_to_RHand,-0.07091078141479744,0.024692,True,False,
+651,T1_R2 vs T3_R2,T3,R2,LShin_to_LFoot,-5.987770005312426e-05,-0.009251,False,False,
+651,T1_R2 vs T3_R2,T3,R2,LThigh_to_LShin,,0.00711,False,False,marker_gap_policy: T3_R2 — Supporting marker `651_T3:WaistLBack` has 14.5% of e
+651,T1_R2 vs T3_R2,T3,R2,651_to_Ab,,,False,False,shared_features_or_qc: features missing in dataset B
+651,T1_R2 vs T3_R2,T3,R2,651_to_LThigh,,,False,False,marker_gap_policy: T3_R2 — Supporting marker `651_T3:WaistLBack` has 14.5% of e
+651,T1_R2 vs T3_R2,T3,R2,651_to_RThigh,,,False,False,shared_features_or_qc: features missing in dataset B
+651,T1_R2 vs T3_R2,T3,R2,Ab_to_Chest,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R2 vs T3_R2,T3,R2,Chest_to_LShoulder,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R2 vs T3_R2,T3,R2,Chest_to_Neck,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R2 vs T3_R2,T3,R2,Chest_to_RShoulder,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1
+651,T1_R2 vs T3_R2,T3,R2,Neck_to_Head,,,False,False,marker_gap_policy: T1_R2 — Supporting marker `651:ChestTop` has 20.5% of ex09-1

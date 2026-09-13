@@ -1,0 +1,16 @@
+{
+  "790_T1_vs_T2": {
+    "RUArm_to_RFArm": "marker_gap_policy: T1_R2 \u2014 Supporting marker `790:RHLE` has 99.4% of ex09-13 window in large gaps (>0.5 s, 3 runs); Motive likely interpolated bone motion.",
+    "RFArm_to_RHand": "marker_gap_policy: T1_R2 \u2014 Supporting marker `790:RHLE` has 99.4% of ex09-13 window in large gaps (>0.5 s, 3 runs); Motive likely interpolated bone motion."
+  },
+  "790_T1_vs_T3": {
+    "Spine2_to_Spine3": "marker_gap_policy: T3_R1 \u2014 Supporting marker `790:RIPS` has 19.2% of ex09-13 window in large gaps (>0.5 s, 2 runs); Motive likely interpolated bone motion.; also flagged on T3_R2",
+    "RUArm_to_RFArm": "marker_gap_policy: T1_R2 \u2014 Supporting marker `790:RHLE` has 99.4% of ex09-13 window in large gaps (>0.5 s, 3 runs); Motive likely interpolated bone motion.",
+    "RFArm_to_RHand": "marker_gap_policy: T1_R2 \u2014 Supporting marker `790:RHLE` has 99.4% of ex09-13 window in large gaps (>0.5 s, 3 runs); Motive likely interpolated bone motion.",
+    "Ab_to_Spine2": "marker_gap_policy: T3_R1 \u2014 Supporting marker `790:RIPS` has 19.2% of ex09-13 window in large gaps (>0.5 s, 2 runs); Motive likely interpolated bone motion.; also flagged on T3_R2"
+  },
+  "790_T1_R1_vs_R2": {
+    "RUArm_to_RFArm": "marker_gap_policy: T1_R2 \u2014 Supporting marker `790:RHLE` has 99.4% of ex09-13 window in large gaps (>0.5 s, 3 runs); Motive likely interpolated bone motion.",
+    "RFArm_to_RHand": "marker_gap_policy: T1_R2 \u2014 Supporting marker `790:RHLE` has 99.4% of ex09-13 window in large gaps (>0.5 s, 3 runs); Motive likely interpolated bone motion."
+  }
+}

@@ -40,15 +40,13 @@ def test_parse_sheet_name():
     assert key.as_str() == "252_T3_P1_R2"
 
 
-def test_three_namespaces_disambiguated(config):
+def test_exercise_group_mapping(config):
     nm = NamingMap(config)
-    # exercise_id 9 is canonical ex09, group 4, and Gaga alias P1
     assert nm.group_of(9) == "Group4"
-    assert nm.gaga_alias_of(9) == "P1"
-    assert nm.gaga_alias_of(13) == "P5"
-    assert nm.gaga_alias_of(1) is None  # ex01 has no gaga alias
     assert nm.group_of(1) == "Group1"
     assert nm.group_exercise_ids("Group4") == [9, 10, 11, 12, 13]
+    assert "ex09" in nm.describe(9)
+    assert "Group4" in nm.describe(9)
 
 
 def test_check_naming_flags_task_part_and_missing_sheet():
