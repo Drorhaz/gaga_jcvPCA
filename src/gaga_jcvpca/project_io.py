@@ -110,7 +110,6 @@ def load_segments_for_workbook(
                     start_frame=start_v,
                     end_frame=end_v,
                     group_id=naming.group_of(ex_id),
-                    gaga_alias=naming.gaga_alias_of(ex_id),
                 )
             )
     return segments

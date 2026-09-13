@@ -94,6 +94,20 @@ def test_velocity_artifact_detection(thresholds):
     assert any(f.metric == "velocity_artifact_frames" and f.value >= 1 for f in findings)
 
 
+def test_velocity_artifact_counts_per_marker(thresholds):
+    rng = np.random.default_rng(0)
+    n, m = 500, 3
+    positions = rng.normal(0, 0.001, size=(n, m, 3))
+    positions[250, 0, :] += 100.0
+    md = _md(np.ones((n, m), dtype=bool), ["A", "B", "C"], positions=positions)
+    counts = qc.velocity_artifact_counts_per_marker(md, thresholds)
+    assert counts[0] >= 1
+    assert counts[1] == 0
+    assert counts[2] == 0
+    n_intervals = n - 1
+    assert counts[0] / n_intervals < 0.01
+
+
 def test_marker_set_finding():
     f = qc.marker_set_finding("671", {"671_T1_P1_R1": "671", "671_T3_P1_R1": "T3"})
     assert f is not None

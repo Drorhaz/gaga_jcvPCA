@@ -1,0 +1,297 @@
+{
+  "run_id": "671_ex09_13_contiguous_pooled",
+  "datetime": "2026-07-19T20:46:56",
+  "git_hash": "728c871edf0423aa6ea526651023253c38ea118f",
+  "science_hash": "5f58540b49016b41",
+  "participant": "671",
+  "participant_specific": true,
+  "variance_threshold": 0.8,
+  "filter_settings": {
+    "cutoff_hz": 10.0,
+    "order": 4,
+    "filter_type": "butterworth_lowpass",
+    "jump_context_window_frames": 30,
+    "frame_rate_hz": 120.0
+  },
+  "selection": {
+    "name": "671_ex09_13_contiguous",
+    "participant": "671",
+    "exercise_ids": [
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "combine_exercises": true,
+    "links": [
+      {
+        "link": "671_to_Ab",
+        "region": "other",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "671_to_LThigh",
+        "region": "left_leg",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "671_to_RThigh",
+        "region": "right_leg",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "Ab_to_Chest",
+        "region": "trunk_spine",
+        "included": true,
+        "reason": "Inclusive QC caution on ex09_13 (absent or hard-fail on 2/4 non-T1 session(s); T1 OK \u2014 shared-link restriction applies at comparison time).",
+        "qc_recommendation": "include_with_caution",
+        "user_override": false
+      },
+      {
+        "link": "Chest_to_LShoulder",
+        "region": "left_arm",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "Chest_to_Neck",
+        "region": "head_neck",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "Chest_to_RShoulder",
+        "region": "right_arm",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "LFArm_to_LHand",
+        "region": "left_arm",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "LShin_to_LFoot",
+        "region": "left_leg",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "LShoulder_to_LUArm",
+        "region": "left_arm",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "LThigh_to_LShin",
+        "region": "left_leg",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "LUArm_to_LFArm",
+        "region": "left_arm",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "Neck_to_Head",
+        "region": "head_neck",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "RFArm_to_RHand",
+        "region": "right_arm",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "RShin_to_RFoot",
+        "region": "right_leg",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "RShoulder_to_RUArm",
+        "region": "right_arm",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "RThigh_to_RShin",
+        "region": "right_leg",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "RUArm_to_RFArm",
+        "region": "right_arm",
+        "included": true,
+        "reason": "Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).",
+        "qc_recommendation": "include",
+        "user_override": false
+      }
+    ],
+    "notes": "Step 3 committee selection: full feasible link set (trunk-inclusive) on ex09_13_contiguous. Policy: maximize inclusion; caution links retained for Step 4b QC-drop axis.",
+    "created_at": "2026-07-14T17:44:01"
+  },
+  "comparisons": [
+    {
+      "comparison_id": "671_T1_vs_T2",
+      "kind": "longitudinal",
+      "a_label": "671_T1_R1+R2",
+      "b_label": "671_T2_R1+R2",
+      "selected_m": 9,
+      "variance_threshold": 0.8,
+      "included_links": [
+        "671_to_Ab",
+        "671_to_LThigh",
+        "671_to_RThigh",
+        "Ab_to_Chest",
+        "Chest_to_LShoulder",
+        "Chest_to_Neck",
+        "Chest_to_RShoulder",
+        "LFArm_to_LHand",
+        "LShin_to_LFoot",
+        "LShoulder_to_LUArm",
+        "LThigh_to_LShin",
+        "LUArm_to_LFArm",
+        "Neck_to_Head",
+        "RFArm_to_RHand",
+        "RShin_to_RFoot",
+        "RShoulder_to_RUArm",
+        "RThigh_to_RShin",
+        "RUArm_to_RFArm"
+      ],
+      "excluded_links": {},
+      "excluded_links_marker_gap": {},
+      "excluded_links_other": {},
+      "warnings": []
+    },
+    {
+      "comparison_id": "671_T1_vs_T3",
+      "kind": "longitudinal",
+      "a_label": "671_T1_R1+R2",
+      "b_label": "671_T3_R1+R2",
+      "selected_m": 8,
+      "variance_threshold": 0.8,
+      "included_links": [
+        "671_to_Ab",
+        "671_to_RThigh",
+        "Chest_to_LShoulder",
+        "Chest_to_Neck",
+        "Chest_to_RShoulder",
+        "LFArm_to_LHand",
+        "LShin_to_LFoot",
+        "LShoulder_to_LUArm",
+        "LUArm_to_LFArm",
+        "Neck_to_Head",
+        "RFArm_to_RHand",
+        "RShin_to_RFoot",
+        "RShoulder_to_RUArm",
+        "RThigh_to_RShin",
+        "RUArm_to_RFArm"
+      ],
+      "excluded_links": {
+        "671_to_LThigh": "marker_gap_policy: T3_R2 \u2014 Supporting marker `T3_671:LThighFront` has 99.0% of ex09-13 window in large gaps (>0.5 s, 6 runs); Motive likely interpolated bone motion.",
+        "LThigh_to_LShin": "marker_gap_policy: T3_R2 \u2014 Supporting marker `T3_671:LThighFront` has 99.0% of ex09-13 window in large gaps (>0.5 s, 6 runs); Motive likely interpolated bone motion.",
+        "Ab_to_Chest": "features missing in dataset B"
+      },
+      "excluded_links_marker_gap": {
+        "671_to_LThigh": "marker_gap_policy: T3_R2 \u2014 Supporting marker `T3_671:LThighFront` has 99.0% of ex09-13 window in large gaps (>0.5 s, 6 runs); Motive likely interpolated bone motion.",
+        "LThigh_to_LShin": "marker_gap_policy: T3_R2 \u2014 Supporting marker `T3_671:LThighFront` has 99.0% of ex09-13 window in large gaps (>0.5 s, 6 runs); Motive likely interpolated bone motion."
+      },
+      "excluded_links_other": {
+        "Ab_to_Chest": "features missing in dataset B"
+      },
+      "warnings": [
+        "1 link(s) excluded from this comparison; analysis restricted to the shared valid link intersection (15 links).",
+        "2 link(s) excluded by marker-gap policy before shared-link restriction."
+      ]
+    },
+    {
+      "comparison_id": "671_T1_R1_vs_R2",
+      "kind": "natural_variability",
+      "a_label": "671_T1_P1_R1",
+      "b_label": "671_T1_P1_R2",
+      "selected_m": 8,
+      "variance_threshold": 0.8,
+      "included_links": [
+        "671_to_Ab",
+        "671_to_LThigh",
+        "671_to_RThigh",
+        "Ab_to_Chest",
+        "Chest_to_LShoulder",
+        "Chest_to_Neck",
+        "Chest_to_RShoulder",
+        "LFArm_to_LHand",
+        "LShin_to_LFoot",
+        "LShoulder_to_LUArm",
+        "LThigh_to_LShin",
+        "LUArm_to_LFArm",
+        "Neck_to_Head",
+        "RFArm_to_RHand",
+        "RShin_to_RFoot",
+        "RShoulder_to_RUArm",
+        "RThigh_to_RShin",
+        "RUArm_to_RFArm"
+      ],
+      "excluded_links": {},
+      "excluded_links_marker_gap": {},
+      "excluded_links_other": {},
+      "warnings": []
+    }
+  ],
+  "marker_gap_policy": {
+    "enabled": true,
+    "removals_csv": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/results_committee_case/step03_trunk_extension/marker_gap_link_removals_ex09_13.csv"
+  },
+  "marker_set_difference_notes": {
+    "671": "Marker-set prefix differs across timepoints (['671', 'T3']). Cross-timepoint comparisons restricted to shared valid links; interpret with care."
+  },
+  "input_files": [
+    {
+      "path": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/results_committee_case/step03_trunk_extension/marker_gap_link_removals_ex09_13.csv",
+      "sha256_16": "ece75733bd413a6d"
+    }
+  ],
+  "user_overrides": []
+}

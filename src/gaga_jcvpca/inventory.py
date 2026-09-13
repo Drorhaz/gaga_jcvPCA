@@ -59,7 +59,6 @@ class Inventory:
                     "canonical_label": s.canonical_label,
                     "exercise_name": s.exercise_name,
                     "group_id": s.group_id,
-                    "gaga_alias": s.gaga_alias,
                     "start_frame": s.start_frame,
                     "end_frame": s.end_frame,
                     "n_frames": s.n_frames,

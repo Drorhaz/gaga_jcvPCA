@@ -1,0 +1,109 @@
+participant,session_id,T_R,link_stem,n_markers,markers
+651,651_T1_P1_R1,T1_R1,651_to_Ab,0,
+651,651_T1_P1_R1,T1_R1,651_to_LThigh,4,651:LThighFront; 651:LThighSide; 651:WaistLBack; 651:WaistLFront
+651,651_T1_P1_R1,T1_R1,651_to_RThigh,4,651:RThighFront; 651:RThighSide; 651:WaistRBack; 651:WaistRFront
+651,651_T1_P1_R1,T1_R1,Ab_to_Chest,4,651:BackLeft; 651:ChestLow; 651:ChestTop; 651:WaistCBack
+651,651_T1_P1_R1,T1_R1,Chest_to_LShoulder,6,651:BackLeft; 651:ChestLow; 651:ChestTop; 651:LShoulderBack; 651:LShoulderTop; 651:WaistCBack
+651,651_T1_P1_R1,T1_R1,Chest_to_Neck,5,651:BackLeft; 651:BackTop; 651:ChestLow; 651:ChestTop; 651:WaistCBack
+651,651_T1_P1_R1,T1_R1,Chest_to_RShoulder,6,651:BackLeft; 651:ChestLow; 651:ChestTop; 651:RShoulderBack; 651:RShoulderTop; 651:WaistCBack
+651,651_T1_P1_R1,T1_R1,LFArm_to_LHand,6,651:LElbowOut; 651:LFArm; 651:LHandIn; 651:LHandOut; 651:LUArmHigh; 651:LWristOut
+651,651_T1_P1_R1,T1_R1,LShin_to_LFoot,4,651:LAnkleOut; 651:LHeel; 651:LKneeOut; 651:LShin
+651,651_T1_P1_R1,T1_R1,LShoulder_to_LUArm,3,651:LShoulderBack; 651:LShoulderTop; 651:LUArmHigh
+651,651_T1_P1_R1,T1_R1,LThigh_to_LShin,6,651:LKneeOut; 651:LShin; 651:LThighFront; 651:LThighSide; 651:WaistLBack; 651:WaistLFront
+651,651_T1_P1_R1,T1_R1,LUArm_to_LFArm,5,651:LElbowOut; 651:LFArm; 651:LShoulderBack; 651:LShoulderTop; 651:LUArmHigh
+651,651_T1_P1_R1,T1_R1,Neck_to_Head,6,651:BackTop; 651:ChestTop; 651:HeadFront; 651:HeadLeft; 651:HeadRight; 651:HeadTop
+651,651_T1_P1_R1,T1_R1,RFArm_to_RHand,6,651:RElbowOut; 651:RFArm; 651:RHandIn; 651:RHandOut; 651:RUArmHigh; 651:RWristOut
+651,651_T1_P1_R1,T1_R1,RShin_to_RFoot,5,651:RAnkleOut; 651:RHeel; 651:RKneeOut; 651:RShin; 651:RThighFront
+651,651_T1_P1_R1,T1_R1,RShoulder_to_RUArm,4,651:BackRight; 651:RShoulderBack; 651:RShoulderTop; 651:RUArmHigh
+651,651_T1_P1_R1,T1_R1,RThigh_to_RShin,6,651:RKneeOut; 651:RShin; 651:RThighFront; 651:RThighSide; 651:WaistRBack; 651:WaistRFront
+651,651_T1_P1_R1,T1_R1,RUArm_to_RFArm,6,651:BackRight; 651:RElbowOut; 651:RFArm; 651:RShoulderBack; 651:RShoulderTop; 651:RUArmHigh
+651,651_T1_P1_R2,T1_R2,651_to_Ab,1,651:WaistLBack
+651,651_T1_P1_R2,T1_R2,651_to_LThigh,3,651:LThighFront; 651:LThighSide; 651:WaistLFront
+651,651_T1_P1_R2,T1_R2,651_to_RThigh,4,651:RThighFront; 651:RThighSide; 651:WaistRBack; 651:WaistRFront
+651,651_T1_P1_R2,T1_R2,Ab_to_Chest,5,651:BackLeft; 651:ChestLow; 651:ChestTop; 651:WaistCBack; 651:WaistLBack
+651,651_T1_P1_R2,T1_R2,Chest_to_LShoulder,6,651:BackLeft; 651:ChestLow; 651:ChestTop; 651:LShoulderBack; 651:LShoulderTop; 651:WaistCBack
+651,651_T1_P1_R2,T1_R2,Chest_to_Neck,5,651:BackLeft; 651:BackTop; 651:ChestLow; 651:ChestTop; 651:WaistCBack
+651,651_T1_P1_R2,T1_R2,Chest_to_RShoulder,6,651:BackLeft; 651:ChestLow; 651:ChestTop; 651:RShoulderBack; 651:RShoulderTop; 651:WaistCBack
+651,651_T1_P1_R2,T1_R2,LFArm_to_LHand,6,651:LElbowOut; 651:LFArm; 651:LHandIn; 651:LHandOut; 651:LUArmHigh; 651:LWristOut
+651,651_T1_P1_R2,T1_R2,LShin_to_LFoot,4,651:LAnkleOut; 651:LHeel; 651:LKneeOut; 651:LShin
+651,651_T1_P1_R2,T1_R2,LShoulder_to_LUArm,3,651:LShoulderBack; 651:LShoulderTop; 651:LUArmHigh
+651,651_T1_P1_R2,T1_R2,LThigh_to_LShin,5,651:LKneeOut; 651:LShin; 651:LThighFront; 651:LThighSide; 651:WaistLFront
+651,651_T1_P1_R2,T1_R2,LUArm_to_LFArm,5,651:LElbowOut; 651:LFArm; 651:LShoulderBack; 651:LShoulderTop; 651:LUArmHigh
+651,651_T1_P1_R2,T1_R2,Neck_to_Head,6,651:BackTop; 651:ChestTop; 651:HeadFront; 651:HeadLeft; 651:HeadRight; 651:HeadTop
+651,651_T1_P1_R2,T1_R2,RFArm_to_RHand,6,651:RElbowOut; 651:RFArm; 651:RHandIn; 651:RHandOut; 651:RUArmHigh; 651:RWristOut
+651,651_T1_P1_R2,T1_R2,RShin_to_RFoot,5,651:RAnkleOut; 651:RHeel; 651:RKneeOut; 651:RShin; 651:RThighFront
+651,651_T1_P1_R2,T1_R2,RShoulder_to_RUArm,5,651:BackRight; 651:ChestLow; 651:RShoulderBack; 651:RShoulderTop; 651:RUArmHigh
+651,651_T1_P1_R2,T1_R2,RThigh_to_RShin,6,651:RKneeOut; 651:RShin; 651:RThighFront; 651:RThighSide; 651:WaistRBack; 651:WaistRFront
+651,651_T1_P1_R2,T1_R2,RUArm_to_RFArm,6,651:BackRight; 651:RElbowOut; 651:RFArm; 651:RShoulderBack; 651:RShoulderTop; 651:RUArmHigh
+651,651_T2_P1_R1,T2_R1,651_to_Ab,0,
+651,651_T2_P1_R1,T2_R1,651_to_LThigh,3,651_T2:LThighFront; 651_T2:LThighSide; 651_T2:WaistLBack
+651,651_T2_P1_R1,T2_R1,651_to_RThigh,4,651_T2:RThighFront; 651_T2:RThighSide; 651_T2:WaistRBack; 651_T2:WaistRFront
+651,651_T2_P1_R1,T2_R1,Ab_to_Chest,4,651_T2:BackLeft; 651_T2:BackRight; 651_T2:ChestLow; 651_T2:ChestTop
+651,651_T2_P1_R1,T2_R1,Chest_to_LShoulder,6,651_T2:BackLeft; 651_T2:BackRight; 651_T2:ChestLow; 651_T2:ChestTop; 651_T2:LShoulderBack; 651_T2:LShoulderTop
+651,651_T2_P1_R1,T2_R1,Chest_to_Neck,5,651_T2:BackLeft; 651_T2:BackRight; 651_T2:BackTop; 651_T2:ChestLow; 651_T2:ChestTop
+651,651_T2_P1_R1,T2_R1,Chest_to_RShoulder,6,651_T2:BackLeft; 651_T2:BackRight; 651_T2:ChestLow; 651_T2:ChestTop; 651_T2:RShoulderBack; 651_T2:RShoulderTop
+651,651_T2_P1_R1,T2_R1,LFArm_to_LHand,6,651_T2:LElbowOut; 651_T2:LFArm; 651_T2:LHandIn; 651_T2:LHandOut; 651_T2:LUArmHigh; 651_T2:LWristOut
+651,651_T2_P1_R1,T2_R1,LShin_to_LFoot,4,651_T2:LAnkleOut; 651_T2:LHeel; 651_T2:LKneeOut; 651_T2:LShin
+651,651_T2_P1_R1,T2_R1,LShoulder_to_LUArm,3,651_T2:LShoulderBack; 651_T2:LShoulderTop; 651_T2:LUArmHigh
+651,651_T2_P1_R1,T2_R1,LThigh_to_LShin,5,651_T2:LKneeOut; 651_T2:LShin; 651_T2:LThighFront; 651_T2:LThighSide; 651_T2:WaistLBack
+651,651_T2_P1_R1,T2_R1,LUArm_to_LFArm,5,651_T2:LElbowOut; 651_T2:LFArm; 651_T2:LShoulderBack; 651_T2:LShoulderTop; 651_T2:LUArmHigh
+651,651_T2_P1_R1,T2_R1,Neck_to_Head,5,651_T2:BackTop; 651_T2:HeadFront; 651_T2:HeadLeft; 651_T2:HeadRight; 651_T2:HeadTop
+651,651_T2_P1_R1,T2_R1,RFArm_to_RHand,6,651_T2:RElbowOut; 651_T2:RFArm; 651_T2:RHandIn; 651_T2:RHandOut; 651_T2:RUArmHigh; 651_T2:RWristOut
+651,651_T2_P1_R1,T2_R1,RShin_to_RFoot,5,651_T2:RAnkleOut; 651_T2:RHeel; 651_T2:RKneeOut; 651_T2:RShin; 651_T2:RThighFront
+651,651_T2_P1_R1,T2_R1,RShoulder_to_RUArm,3,651_T2:RShoulderBack; 651_T2:RShoulderTop; 651_T2:RUArmHigh
+651,651_T2_P1_R1,T2_R1,RThigh_to_RShin,6,651_T2:RKneeOut; 651_T2:RShin; 651_T2:RThighFront; 651_T2:RThighSide; 651_T2:WaistRBack; 651_T2:WaistRFront
+651,651_T2_P1_R1,T2_R1,RUArm_to_RFArm,5,651_T2:RElbowOut; 651_T2:RFArm; 651_T2:RShoulderBack; 651_T2:RShoulderTop; 651_T2:RUArmHigh
+651,651_T2_P1_R2,T2_R2,651_to_Ab,0,
+651,651_T2_P1_R2,T2_R2,651_to_LThigh,3,651_T2:LThighFront; 651_T2:LThighSide; 651_T2:WaistLBack
+651,651_T2_P1_R2,T2_R2,651_to_RThigh,4,651_T2:RThighFront; 651_T2:RThighSide; 651_T2:WaistRBack; 651_T2:WaistRFront
+651,651_T2_P1_R2,T2_R2,Ab_to_Chest,4,651_T2:BackLeft; 651_T2:BackRight; 651_T2:ChestLow; 651_T2:ChestTop
+651,651_T2_P1_R2,T2_R2,Chest_to_LShoulder,6,651_T2:BackLeft; 651_T2:BackRight; 651_T2:ChestLow; 651_T2:ChestTop; 651_T2:LShoulderBack; 651_T2:LShoulderTop
+651,651_T2_P1_R2,T2_R2,Chest_to_Neck,5,651_T2:BackLeft; 651_T2:BackRight; 651_T2:BackTop; 651_T2:ChestLow; 651_T2:ChestTop
+651,651_T2_P1_R2,T2_R2,Chest_to_RShoulder,6,651_T2:BackLeft; 651_T2:BackRight; 651_T2:ChestLow; 651_T2:ChestTop; 651_T2:RShoulderBack; 651_T2:RShoulderTop
+651,651_T2_P1_R2,T2_R2,LFArm_to_LHand,6,651_T2:LElbowOut; 651_T2:LFArm; 651_T2:LHandIn; 651_T2:LHandOut; 651_T2:LUArmHigh; 651_T2:LWristOut
+651,651_T2_P1_R2,T2_R2,LShin_to_LFoot,4,651_T2:LAnkleOut; 651_T2:LHeel; 651_T2:LKneeOut; 651_T2:LShin
+651,651_T2_P1_R2,T2_R2,LShoulder_to_LUArm,3,651_T2:LShoulderBack; 651_T2:LShoulderTop; 651_T2:LUArmHigh
+651,651_T2_P1_R2,T2_R2,LThigh_to_LShin,5,651_T2:LKneeOut; 651_T2:LShin; 651_T2:LThighFront; 651_T2:LThighSide; 651_T2:WaistLBack
+651,651_T2_P1_R2,T2_R2,LUArm_to_LFArm,5,651_T2:LElbowOut; 651_T2:LFArm; 651_T2:LShoulderBack; 651_T2:LShoulderTop; 651_T2:LUArmHigh
+651,651_T2_P1_R2,T2_R2,Neck_to_Head,5,651_T2:BackTop; 651_T2:HeadFront; 651_T2:HeadLeft; 651_T2:HeadRight; 651_T2:HeadTop
+651,651_T2_P1_R2,T2_R2,RFArm_to_RHand,6,651_T2:RElbowOut; 651_T2:RFArm; 651_T2:RHandIn; 651_T2:RHandOut; 651_T2:RUArmHigh; 651_T2:RWristOut
+651,651_T2_P1_R2,T2_R2,RShin_to_RFoot,5,651_T2:RAnkleOut; 651_T2:RHeel; 651_T2:RKneeOut; 651_T2:RShin; 651_T2:RThighFront
+651,651_T2_P1_R2,T2_R2,RShoulder_to_RUArm,3,651_T2:RShoulderBack; 651_T2:RShoulderTop; 651_T2:RUArmHigh
+651,651_T2_P1_R2,T2_R2,RThigh_to_RShin,6,651_T2:RKneeOut; 651_T2:RShin; 651_T2:RThighFront; 651_T2:RThighSide; 651_T2:WaistRBack; 651_T2:WaistRFront
+651,651_T2_P1_R2,T2_R2,RUArm_to_RFArm,5,651_T2:RElbowOut; 651_T2:RFArm; 651_T2:RShoulderBack; 651_T2:RShoulderTop; 651_T2:RUArmHigh
+651,651_T3_P1_R1,T3_R1,651_to_Ab,0,
+651,651_T3_P1_R1,T3_R1,651_to_LThigh,3,651_T3:LThighFront; 651_T3:LThighSide; 651_T3:WaistLBack
+651,651_T3_P1_R1,T3_R1,651_to_RThigh,3,651_T3:RThighFront; 651_T3:RThighSide; 651_T3:WaistRBack
+651,651_T3_P1_R1,T3_R1,Ab_to_Chest,2,651_T3:ChestLow; 651_T3:ChestTop
+651,651_T3_P1_R1,T3_R1,Chest_to_LShoulder,4,651_T3:ChestLow; 651_T3:ChestTop; 651_T3:LShoulderBack; 651_T3:LShoulderTop
+651,651_T3_P1_R1,T3_R1,Chest_to_Neck,3,651_T3:BackTop; 651_T3:ChestLow; 651_T3:ChestTop
+651,651_T3_P1_R1,T3_R1,Chest_to_RShoulder,5,651_T3:BackRight; 651_T3:ChestLow; 651_T3:ChestTop; 651_T3:RShoulderBack; 651_T3:RShoulderTop
+651,651_T3_P1_R1,T3_R1,LFArm_to_LHand,5,651_T3:LElbowOut; 651_T3:LFArm; 651_T3:LHandIn; 651_T3:LHandOut; 651_T3:LWristOut
+651,651_T3_P1_R1,T3_R1,LShin_to_LFoot,4,651_T3:LAnkleOut; 651_T3:LHeel; 651_T3:LKneeOut; 651_T3:LShin
+651,651_T3_P1_R1,T3_R1,LShoulder_to_LUArm,4,651_T3:BackLeft; 651_T3:LShoulderBack; 651_T3:LShoulderTop; 651_T3:LUArmHigh
+651,651_T3_P1_R1,T3_R1,LThigh_to_LShin,5,651_T3:LKneeOut; 651_T3:LShin; 651_T3:LThighFront; 651_T3:LThighSide; 651_T3:WaistLBack
+651,651_T3_P1_R1,T3_R1,LUArm_to_LFArm,6,651_T3:BackLeft; 651_T3:LElbowOut; 651_T3:LFArm; 651_T3:LShoulderBack; 651_T3:LShoulderTop; 651_T3:LUArmHigh
+651,651_T3_P1_R1,T3_R1,Neck_to_Head,5,651_T3:BackTop; 651_T3:HeadFront; 651_T3:HeadLeft; 651_T3:HeadRight; 651_T3:HeadTop
+651,651_T3_P1_R1,T3_R1,RFArm_to_RHand,5,651_T3:RElbowOut; 651_T3:RFArm; 651_T3:RHandIn; 651_T3:RHandOut; 651_T3:RWristOut
+651,651_T3_P1_R1,T3_R1,RShin_to_RFoot,5,651_T3:RAnkleOut; 651_T3:RHeel; 651_T3:RKneeOut; 651_T3:RShin; 651_T3:RThighFront
+651,651_T3_P1_R1,T3_R1,RShoulder_to_RUArm,4,651_T3:BackRight; 651_T3:RShoulderBack; 651_T3:RShoulderTop; 651_T3:RUArmHigh
+651,651_T3_P1_R1,T3_R1,RThigh_to_RShin,5,651_T3:RKneeOut; 651_T3:RShin; 651_T3:RThighFront; 651_T3:RThighSide; 651_T3:WaistRBack
+651,651_T3_P1_R1,T3_R1,RUArm_to_RFArm,5,651_T3:RElbowOut; 651_T3:RFArm; 651_T3:RShoulderBack; 651_T3:RShoulderTop; 651_T3:RUArmHigh
+651,651_T3_P1_R2,T3_R2,651_to_Ab,0,
+651,651_T3_P1_R2,T3_R2,651_to_LThigh,3,651_T3:LThighFront; 651_T3:LThighSide; 651_T3:WaistLBack
+651,651_T3_P1_R2,T3_R2,651_to_RThigh,3,651_T3:RThighFront; 651_T3:RThighSide; 651_T3:WaistRBack
+651,651_T3_P1_R2,T3_R2,Ab_to_Chest,2,651_T3:ChestLow; 651_T3:ChestTop
+651,651_T3_P1_R2,T3_R2,Chest_to_LShoulder,4,651_T3:ChestLow; 651_T3:ChestTop; 651_T3:LShoulderBack; 651_T3:LShoulderTop
+651,651_T3_P1_R2,T3_R2,Chest_to_Neck,2,651_T3:ChestLow; 651_T3:ChestTop
+651,651_T3_P1_R2,T3_R2,Chest_to_RShoulder,5,651_T3:BackRight; 651_T3:ChestLow; 651_T3:ChestTop; 651_T3:RShoulderBack; 651_T3:RShoulderTop
+651,651_T3_P1_R2,T3_R2,LFArm_to_LHand,5,651_T3:LElbowOut; 651_T3:LFArm; 651_T3:LHandIn; 651_T3:LHandOut; 651_T3:LWristOut
+651,651_T3_P1_R2,T3_R2,LShin_to_LFoot,4,651_T3:LAnkleOut; 651_T3:LHeel; 651_T3:LKneeOut; 651_T3:LShin
+651,651_T3_P1_R2,T3_R2,LShoulder_to_LUArm,4,651_T3:BackLeft; 651_T3:LShoulderBack; 651_T3:LShoulderTop; 651_T3:LUArmHigh
+651,651_T3_P1_R2,T3_R2,LThigh_to_LShin,5,651_T3:LKneeOut; 651_T3:LShin; 651_T3:LThighFront; 651_T3:LThighSide; 651_T3:WaistLBack
+651,651_T3_P1_R2,T3_R2,LUArm_to_LFArm,6,651_T3:BackLeft; 651_T3:LElbowOut; 651_T3:LFArm; 651_T3:LShoulderBack; 651_T3:LShoulderTop; 651_T3:LUArmHigh
+651,651_T3_P1_R2,T3_R2,Neck_to_Head,4,651_T3:HeadFront; 651_T3:HeadLeft; 651_T3:HeadRight; 651_T3:HeadTop
+651,651_T3_P1_R2,T3_R2,RFArm_to_RHand,5,651_T3:RElbowOut; 651_T3:RFArm; 651_T3:RHandIn; 651_T3:RHandOut; 651_T3:RWristOut
+651,651_T3_P1_R2,T3_R2,RShin_to_RFoot,5,651_T3:RAnkleOut; 651_T3:RHeel; 651_T3:RKneeOut; 651_T3:RShin; 651_T3:RThighFront
+651,651_T3_P1_R2,T3_R2,RShoulder_to_RUArm,4,651_T3:BackRight; 651_T3:RShoulderBack; 651_T3:RShoulderTop; 651_T3:RUArmHigh
+651,651_T3_P1_R2,T3_R2,RThigh_to_RShin,5,651_T3:RKneeOut; 651_T3:RShin; 651_T3:RThighFront; 651_T3:RThighSide; 651_T3:WaistRBack
+651,651_T3_P1_R2,T3_R2,RUArm_to_RFArm,5,651_T3:RElbowOut; 651_T3:RFArm; 651_T3:RShoulderBack; 651_T3:RShoulderTop; 651_T3:RUArmHigh

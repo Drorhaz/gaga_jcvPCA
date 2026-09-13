@@ -35,6 +35,13 @@ mode:
   participant_specific: true      # primary mode; never merge participants in V1
   allow_cross_participant_exploratory: false  # optional exploratory UI mode only
 
+# --- marker-gap advisory exclusions (Step 3 transparency layer) ---
+# Session-scoped: drop link from comparisons that use a flagged session/rep.
+# Does not change selection YAML; recorded in ComparisonResult.excluded_links.
+analysis:
+  apply_marker_gap_removals: true
+  marker_gap_removals_csv: results_committee_case/step03_trunk_extension/marker_gap_link_removals_ex09_13.csv
+
 # --- statistical validation (decision 6) ---
 # Validation is an OPTIONAL stage run after per-participant results exist.
 validation:

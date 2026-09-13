@@ -1,0 +1,50 @@
+participant,marker_label,bone_token,related_links
+252,CV7,Neck,Chest_to_Neck; Neck_to_Neck2
+252,LAH,Head,Neck2_to_Head
+252,LCAJ,LUArm,LShoulder_to_LUArm; LUArm_to_LFArm
+252,LDP1,LToe,
+252,LFAL,LFoot,LShin_to_LFoot
+252,LFAX,LShin,LShin_to_LFoot; LThigh_to_LShin
+252,LFCC,LFoot,LShin_to_LFoot
+252,LFLE,LShin,LShin_to_LFoot; LThigh_to_LShin
+252,LFM1,LToe,
+252,LFM5,LToe,
+252,LFTC,LThigh,252_to_LThigh; LThigh_to_LShin
+252,LHGT,LUArm,LShoulder_to_LUArm; LUArm_to_LFArm
+252,LHLE,LFArm,LFArm_to_LHand; LUArm_to_LFArm
+252,LHM2,LRing1,
+252,LIAS,Spine3,Spine2_to_Spine3; Spine3_to_Spine4
+252,LIPS,LThigh,252_to_LThigh; LThigh_to_LShin
+252,LPH,Head,Neck2_to_Head
+252,LRSP,LHand,LFArm_to_LHand
+252,LSK,LShin,LShin_to_LFoot; LThigh_to_LShin
+252,LTH,LShin,LShin_to_LFoot; LThigh_to_LShin
+252,LUA,LUArm,LShoulder_to_LUArm; LUArm_to_LFArm
+252,LUSP,LHand,LFArm_to_LHand
+252,RAH,Head,Neck2_to_Head
+252,RCAJ,RUArm,RShoulder_to_RUArm; RUArm_to_RFArm
+252,RDP1,RToe,
+252,RFAL,RFoot,RShin_to_RFoot
+252,RFAX,RShin,RShin_to_RFoot; RThigh_to_RShin
+252,RFCC,RFoot,RShin_to_RFoot
+252,RFLE,RShin,RShin_to_RFoot; RThigh_to_RShin
+252,RFM1,RToe,
+252,RFM5,RToe,
+252,RFTC,RThigh,252_to_RThigh; RThigh_to_RShin
+252,RHGT,RUArm,RShoulder_to_RUArm; RUArm_to_RFArm
+252,RHLE,RFArm,RFArm_to_RHand; RUArm_to_RFArm
+252,RHM2,RIndex1,
+252,RIAS,Spine3,Spine2_to_Spine3; Spine3_to_Spine4
+252,RIPS,Ab,252_to_Ab; Ab_to_Spine2
+252,RPH,Head,Neck2_to_Head
+252,RRSP,RThumb2,
+252,RSK,RFoot,RShin_to_RFoot
+252,RTH,RShin,RShin_to_RFoot; RThigh_to_RShin
+252,RTTC,RShin,RShin_to_RFoot; RThigh_to_RShin
+252,RUA,RFArm,RFArm_to_RHand; RUArm_to_RFArm
+252,RUSP,RPinky1,
+252,SJN,Neck,Chest_to_Neck; Neck_to_Neck2
+252,SXS,Chest,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest
+252,TV2,LShoulder,Chest_to_LShoulder; LShoulder_to_LUArm
+252,TV7,Chest,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest
+252,Unlabeled 2739,LShin,LShin_to_LFoot; LThigh_to_LShin

@@ -21,7 +21,7 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 
-from gaga_jcvpca import jcvpca
+from gaga_jcvpca import jcvpca, nv_profile
 from gaga_jcvpca.schemas import ValidationStrength
 
 
@@ -57,11 +57,20 @@ def natural_variability_baseline(
     longitudinal: jcvpca.ComparisonResult,
     natural_variability: jcvpca.ComparisonResult,
     comparison_label: Optional[str] = None,
+    longitudinal_reverse: Optional[jcvpca.ComparisonResult] = None,
+    weighted: bool = True,
+    eps_sign: float = nv_profile.EPS_SIGN,
 ) -> list[ValidationConclusion]:
     """Compare each longitudinal link delta to the R1-vs-R2 (NV) delta magnitude.
 
     Effect ratio = |longitudinal Δ| / (|NV Δ| + eps). Ratio > 1 means the
     longitudinal change is larger than the observed repetition-level variability.
+    This abs ratio is the **deprecated-secondary** read (v6).
+
+    When ``longitudinal_reverse`` (a ``T1_R2``-anchored comparison) is supplied, the
+    **v6 signed NV profile** is also emitted per link: one ``nv_profile_tier``
+    conclusion (S0/S1/S2) using the reference-direction-stability rule from
+    :mod:`gaga_jcvpca.nv_profile`. S2 is the A2 gate.
 
     When ``comparison_label`` is given (e.g. the longitudinal comparison id), it is
     appended to each conclusion's scope as ``<link>@<label>`` so several
@@ -100,6 +109,41 @@ def natural_variability_baseline(
                 ),
             )
         )
+
+    if longitudinal_reverse is not None:
+        profile = nv_profile.compute_link_nv_metrics(
+            natural_variability.link_table,
+            longitudinal.link_table,
+            longitudinal_reverse.link_table,
+            weighted=weighted,
+            eps_sign=eps_sign,
+        )
+        for _, row in profile.iterrows():
+            link = row["link_id"]
+            tier = row["nv_profile_tier"]
+            scope = f"{link}@{comparison_label}" if comparison_label else link
+            prefix = f"[{comparison_label}] " if comparison_label else ""
+            supported = tier == nv_profile.TIER_S2
+            conclusions.append(
+                ValidationConclusion(
+                    method="nv_profile_signed",
+                    scope=scope,
+                    metric="nv_profile_tier",
+                    value=float(row["matched_abs_ratio"]),
+                    strength=(
+                        ValidationStrength.SENSITIVITY_SUPPORTED.value
+                        if supported
+                        else ValidationStrength.DESCRIPTIVE_ONLY.value
+                    ),
+                    message=(
+                        f"{prefix}{link}: signed NV tier {tier} "
+                        f"(magnitude_exceed={bool(row['magnitude_exceed'])}, "
+                        f"reference_direction_stable={bool(row['sign_reference_stable'])}"
+                        f"{', nv_floor_unstable' if bool(row['nv_floor_unstable']) else ''}); "
+                        f"{'meets A2 signed-consistent exceed (S2)' if supported else 'not counted as validated exceed'}."
+                    ),
+                )
+            )
     return conclusions
 
 

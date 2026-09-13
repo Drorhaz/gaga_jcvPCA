@@ -8,7 +8,7 @@ from gaga_jcvpca.naming import NamingMap
 
 def test_find_segmentation_workbooks(config):
     wbs = project_io.find_segmentation_workbooks(config.resolve_path("data.segmentation"))
-    assert set(wbs.keys()) == {"671", "252"}
+    assert set(wbs.keys()) == {"671", "252", "651", "790"}
 
 
 def test_load_segments_exercise_id_authoritative(config):
@@ -22,7 +22,6 @@ def test_load_segments_exercise_id_authoritative(config):
     ex09 = next(s for s in segs if s.exercise_id == 9)
     assert ex09.canonical_label == "ex09"
     assert ex09.group_id == "Group4"
-    assert ex09.gaga_alias == "P1"
     assert ex09.n_frames > 0
 
 

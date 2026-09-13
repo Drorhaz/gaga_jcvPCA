@@ -1,0 +1,13 @@
+participant,region,region_label,n_links_excluded
+252,left_leg,Left leg,2
+651,head_neck,Head/neck,2
+651,left_arm,Left arm,1
+651,left_leg,Left leg,2
+651,other,Other,1
+651,right_arm,Right arm,1
+651,right_leg,Right leg,1
+651,trunk_spine,Trunk/spine,1
+671,left_leg,Left leg,2
+671,trunk_spine,Trunk/spine,1
+790,right_arm,Right arm,2
+790,trunk_spine,Trunk/spine,2

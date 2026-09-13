@@ -1,0 +1,23 @@
+participant,space,link_id,T1_vs_T3_status,T1_vs_T3_JcvPCA_mean,T1_vs_T3_JcvPCA_abs_mean,T1_vs_T3_n_pcs,T1_vs_T3_QC_exclusion,NV_T1R1_vs_T1R2_status,NV_JcvPCA_mean,NV_JcvPCA_abs_mean,NV_n_pcs,NV_QC_exclusion
+252,null_PC3_to_m,252_to_Ab,included,7.4e-05,0.012593,8.0,,included,-0.004133,0.017544,7.0,
+252,null_PC3_to_m,252_to_LThigh,included,-0.005684,0.059979,8.0,,included,-0.043805,0.099513,7.0,
+252,null_PC3_to_m,252_to_RThigh,included,-0.009223,0.126687,8.0,,included,-0.018652,0.0694,7.0,
+252,null_PC3_to_m,Ab_to_Spine2,included,7.6e-05,0.011807,8.0,,included,-0.003067,0.016201,7.0,
+252,null_PC3_to_m,Chest_to_LShoulder,included,-0.006098,0.033125,8.0,,included,0.003137,0.023529,7.0,
+252,null_PC3_to_m,Chest_to_Neck,included,0.002413,0.028338,8.0,,included,-0.004067,0.034393,7.0,
+252,null_PC3_to_m,Chest_to_RShoulder,included,-0.002865,0.040274,8.0,,included,-0.002511,0.036684,7.0,
+252,null_PC3_to_m,LFArm_to_LHand,included,0.010604,0.067746,8.0,,included,0.012745,0.146375,7.0,
+252,null_PC3_to_m,LShin_to_LFoot,excluded,,,,"marker_gap_policy: T1_R2 — Supporting marker `252:LFAX` has 13.2% of ex09-13 window in large gaps (>0.5 s, 2 ",excluded,,,,"marker_gap_policy: T1_R2 — Supporting marker `252:LFAX` has 13.2% of ex09-13 window in large gaps (>0.5 s, 2 "
+252,null_PC3_to_m,LShoulder_to_LUArm,included,0.008868,0.168287,8.0,,included,-0.001603,0.105812,7.0,
+252,null_PC3_to_m,LThigh_to_LShin,excluded,,,,"marker_gap_policy: T1_R2 — Supporting marker `252:LFAX` has 13.2% of ex09-13 window in large gaps (>0.5 s, 2 ",excluded,,,,"marker_gap_policy: T1_R2 — Supporting marker `252:LFAX` has 13.2% of ex09-13 window in large gaps (>0.5 s, 2 "
+252,null_PC3_to_m,LUArm_to_LFArm,included,-0.074669,0.224053,8.0,,included,-0.011044,0.125222,7.0,
+252,null_PC3_to_m,Neck2_to_Head,included,0.002387,0.028266,8.0,,included,-0.004034,0.034375,7.0,
+252,null_PC3_to_m,Neck_to_Neck2,included,0.00239,0.028266,8.0,,included,-0.004045,0.034369,7.0,
+252,null_PC3_to_m,RFArm_to_RHand,included,0.037928,0.10899,8.0,,included,0.019074,0.079077,7.0,
+252,null_PC3_to_m,RShin_to_RFoot,included,-0.004894,0.059137,8.0,,included,0.002713,0.040305,7.0,
+252,null_PC3_to_m,RShoulder_to_RUArm,included,0.01444,0.22407,8.0,,included,-0.019342,0.201331,7.0,
+252,null_PC3_to_m,RThigh_to_RShin,included,0.005953,0.178284,8.0,,included,0.023641,0.082737,7.0,
+252,null_PC3_to_m,RUArm_to_RFArm,included,-0.030731,0.222875,8.0,,included,0.047389,0.193018,7.0,
+252,null_PC3_to_m,Spine2_to_Spine3,included,7.7e-05,0.011805,8.0,,included,-0.003066,0.016214,7.0,
+252,null_PC3_to_m,Spine3_to_Spine4,included,7.6e-05,0.011803,8.0,,included,-0.003067,0.016206,7.0,
+252,null_PC3_to_m,Spine4_to_Chest,included,7.6e-05,0.011804,8.0,,included,-0.003067,0.016203,7.0,

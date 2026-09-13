@@ -1,0 +1,225 @@
+{
+  "run_id": "671_ex14_single_pooled",
+  "datetime": "2026-07-07T19:19:48",
+  "git_hash": "e243a72fa5a6dd6ade968dd9b5953a38155ff4b4",
+  "science_hash": "a07b6fa5a6d4ed12",
+  "participant": "671",
+  "participant_specific": true,
+  "variance_threshold": 0.8,
+  "filter_settings": {
+    "cutoff_hz": 10.0,
+    "order": 4,
+    "filter_type": "butterworth_lowpass",
+    "jump_context_window_frames": 30,
+    "frame_rate_hz": 120.0
+  },
+  "selection": {
+    "name": "671_ex14_single",
+    "participant": "671",
+    "exercise_ids": [
+      14
+    ],
+    "combine_exercises": false,
+    "links": [
+      {
+        "link": "Chest_to_LShoulder",
+        "region": "left_arm",
+        "included": true,
+        "reason": "Clean QC; included by default.",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "Chest_to_Neck",
+        "region": "head_neck",
+        "included": true,
+        "reason": "Clean QC; included by default.",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "Chest_to_RShoulder",
+        "region": "right_arm",
+        "included": true,
+        "reason": "Clean QC; included by default.",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "LFArm_to_LHand",
+        "region": "left_arm",
+        "included": true,
+        "reason": "Clean QC; included by default.",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "LShin_to_LFoot",
+        "region": "left_leg",
+        "included": true,
+        "reason": "Clean QC; included by default.",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "LShoulder_to_LUArm",
+        "region": "left_arm",
+        "included": true,
+        "reason": "Clean QC; included by default.",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "LThigh_to_LShin",
+        "region": "left_leg",
+        "included": true,
+        "reason": "Clean QC; included by default.",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "LUArm_to_LFArm",
+        "region": "left_arm",
+        "included": true,
+        "reason": "Clean QC; included by default.",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "Neck_to_Head",
+        "region": "head_neck",
+        "included": true,
+        "reason": "Clean QC; included by default.",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "RFArm_to_RHand",
+        "region": "right_arm",
+        "included": true,
+        "reason": "Clean QC; included by default.",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "RShin_to_RFoot",
+        "region": "right_leg",
+        "included": true,
+        "reason": "Clean QC; included by default.",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "RShoulder_to_RUArm",
+        "region": "right_arm",
+        "included": true,
+        "reason": "Clean QC; included by default.",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "RThigh_to_RShin",
+        "region": "right_leg",
+        "included": true,
+        "reason": "Clean QC; included by default.",
+        "qc_recommendation": "include",
+        "user_override": false
+      },
+      {
+        "link": "RUArm_to_RFArm",
+        "region": "right_arm",
+        "included": true,
+        "reason": "Clean QC; included by default.",
+        "qc_recommendation": "include",
+        "user_override": false
+      }
+    ],
+    "notes": "Exploration selection: single exercise window(s) [14] for participant 671.",
+    "created_at": "2026-07-07T19:19:42"
+  },
+  "comparisons": [
+    {
+      "comparison_id": "671_T1_vs_T2",
+      "kind": "longitudinal",
+      "a_label": "671_T1_R1+R2",
+      "b_label": "671_T2_R1+R2",
+      "selected_m": 6,
+      "variance_threshold": 0.8,
+      "included_links": [
+        "Chest_to_LShoulder",
+        "Chest_to_Neck",
+        "Chest_to_RShoulder",
+        "LFArm_to_LHand",
+        "LShin_to_LFoot",
+        "LShoulder_to_LUArm",
+        "LThigh_to_LShin",
+        "LUArm_to_LFArm",
+        "Neck_to_Head",
+        "RFArm_to_RHand",
+        "RShin_to_RFoot",
+        "RShoulder_to_RUArm",
+        "RThigh_to_RShin",
+        "RUArm_to_RFArm"
+      ],
+      "excluded_links": {},
+      "warnings": []
+    },
+    {
+      "comparison_id": "671_T1_vs_T3",
+      "kind": "longitudinal",
+      "a_label": "671_T1_R1+R2",
+      "b_label": "671_T3_R1+R2",
+      "selected_m": 6,
+      "variance_threshold": 0.8,
+      "included_links": [
+        "Chest_to_LShoulder",
+        "Chest_to_Neck",
+        "Chest_to_RShoulder",
+        "LFArm_to_LHand",
+        "LShin_to_LFoot",
+        "LShoulder_to_LUArm",
+        "LThigh_to_LShin",
+        "LUArm_to_LFArm",
+        "Neck_to_Head",
+        "RFArm_to_RHand",
+        "RShin_to_RFoot",
+        "RShoulder_to_RUArm",
+        "RThigh_to_RShin",
+        "RUArm_to_RFArm"
+      ],
+      "excluded_links": {},
+      "warnings": []
+    },
+    {
+      "comparison_id": "671_T1_R1_vs_R2",
+      "kind": "natural_variability",
+      "a_label": "671_T1_P1_R1",
+      "b_label": "671_T1_P1_R2",
+      "selected_m": 6,
+      "variance_threshold": 0.8,
+      "included_links": [
+        "Chest_to_LShoulder",
+        "Chest_to_Neck",
+        "Chest_to_RShoulder",
+        "LFArm_to_LHand",
+        "LShin_to_LFoot",
+        "LShoulder_to_LUArm",
+        "LThigh_to_LShin",
+        "LUArm_to_LFArm",
+        "Neck_to_Head",
+        "RFArm_to_RHand",
+        "RShin_to_RFoot",
+        "RShoulder_to_RUArm",
+        "RThigh_to_RShin",
+        "RUArm_to_RFArm"
+      ],
+      "excluded_links": {},
+      "warnings": []
+    }
+  ],
+  "marker_set_difference_notes": {
+    "671": "Marker-set prefix differs across timepoints (['671', 'T3']). Cross-timepoint comparisons restricted to shared valid links; interpret with care."
+  },
+  "input_files": [],
+  "user_overrides": []
+}

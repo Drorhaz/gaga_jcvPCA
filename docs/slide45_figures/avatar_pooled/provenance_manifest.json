@@ -1,0 +1,98 @@
+{
+  "generated_at": "2026-07-30T15:37:23",
+  "source": "/Users/drorhazan/Desktop/gaga_psilo/projects/gaga_jcvpca/results_committee_case/marker_gap_policy_ex09_13/step04_primary_runs",
+  "run_suffix": "ex09_13_contiguous_pooled",
+  "estimand": "pooled combined all-PC JcvPCA: EVR-weighted |\u0394|/|NV| magnitude ratio + EVR-weighted signed sum for direction (MASTER_EXECUTION_PLAN signed-aggregation lock); unweighted pipeline ratio retained as effect_ratio_unweighted",
+  "amplitude_reference": "step05_amplitude_vs_organization/rom_rms_by_link.csv",
+  "rom_flat_band": [
+    0.7,
+    1.3
+  ],
+  "direction_stability_source": "step08_nv_and_stability/NV_PROFILE.csv:sign_reference_stable",
+  "comparisons": [
+    "T1_vs_T2",
+    "T1_vs_T3"
+  ],
+  "summary": [
+    {
+      "participant": "671",
+      "comparison": "T1_vs_T2",
+      "n_links": 18,
+      "n_above_variability": 8,
+      "n_increase": 8,
+      "n_decrease": 0,
+      "n_amplitude_flat": 7,
+      "n_direction_unresolved": 2
+    },
+    {
+      "participant": "671",
+      "comparison": "T1_vs_T3",
+      "n_links": 18,
+      "n_above_variability": 6,
+      "n_increase": 4,
+      "n_decrease": 2,
+      "n_amplitude_flat": 3,
+      "n_direction_unresolved": 2
+    },
+    {
+      "participant": "252",
+      "comparison": "T1_vs_T2",
+      "n_links": 22,
+      "n_above_variability": 4,
+      "n_increase": 3,
+      "n_decrease": 1,
+      "n_amplitude_flat": 4,
+      "n_direction_unresolved": 1
+    },
+    {
+      "participant": "252",
+      "comparison": "T1_vs_T3",
+      "n_links": 22,
+      "n_above_variability": 9,
+      "n_increase": 6,
+      "n_decrease": 3,
+      "n_amplitude_flat": 9,
+      "n_direction_unresolved": 0
+    },
+    {
+      "participant": "651",
+      "comparison": "T1_vs_T2",
+      "n_links": 18,
+      "n_above_variability": 9,
+      "n_increase": 3,
+      "n_decrease": 6,
+      "n_amplitude_flat": 8,
+      "n_direction_unresolved": 1
+    },
+    {
+      "participant": "651",
+      "comparison": "T1_vs_T3",
+      "n_links": 18,
+      "n_above_variability": 8,
+      "n_increase": 3,
+      "n_decrease": 5,
+      "n_amplitude_flat": 6,
+      "n_direction_unresolved": 3
+    },
+    {
+      "participant": "790",
+      "comparison": "T1_vs_T2",
+      "n_links": 22,
+      "n_above_variability": 4,
+      "n_increase": 3,
+      "n_decrease": 1,
+      "n_amplitude_flat": 3,
+      "n_direction_unresolved": 1
+    },
+    {
+      "participant": "790",
+      "comparison": "T1_vs_T3",
+      "n_links": 22,
+      "n_above_variability": 7,
+      "n_increase": 1,
+      "n_decrease": 6,
+      "n_amplitude_flat": 7,
+      "n_direction_unresolved": 0
+    }
+  ]
+}

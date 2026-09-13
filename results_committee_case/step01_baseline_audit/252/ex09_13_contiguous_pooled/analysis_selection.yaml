@@ -1,0 +1,109 @@
+name: 252_ex09_13_contiguous
+participant: '252'
+exercise_ids:
+- 9
+- 10
+- 11
+- 12
+- 13
+combine_exercises: true
+links:
+- link: 252_to_LThigh
+  region: left_leg
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: 252_to_RThigh
+  region: right_leg
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: Chest_to_LShoulder
+  region: left_arm
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: Chest_to_Neck
+  region: head_neck
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: Chest_to_RShoulder
+  region: right_arm
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: LFArm_to_LHand
+  region: left_arm
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: LShin_to_LFoot
+  region: left_leg
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: LShoulder_to_LUArm
+  region: left_arm
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: LThigh_to_LShin
+  region: left_leg
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: LUArm_to_LFArm
+  region: left_arm
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: Neck_to_Head
+  region: head_neck
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: RFArm_to_RHand
+  region: right_arm
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: RShin_to_RFoot
+  region: right_leg
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: RShoulder_to_RUArm
+  region: right_arm
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: RThigh_to_RShin
+  region: right_leg
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+- link: RUArm_to_RFArm
+  region: right_arm
+  included: true
+  reason: Clean QC; included by default.
+  qc_recommendation: include
+  user_override: false
+notes: 'Exploration selection: combined exercise window(s) [9, 10, 11, 12, 13] for
+  participant 252.'
+created_at: '2026-07-07T19:21:13'

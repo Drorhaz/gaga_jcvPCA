@@ -1,0 +1,9 @@
+participant,comparison,n_links,n_a2_single_rep,n_same_sign_pooled_single,n_sign_flip,mean_abs_pooled_signed,mean_abs_single_signed,basis_caveat
+252,T1_vs_T2,20,3,16,4,0.00456,0.004834,Pooled uses mixed T1 anchor; A2 uses T1_R1 only
+252,T1_vs_T3,20,12,14,6,0.018949,0.016713,Pooled uses mixed T1 anchor; A2 uses T1_R1 only
+651,T1_vs_T2,10,4,9,1,0.022716,0.025168,Pooled uses mixed T1 anchor; A2 uses T1_R1 only
+651,T1_vs_T3,10,2,6,3,0.02484,0.012942,Pooled uses mixed T1 anchor; A2 uses T1_R1 only
+671,T1_vs_T2,18,8,16,2,0.016283,0.014833,Pooled uses mixed T1 anchor; A2 uses T1_R1 only
+671,T1_vs_T3,17,9,9,6,0.022218,0.023492,Pooled uses mixed T1 anchor; A2 uses T1_R1 only
+790,T1_vs_T2,20,7,8,12,0.007363,0.007955,Pooled uses mixed T1 anchor; A2 uses T1_R1 only
+790,T1_vs_T3,18,3,9,9,0.009245,0.008104,Pooled uses mixed T1 anchor; A2 uses T1_R1 only

@@ -1,0 +1,23 @@
+participant,space,link_id,T1_vs_T3_status,T1_vs_T3_JcvPCA_mean,T1_vs_T3_JcvPCA_abs_mean,T1_vs_T3_n_pcs,T1_vs_T3_QC_exclusion,NV_T1R1_vs_T1R2_status,NV_JcvPCA_mean,NV_JcvPCA_abs_mean,NV_n_pcs,NV_QC_exclusion
+252,functional_PC1-2,252_to_Ab,included,-0.000897,0.005805,2.0,,included,0.004383,0.004725,2.0,
+252,functional_PC1-2,252_to_LThigh,included,0.037207,0.037207,2.0,,included,0.008725,0.008725,2.0,
+252,functional_PC1-2,252_to_RThigh,included,0.083983,0.11274,2.0,,included,-0.003098,0.010104,2.0,
+252,functional_PC1-2,Ab_to_Spine2,included,-0.001256,0.006875,2.0,,included,0.003132,0.009996,2.0,
+252,functional_PC1-2,Chest_to_LShoulder,included,0.028816,0.043485,2.0,,included,-0.013078,0.013078,2.0,
+252,functional_PC1-2,Chest_to_Neck,included,0.016346,0.016346,2.0,,included,0.005906,0.008477,2.0,
+252,functional_PC1-2,Chest_to_RShoulder,included,-0.000501,0.033033,2.0,,included,0.019183,0.045157,2.0,
+252,functional_PC1-2,LFArm_to_LHand,included,0.051293,0.058686,2.0,,included,-0.012982,0.0286,2.0,
+252,functional_PC1-2,LShin_to_LFoot,excluded,,,,"marker_gap_policy: T1_R2 — Supporting marker `252:LFAX` has 13.2% of ex09-13 window in large gaps (>0.5 s, 2 ",excluded,,,,"marker_gap_policy: T1_R2 — Supporting marker `252:LFAX` has 13.2% of ex09-13 window in large gaps (>0.5 s, 2 "
+252,functional_PC1-2,LShoulder_to_LUArm,included,-0.039318,0.18191,2.0,,included,-0.024081,0.024081,2.0,
+252,functional_PC1-2,LThigh_to_LShin,excluded,,,,"marker_gap_policy: T1_R2 — Supporting marker `252:LFAX` has 13.2% of ex09-13 window in large gaps (>0.5 s, 2 ",excluded,,,,"marker_gap_policy: T1_R2 — Supporting marker `252:LFAX` has 13.2% of ex09-13 window in large gaps (>0.5 s, 2 "
+252,functional_PC1-2,LUArm_to_LFArm,included,-0.054016,0.471398,2.0,,included,-0.097523,0.220517,2.0,
+252,functional_PC1-2,Neck2_to_Head,included,0.016471,0.016471,2.0,,included,0.005926,0.008485,2.0,
+252,functional_PC1-2,Neck_to_Neck2,included,0.016445,0.016445,2.0,,included,0.005916,0.008469,2.0,
+252,functional_PC1-2,RFArm_to_RHand,included,-0.070049,0.070049,2.0,,included,0.000173,0.050783,2.0,
+252,functional_PC1-2,RShin_to_RFoot,included,0.024954,0.048324,2.0,,included,-0.006918,0.009587,2.0,
+252,functional_PC1-2,RShoulder_to_RUArm,included,-0.090033,0.159413,2.0,,included,0.05028,0.141177,2.0,
+252,functional_PC1-2,RThigh_to_RShin,included,0.111342,0.140678,2.0,,included,-0.067998,0.067998,2.0,
+252,functional_PC1-2,RUArm_to_RFArm,included,0.065319,0.551503,2.0,,included,-0.083234,0.083234,2.0,
+252,functional_PC1-2,Spine2_to_Spine3,included,-0.001274,0.006908,2.0,,included,0.003138,0.009996,2.0,
+252,functional_PC1-2,Spine3_to_Spine4,included,-0.001265,0.006894,2.0,,included,0.003135,0.009991,2.0,
+252,functional_PC1-2,Spine4_to_Chest,included,-0.001261,0.006885,2.0,,included,0.003133,0.009992,2.0,

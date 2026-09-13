@@ -64,7 +64,6 @@ class ExerciseSegment:
     start_frame: int
     end_frame: int
     group_id: Optional[str] = None      # Group1..Group6 if the id falls in a group range
-    gaga_alias: Optional[str] = None    # P1..P5 for exercise_id 9..13, else None
 
     @property
     def n_frames(self) -> int:

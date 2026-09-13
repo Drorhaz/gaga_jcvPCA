@@ -1,0 +1,8 @@
+participant,comparison_id,reference_timepoint,target_timepoint,space,region_id,region_label,n_links_in_region,n_a2_links,long_abs_mean_region,nv_abs_mean_region,effect_ratio_vs_nv_region,exceeds_nv_region,top_link_id,top_link_effect_ratio,avatar_color_category_region,interpretation
+651,651_T1_vs_T2,T1,T2,combined,head_neck,Head / Neck,2,0,,,,False,Chest_to_Neck,,neutral,Matched single-rep A2/S-tier from marker-gap ex09_13 run; descriptive only — not a treatment effect.
+651,651_T1_vs_T2,T1,T2,combined,left_arm,Left arm,4,2,0.041073,0.022365,1.8365,True,LUArm_to_LFArm,7.358,colored,Matched single-rep A2/S-tier from marker-gap ex09_13 run; descriptive only — not a treatment effect.
+651,651_T1_vs_T2,T1,T2,combined,left_leg,Left leg,3,0,0.006202,0.008181,0.7581,False,LShin_to_LFoot,0.8682,neutral,Matched single-rep A2/S-tier from marker-gap ex09_13 run; descriptive only — not a treatment effect.
+651,651_T1_vs_T2,T1,T2,combined,other,other,1,0,,,,False,651_to_Ab,,neutral,Matched single-rep A2/S-tier from marker-gap ex09_13 run; descriptive only — not a treatment effect.
+651,651_T1_vs_T2,T1,T2,combined,right_arm,Right arm,4,1,0.030696,0.02355,1.3034,True,RShoulder_to_RUArm,6.0436,colored,Matched single-rep A2/S-tier from marker-gap ex09_13 run; descriptive only — not a treatment effect.
+651,651_T1_vs_T2,T1,T2,combined,right_leg,Right leg,3,1,0.011983,0.001619,7.4015,True,RThigh_to_RShin,29.0969,colored,Matched single-rep A2/S-tier from marker-gap ex09_13 run; descriptive only — not a treatment effect.
+651,651_T1_vs_T2,T1,T2,combined,trunk_spine,Trunk / Spine,1,0,,,,False,Ab_to_Chest,,neutral,Matched single-rep A2/S-tier from marker-gap ex09_13 run; descriptive only — not a treatment effect.

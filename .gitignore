@@ -2,8 +2,14 @@
 __pycache__/
 *.pyc
 .pytest_cache/
-outputs/runs/
+.cursor/
+.DS_Store
+**/.DS_Store
+~$*
+
+# Regenerable rotation-vector caches (rebuild with scripts/run_convert.py).
 outputs/cache/
+
 # Large raw captures are referenced via configs/paths.yaml, not committed.
 data/raw_skeleton/
 data/raw_markers/

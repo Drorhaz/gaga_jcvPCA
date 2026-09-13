@@ -1,0 +1,23 @@
+participant,space,link_id,T1_vs_T3_status,T1_vs_T3_JcvPCA_mean,T1_vs_T3_JcvPCA_abs_mean,T1_vs_T3_n_pcs,T1_vs_T3_QC_exclusion,NV_T1R1_vs_T1R2_status,NV_JcvPCA_mean,NV_JcvPCA_abs_mean,NV_n_pcs,NV_QC_exclusion
+790,functional_PC1-2,790_to_Ab,included,0.003827,0.015935,2.0,,included,-0.027555,0.027555,2.0,
+790,functional_PC1-2,790_to_LThigh,included,0.034305,0.034305,2.0,,included,-0.082419,0.092501,2.0,
+790,functional_PC1-2,790_to_RThigh,included,-0.003715,0.048714,2.0,,included,-0.104001,0.104001,2.0,
+790,functional_PC1-2,Ab_to_Spine2,excluded,,,,"marker_gap_policy: T3_R1 — Supporting marker `790:RIPS` has 19.2% of ex09-13 window in large gaps (>0.5 s, 2 ",included,-0.025626,0.025626,2.0,
+790,functional_PC1-2,Chest_to_LShoulder,included,0.022305,0.048054,2.0,,included,0.007218,0.008204,2.0,
+790,functional_PC1-2,Chest_to_Neck,included,-0.014592,0.014592,2.0,,included,-0.002264,0.030049,2.0,
+790,functional_PC1-2,Chest_to_RShoulder,included,0.025005,0.025005,2.0,,included,-0.025026,0.025026,2.0,
+790,functional_PC1-2,LFArm_to_LHand,included,0.019936,0.019936,2.0,,included,0.173636,0.173636,2.0,
+790,functional_PC1-2,LShin_to_LFoot,included,-0.008032,0.008032,2.0,,included,0.00087,0.016747,2.0,
+790,functional_PC1-2,LShoulder_to_LUArm,included,0.044961,0.060716,2.0,,included,0.040364,0.352995,2.0,
+790,functional_PC1-2,LThigh_to_LShin,included,0.024653,0.024653,2.0,,included,-0.041734,0.146882,2.0,
+790,functional_PC1-2,LUArm_to_LFArm,included,-0.125724,0.125724,2.0,,included,0.034886,0.034886,2.0,
+790,functional_PC1-2,Neck2_to_Head,included,-0.01449,0.01449,2.0,,included,-0.002258,0.029945,2.0,
+790,functional_PC1-2,Neck_to_Neck2,included,-0.014491,0.014491,2.0,,included,-0.00228,0.029908,2.0,
+790,functional_PC1-2,RFArm_to_RHand,excluded,,,,"marker_gap_policy: T1_R2 — Supporting marker `790:RHLE` has 99.4% of ex09-13 window in large gaps (>0.5 s, 3 ",excluded,,,,"marker_gap_policy: T1_R2 — Supporting marker `790:RHLE` has 99.4% of ex09-13 window in large gaps (>0.5 s, 3 "
+790,functional_PC1-2,RShin_to_RFoot,included,-0.013671,0.013671,2.0,,included,0.015157,0.053975,2.0,
+790,functional_PC1-2,RShoulder_to_RUArm,included,0.138882,0.138882,2.0,,included,-0.101227,0.142525,2.0,
+790,functional_PC1-2,RThigh_to_RShin,included,0.03205,0.064745,2.0,,included,-0.157925,0.157925,2.0,
+790,functional_PC1-2,RUArm_to_RFArm,excluded,,,,"marker_gap_policy: T1_R2 — Supporting marker `790:RHLE` has 99.4% of ex09-13 window in large gaps (>0.5 s, 3 ",excluded,,,,"marker_gap_policy: T1_R2 — Supporting marker `790:RHLE` has 99.4% of ex09-13 window in large gaps (>0.5 s, 3 "
+790,functional_PC1-2,Spine2_to_Spine3,excluded,,,,"marker_gap_policy: T3_R1 — Supporting marker `790:RIPS` has 19.2% of ex09-13 window in large gaps (>0.5 s, 2 ",included,-0.025633,0.025633,2.0,
+790,functional_PC1-2,Spine3_to_Spine4,included,0.003942,0.016004,2.0,,included,-0.025634,0.025634,2.0,
+790,functional_PC1-2,Spine4_to_Chest,included,0.003945,0.016005,2.0,,included,-0.025632,0.025632,2.0,

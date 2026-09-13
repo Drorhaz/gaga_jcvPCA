@@ -34,7 +34,7 @@ def test_snapshot_dataframes_render(config):
     rows = snap.inventory.rows_dataframe()
     segs = snap.inventory.segments_dataframe()
     assert set(["session_id", "status", "n_exercises"]).issubset(rows.columns)
-    assert set(["canonical_label", "gaga_alias", "group_id"]).issubset(segs.columns)
+    assert set(["canonical_label", "group_id"]).issubset(segs.columns)
     assert len(rows) >= 12
     assert len(segs) > 0
 

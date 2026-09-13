@@ -5,15 +5,14 @@
 # is derived as ex{exercise_id:02d}. This file does NOT hardcode the exercise set;
 # it only records the well-known aliases and group mapping for display + mapping.
 #
-# THREE "P" NAMESPACES (kept explicit to remove ambiguity):
+# TWO NAMESPACES (kept explicit to remove ambiguity):
 #   1. task_part  -> the P in a session key {pid}_T{t}_P{part}_R{rep}. P1 = Task Part 1.
-#   2. gaga_alias -> P1..P5 label ONLY for exercise_id 9..13 inside Group 4.
-#   3. canonical  -> ex{NN} derived from the authoritative exercise_id.
+#   2. canonical  -> ex{NN} derived from the authoritative exercise_id.
 
 # Canonical label format applied to every segmentation row.
 canonical_label_format: "ex{exercise_id:02d}"
 
-# Session-key token meanings (never confuse with gaga_alias P1-P5).
+# Session-key token meanings (P = task part, not exercise).
 session_key:
   pattern: "{participant}_T{timepoint}_P{task_part}_R{repetition}"
   sheet_pattern: "{participant} - T{timepoint}P{task_part}R{repetition}"
@@ -28,14 +27,6 @@ movement_groups:
   Group4: {name: "Curvilinear exploration", exercise_ids: [9, 10, 11, 12, 13]}
   Group5: {name: "Single-leg balance with whole-body curves", exercise_ids: [14, 15]}
   Group6: {name: "Whole-body shaking / dance", exercise_ids: [16, 17]}
-
-# Gaga alias P1-P5 map to Group 4 exercise_ids only. NOT the task-part P.
-gaga_group4_aliases:
-  P1: 9
-  P2: 10
-  P3: 11
-  P4: 12
-  P5: 13
 
 # Primary analysis unit for V1.
 primary_group: Group4

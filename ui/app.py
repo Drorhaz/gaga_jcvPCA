@@ -134,7 +134,6 @@ def _render_inventory(snapshot, nav) -> None:
                     "session_id",
                     "exercise_id",
                     "canonical_label",
-                    "gaga_alias",
                     "group_id",
                     "exercise_name",
                     "start_frame",

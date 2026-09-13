@@ -1,0 +1,349 @@
+participant,session_id,T_R,window,marker_name,attached_bone_token,bone_source,reference_session_for_fallback,related_links,mapping_status,n_related_links
+790,790_T1_P1_R1,T1_R1,ex09_13,790:CV7,Neck2,spatial,790_T1_P1_R1,Neck2_to_Head; Neck_to_Neck2,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LAH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LCAJ,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LDP1,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LFAL,LFoot,spatial,790_T1_P1_R1,LShin_to_LFoot,manifest_link,1
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LFAX,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LFCC,LFoot,spatial,790_T1_P1_R1,LShin_to_LFoot,manifest_link,1
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LFLE,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LFM1,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LFM2,,none,790_T1_P1_R1,no link match,no_link_match,0
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LFM5,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LFME,,none,790_T1_P1_R1,no link match,no_link_match,0
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LFTC,LThigh,spatial,790_T1_P1_R1,790_to_LThigh; LThigh_to_LShin,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LHGT,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LHLE,LFArm,spatial,790_T1_P1_R1,LFArm_to_LHand; LUArm_to_LFArm,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LHM2,LThumb3,spatial,790_T1_P1_R1,bone=LThumb3; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LHME,,none,790_T1_P1_R1,no link match,no_link_match,0
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LIAS,LThigh,spatial,790_T1_P1_R1,790_to_LThigh; LThigh_to_LShin,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LIPS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LPH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LRSP,LThumb2,spatial,790_T1_P1_R1,bone=LThumb2; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LSK,LFoot,spatial,790_T1_P1_R1,LShin_to_LFoot,manifest_link,1
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LTH,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LTTC,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LUA,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:LUSP,LHand,spatial,790_T1_P1_R1,LFArm_to_LHand,manifest_link,1
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RAH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RCAJ,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RDP1,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RFAL,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RFAX,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RFCC,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RFLE,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RFM1,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RFM5,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RFTC,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RHGT,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RHLE,RFArm,spatial,790_T1_P1_R1,RFArm_to_RHand; RUArm_to_RFArm,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RHM2,RMiddle1,spatial,790_T1_P1_R1,bone=RMiddle1; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RHME,,none,790_T1_P1_R1,no link match,no_link_match,0
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RIAS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RIPS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RPH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RRSP,RHand,spatial,790_T1_P1_R1,RFArm_to_RHand,manifest_link,1
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RSK,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RTH,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RTTC,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RUA,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:RUSP,RHand,spatial,790_T1_P1_R1,RFArm_to_RHand,manifest_link,1
+790,790_T1_P1_R1,T1_R1,ex09_13,790:SJN,Neck,spatial,790_T1_P1_R1,Chest_to_Neck; Neck_to_Neck2,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:SXS,Chest,spatial,790_T1_P1_R1,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest,manifest_link,4
+790,790_T1_P1_R1,T1_R1,ex09_13,790:TV2,RShoulder,spatial,790_T1_P1_R1,Chest_to_RShoulder; RShoulder_to_RUArm,manifest_link,2
+790,790_T1_P1_R1,T1_R1,ex09_13,790:TV7,Chest,spatial,790_T1_P1_R1,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest,manifest_link,4
+790,790_T1_P1_R1,T1_R1,ex09_13,Unlabeled 1810,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R1,T1_R1,ex09_13,Unlabeled 1811,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R1,T1_R1,ex09_13,Unlabeled 1812,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R1,T1_R1,ex09_13,Unlabeled 1814,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R1,T1_R1,ex09_13,Unlabeled 1816,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R1,T1_R1,ex09_13,Unlabeled 1817,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R1,T1_R1,ex09_13,Unlabeled 1822,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R1,T1_R1,ex09_13,Unlabeled 1825,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R1,T1_R1,ex09_13,Unlabeled 1826,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R1,T1_R1,ex09_13,Unlabeled 1827,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R1,T1_R1,ex09_13,Unlabeled 1830,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R1,T1_R1,ex09_13,Unlabeled 1832,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R1,T1_R1,ex09_13,Unlabeled 1834,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R2,T1_R2,ex09_13,790:CV7,Neck2,spatial,790_T1_P1_R1,Neck2_to_Head; Neck_to_Neck2,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LAH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LCAJ,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LDP1,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LFAL,LFoot,spatial,790_T1_P1_R1,LShin_to_LFoot,manifest_link,1
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LFAX,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LFCC,LFoot,spatial,790_T1_P1_R1,LShin_to_LFoot,manifest_link,1
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LFLE,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LFM1,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LFM5,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LFTC,LThigh,spatial,790_T1_P1_R1,790_to_LThigh; LThigh_to_LShin,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LHGT,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LHLE,LFArm,spatial,790_T1_P1_R1,LFArm_to_LHand; LUArm_to_LFArm,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LHM2,LThumb3,spatial,790_T1_P1_R1,bone=LThumb3; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LHME,,none,790_T1_P1_R1,no link match,no_link_match,0
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LIAS,LThigh,spatial,790_T1_P1_R1,790_to_LThigh; LThigh_to_LShin,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LIPS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LPH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LRSP,LThumb2,spatial,790_T1_P1_R1,bone=LThumb2; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LSK,LFoot,spatial,790_T1_P1_R1,LShin_to_LFoot,manifest_link,1
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LTH,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LTTC,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LUA,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:LUSP,LRing1,spatial,790_T1_P1_R1,bone=LRing1; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RAH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RCAJ,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RDP1,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RFAL,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RFAX,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RFCC,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RFLE,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RFM1,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RFM5,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RFME,,none,790_T1_P1_R1,no link match,no_link_match,0
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RFTC,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RHGT,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RHLE,RFArm,reference_session,790_T1_P1_R1,RFArm_to_RHand; RUArm_to_RFArm,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RHM2,RIndex1,spatial,790_T1_P1_R1,bone=RIndex1; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RHME,RFArm,spatial,790_T1_P1_R1,RFArm_to_RHand; RUArm_to_RFArm,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RIAS,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RIPS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RPH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RRSP,RHand,spatial,790_T1_P1_R1,RFArm_to_RHand,manifest_link,1
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RSK,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RTH,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RTTC,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RUA,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:RUSP,RHand,spatial,790_T1_P1_R1,RFArm_to_RHand,manifest_link,1
+790,790_T1_P1_R2,T1_R2,ex09_13,790:SJN,Neck,spatial,790_T1_P1_R1,Chest_to_Neck; Neck_to_Neck2,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:SXS,RIndex3,spatial,790_T1_P1_R1,bone=RIndex3; no manifest link,bone_no_manifest_link,0
+790,790_T1_P1_R2,T1_R2,ex09_13,790:TV2,RShoulder,spatial,790_T1_P1_R1,Chest_to_RShoulder; RShoulder_to_RUArm,manifest_link,2
+790,790_T1_P1_R2,T1_R2,ex09_13,790:TV7,Chest,spatial,790_T1_P1_R1,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest,manifest_link,4
+790,790_T1_P1_R2,T1_R2,ex09_13,Unlabeled 1974,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R2,T1_R2,ex09_13,Unlabeled 1975,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R2,T1_R2,ex09_13,Unlabeled 1976,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R2,T1_R2,ex09_13,Unlabeled 1978,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R2,T1_R2,ex09_13,Unlabeled 1979,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R2,T1_R2,ex09_13,Unlabeled 1980,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R2,T1_R2,ex09_13,Unlabeled 1981,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R2,T1_R2,ex09_13,Unlabeled 1983,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R2,T1_R2,ex09_13,Unlabeled 1984,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R2,T1_R2,ex09_13,Unlabeled 1986,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T1_P1_R2,T1_R2,ex09_13,Unlabeled 1988,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T2_P1_R1,T2_R1,ex09_13,790:CV7,Neck,spatial,790_T1_P1_R1,Chest_to_Neck; Neck_to_Neck2,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LAH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LCAJ,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LDP1,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LFAL,LFoot,spatial,790_T1_P1_R1,LShin_to_LFoot,manifest_link,1
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LFAX,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LFCC,LFoot,spatial,790_T1_P1_R1,LShin_to_LFoot,manifest_link,1
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LFLE,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LFM1,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LFM5,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LFTC,LThigh,spatial,790_T1_P1_R1,790_to_LThigh; LThigh_to_LShin,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LHGT,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LHLE,LFArm,spatial,790_T1_P1_R1,LFArm_to_LHand; LUArm_to_LFArm,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LHM2,LThumb2,spatial,790_T1_P1_R1,bone=LThumb2; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LIAS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LIPS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LPH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LRSP,LThumb2,spatial,790_T1_P1_R1,bone=LThumb2; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LSK,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LTH,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LTTC,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LUA,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:LUSP,LHand,spatial,790_T1_P1_R1,LFArm_to_LHand,manifest_link,1
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RAH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RCAJ,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RDP1,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RFAL,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RFAX,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RFCC,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RFLE,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RFM1,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RFM5,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RFTC,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RHGT,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RHLE,RFArm,spatial,790_T1_P1_R1,RFArm_to_RHand; RUArm_to_RFArm,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RHM2,RThumb2,spatial,790_T1_P1_R1,bone=RThumb2; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RIAS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RIPS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RPH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RRSP,RHand,spatial,790_T1_P1_R1,RFArm_to_RHand,manifest_link,1
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RSK,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RTH,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RUA,RFArm,spatial,790_T1_P1_R1,RFArm_to_RHand; RUArm_to_RFArm,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:RUSP,RHand,spatial,790_T1_P1_R1,RFArm_to_RHand,manifest_link,1
+790,790_T2_P1_R1,T2_R1,ex09_13,790:SJN,Neck,spatial,790_T1_P1_R1,Chest_to_Neck; Neck_to_Neck2,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:SXS,Chest,spatial,790_T1_P1_R1,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest,manifest_link,4
+790,790_T2_P1_R1,T2_R1,ex09_13,790:TV2,RShoulder,spatial,790_T1_P1_R1,Chest_to_RShoulder; RShoulder_to_RUArm,manifest_link,2
+790,790_T2_P1_R1,T2_R1,ex09_13,790:TV7,Chest,spatial,790_T1_P1_R1,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest,manifest_link,4
+790,790_T2_P1_R1,T2_R1,ex09_13,Unlabeled 1442,RShin,spatial,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T2_P1_R1,T2_R1,ex09_13,Unlabeled 1443,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T2_P1_R2,T2_R2,ex09_13,790:CV7,Neck2,spatial,790_T1_P1_R1,Neck2_to_Head; Neck_to_Neck2,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LAH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LCAJ,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LDP1,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LFAL,LFoot,spatial,790_T1_P1_R1,LShin_to_LFoot,manifest_link,1
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LFAX,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LFCC,LFoot,spatial,790_T1_P1_R1,LShin_to_LFoot,manifest_link,1
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LFLE,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LFM1,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LFM5,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LFTC,LThigh,spatial,790_T1_P1_R1,790_to_LThigh; LThigh_to_LShin,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LHGT,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LHLE,LFArm,spatial,790_T1_P1_R1,LFArm_to_LHand; LUArm_to_LFArm,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LHM2,LThumb2,spatial,790_T1_P1_R1,bone=LThumb2; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LIAS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LIPS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LPH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LRSP,LThumb2,spatial,790_T1_P1_R1,bone=LThumb2; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LSK,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LTH,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LTTC,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LUA,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:LUSP,LHand,spatial,790_T1_P1_R1,LFArm_to_LHand,manifest_link,1
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RAH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RCAJ,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RDP1,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RFAL,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RFAX,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RFCC,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RFLE,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RFM1,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RFM5,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RFTC,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RHGT,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RHLE,RFArm,spatial,790_T1_P1_R1,RFArm_to_RHand; RUArm_to_RFArm,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RHM2,RIndex1,spatial,790_T1_P1_R1,bone=RIndex1; no manifest link,bone_no_manifest_link,0
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RIAS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RIPS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RPH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RRSP,RHand,spatial,790_T1_P1_R1,RFArm_to_RHand,manifest_link,1
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RSK,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RTH,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RUA,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:RUSP,RHand,spatial,790_T1_P1_R1,RFArm_to_RHand,manifest_link,1
+790,790_T2_P1_R2,T2_R2,ex09_13,790:SJN,Neck,spatial,790_T1_P1_R1,Chest_to_Neck; Neck_to_Neck2,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:SXS,Chest,spatial,790_T1_P1_R1,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest,manifest_link,4
+790,790_T2_P1_R2,T2_R2,ex09_13,790:TV2,LShoulder,spatial,790_T1_P1_R1,Chest_to_LShoulder; LShoulder_to_LUArm,manifest_link,2
+790,790_T2_P1_R2,T2_R2,ex09_13,790:TV7,Chest,spatial,790_T1_P1_R1,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest,manifest_link,4
+790,790_T2_P1_R2,T2_R2,ex09_13,Unlabeled 1566,RShin,spatial,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T2_P1_R2,T2_R2,ex09_13,Unlabeled 1568,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T2_P1_R2,T2_R2,ex09_13,Unlabeled 1572,RFoot,spatial,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R1,T3_R1,ex09_13,790:CV7,Neck,spatial,790_T1_P1_R1,Chest_to_Neck; Neck_to_Neck2,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LAH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LCAJ,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LDP1,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LFAL,LFoot,spatial,790_T1_P1_R1,LShin_to_LFoot,manifest_link,1
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LFAX,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LFCC,LFoot,spatial,790_T1_P1_R1,LShin_to_LFoot,manifest_link,1
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LFLE,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LFM1,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LFM5,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LFTC,LThigh,spatial,790_T1_P1_R1,790_to_LThigh; LThigh_to_LShin,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LHGT,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LHLE,LFArm,spatial,790_T1_P1_R1,LFArm_to_LHand; LUArm_to_LFArm,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LHM2,LIndex1,spatial,790_T1_P1_R1,bone=LIndex1; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LIAS,LThigh,spatial,790_T1_P1_R1,790_to_LThigh; LThigh_to_LShin,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LIPS,Ab,spatial,790_T1_P1_R1,790_to_Ab; Ab_to_Spine2,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LPH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LRSP,LThumb2,spatial,790_T1_P1_R1,bone=LThumb2; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LSK,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LTH,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LTTC,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LUA,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:LUSP,LPinky1,spatial,790_T1_P1_R1,bone=LPinky1; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RAH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RCAJ,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RDP1,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RFAL,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RFAX,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RFCC,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RFLE,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RFM1,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RFM5,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RFTC,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RHGT,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RHLE,RFArm,spatial,790_T1_P1_R1,RFArm_to_RHand; RUArm_to_RFArm,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RHM2,RMiddle1,spatial,790_T1_P1_R1,bone=RMiddle1; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RIAS,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RIPS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RPH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RRSP,RHand,spatial,790_T1_P1_R1,RFArm_to_RHand,manifest_link,1
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RSK,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RTH,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RTTC,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RUA,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:RUSP,RHand,spatial,790_T1_P1_R1,RFArm_to_RHand,manifest_link,1
+790,790_T3_P1_R1,T3_R1,ex09_13,790:SJN,Chest,spatial,790_T1_P1_R1,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest,manifest_link,4
+790,790_T3_P1_R1,T3_R1,ex09_13,790:SXS,Chest,spatial,790_T1_P1_R1,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest,manifest_link,4
+790,790_T3_P1_R1,T3_R1,ex09_13,790:TV2,LShoulder,spatial,790_T1_P1_R1,Chest_to_LShoulder; LShoulder_to_LUArm,manifest_link,2
+790,790_T3_P1_R1,T3_R1,ex09_13,790:TV7,Chest,spatial,790_T1_P1_R1,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest,manifest_link,4
+790,790_T3_P1_R1,T3_R1,ex09_13,Unlabeled 1443,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R1,T3_R1,ex09_13,Unlabeled 1445,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R1,T3_R1,ex09_13,Unlabeled 1448,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R1,T3_R1,ex09_13,Unlabeled 1450,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R1,T3_R1,ex09_13,Unlabeled 1489,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R1,T3_R1,ex09_13,Unlabeled 1490,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R1,T3_R1,ex09_13,Unlabeled 1491,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R1,T3_R1,ex09_13,Unlabeled 1492,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R1,T3_R1,ex09_13,Unlabeled 1493,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R2,T3_R2,ex09_13,790:CV7,Neck,spatial,790_T1_P1_R1,Chest_to_Neck; Neck_to_Neck2,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LAH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LCAJ,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LDP1,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LFAL,LFoot,spatial,790_T1_P1_R1,LShin_to_LFoot,manifest_link,1
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LFAX,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LFCC,LFoot,spatial,790_T1_P1_R1,LShin_to_LFoot,manifest_link,1
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LFLE,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LFM1,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LFM5,LToe,spatial,790_T1_P1_R1,bone=LToe; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LFTC,LThigh,spatial,790_T1_P1_R1,790_to_LThigh; LThigh_to_LShin,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LHGT,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LHLE,LFArm,spatial,790_T1_P1_R1,LFArm_to_LHand; LUArm_to_LFArm,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LHM2,LIndex1,spatial,790_T1_P1_R1,bone=LIndex1; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LIAS,LThigh,spatial,790_T1_P1_R1,790_to_LThigh; LThigh_to_LShin,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LIPS,Ab,spatial,790_T1_P1_R1,790_to_Ab; Ab_to_Spine2,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LPH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LRSP,LThumb2,spatial,790_T1_P1_R1,bone=LThumb2; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LSK,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LTH,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LTTC,LShin,spatial,790_T1_P1_R1,LShin_to_LFoot; LThigh_to_LShin,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LUA,LUArm,spatial,790_T1_P1_R1,LShoulder_to_LUArm; LUArm_to_LFArm,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:LUSP,LPinky1,spatial,790_T1_P1_R1,bone=LPinky1; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RAH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RCAJ,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RDP1,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RFAL,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RFAX,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RFCC,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RFLE,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RFM1,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RFM5,RToe,spatial,790_T1_P1_R1,bone=RToe; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RFTC,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RHGT,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RHLE,RFArm,spatial,790_T1_P1_R1,RFArm_to_RHand; RUArm_to_RFArm,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RHM2,RMiddle1,spatial,790_T1_P1_R1,bone=RMiddle1; no manifest link,bone_no_manifest_link,0
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RIAS,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RIPS,Spine2,spatial,790_T1_P1_R1,Ab_to_Spine2; Spine2_to_Spine3,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RPH,Head,spatial,790_T1_P1_R1,Neck2_to_Head,manifest_link,1
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RRSP,RHand,spatial,790_T1_P1_R1,RFArm_to_RHand,manifest_link,1
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RSK,RFoot,spatial,790_T1_P1_R1,RShin_to_RFoot,manifest_link,1
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RTH,RThigh,spatial,790_T1_P1_R1,790_to_RThigh; RThigh_to_RShin,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RTTC,RShin,spatial,790_T1_P1_R1,RShin_to_RFoot; RThigh_to_RShin,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RUA,RUArm,spatial,790_T1_P1_R1,RShoulder_to_RUArm; RUArm_to_RFArm,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:RUSP,RHand,spatial,790_T1_P1_R1,RFArm_to_RHand,manifest_link,1
+790,790_T3_P1_R2,T3_R2,ex09_13,790:SJN,Chest,spatial,790_T1_P1_R1,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest,manifest_link,4
+790,790_T3_P1_R2,T3_R2,ex09_13,790:SXS,Chest,spatial,790_T1_P1_R1,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest,manifest_link,4
+790,790_T3_P1_R2,T3_R2,ex09_13,790:TV2,LShoulder,spatial,790_T1_P1_R1,Chest_to_LShoulder; LShoulder_to_LUArm,manifest_link,2
+790,790_T3_P1_R2,T3_R2,ex09_13,790:TV7,Chest,spatial,790_T1_P1_R1,Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Spine4_to_Chest,manifest_link,4
+790,790_T3_P1_R2,T3_R2,ex09_13,Unlabeled 1663,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R2,T3_R2,ex09_13,Unlabeled 1664,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R2,T3_R2,ex09_13,Unlabeled 1665,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R2,T3_R2,ex09_13,Unlabeled 1666,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R2,T3_R2,ex09_13,Unlabeled 1668,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R2,T3_R2,ex09_13,Unlabeled 1669,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R2,T3_R2,ex09_13,Unlabeled 1670,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R2,T3_R2,ex09_13,Unlabeled 1673,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R2,T3_R2,ex09_13,Unlabeled 1674,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R2,T3_R2,ex09_13,Unlabeled 1675,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0
+790,790_T3_P1_R2,T3_R2,ex09_13,Unlabeled 1676,,none,790_T1_P1_R1,unlabeled (other),unlabeled,0

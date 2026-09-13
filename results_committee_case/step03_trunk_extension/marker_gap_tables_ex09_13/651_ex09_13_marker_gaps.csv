@@ -1,0 +1,437 @@
+participant,session_id,T_R,window,session_total_frames,ex09_13_window_frames,marker_name,attached_bone_token,n_gaps_gt_0p5s,pct_frames_in_large_gaps_of_session,pct_frames_in_large_gaps_of_window,n_velocity_artifacts,pct_velocity_artifacts_of_window,related_links
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:BackLeft,Chest,0,0.0,0.0,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:BackRight,RUArm,0,0.0,0.0,0,0.0,RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:BackTop,Neck,0,0.0,0.0,0,0.0,Chest_to_Neck; Neck_to_Head
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:ChestLow,Chest,1,0.273,1.281,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:ChestTop,Neck,0,0.0,0.0,9,0.139,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Neck_to_Head
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:HeadFront,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:HeadLeft,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:HeadRight,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:HeadTop,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LAnkleOut,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LElbowOut,LFArm,0,0.0,0.0,0,0.0,LFArm_to_LHand; LUArm_to_LFArm
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LFArm,LFArm,0,0.0,0.0,1,0.015,LFArm_to_LHand; LUArm_to_LFArm
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LHandIn,LIndex2,0,0.0,0.0,12,0.185,LFArm_to_LHand
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LHandOut,LPinky1,0,0.0,0.0,4,0.062,LFArm_to_LHand
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LHeel,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LIndex,LIndex2,0,0.0,0.0,8,0.123,bone=LIndex2; no manifest link
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LKneeOut,LShin,0,0.0,0.0,0,0.0,LShin_to_LFoot; LThigh_to_LShin
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LPinky,LPinky3,0,0.0,0.0,15,0.232,bone=LPinky3; no manifest link
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LShin,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot; LThigh_to_LShin
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LShoulderBack,LUArm,0,0.0,0.0,0,0.0,Chest_to_LShoulder; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LShoulderTop,LUArm,0,0.0,0.0,1,0.015,Chest_to_LShoulder; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LThighFront,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LThighSide,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LThumb,LIndex1,0,0.0,0.0,6,0.093,bone=LIndex1; no manifest link
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LToeIn,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LToeOut,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LToeTip,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LUArmHigh,LFArm,0,0.0,0.0,0,0.0,LFArm_to_LHand; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:LWristOut,LHand,0,0.0,0.0,0,0.0,LFArm_to_LHand
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RAnkleOut,RFoot,0,0.0,0.0,0,0.0,RShin_to_RFoot
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RElbowOut,RFArm,0,0.0,0.0,0,0.0,RFArm_to_RHand; RUArm_to_RFArm
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RFArm,RHand,0,0.0,0.0,1,0.015,RFArm_to_RHand; RUArm_to_RFArm
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RHandIn,RIndex1,0,0.0,0.0,17,0.262,RFArm_to_RHand
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RHandOut,RPinky1,0,0.0,0.0,0,0.0,RFArm_to_RHand
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RHeel,RFoot,0,0.0,0.0,0,0.0,RShin_to_RFoot
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RIndex,RIndex2,0,0.0,0.0,8,0.123,bone=RIndex2; no manifest link
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RKneeOut,RShin,0,0.0,0.0,0,0.0,RShin_to_RFoot; RThigh_to_RShin
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RPinky,RPinky3,0,0.0,0.0,17,0.262,bone=RPinky3; no manifest link
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RShin,RShin,0,0.0,0.0,0,0.0,RShin_to_RFoot; RThigh_to_RShin
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RShoulderBack,RUArm,0,0.0,0.0,0,0.0,Chest_to_RShoulder; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RShoulderTop,RUArm,0,0.0,0.0,0,0.0,Chest_to_RShoulder; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RThighFront,RShin,0,0.0,0.0,0,0.0,651_to_RThigh; RShin_to_RFoot; RThigh_to_RShin
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RThighSide,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RThumb,RThumb3,0,0.0,0.0,6,0.093,bone=RThumb3; no manifest link
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RToeIn,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RToeOut,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RToeTip,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RUArmHigh,RFArm,0,0.0,0.0,0,0.0,RFArm_to_RHand; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:RWristOut,RHand,0,0.0,0.0,0,0.0,RFArm_to_RHand
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:WaistCBack,Chest,0,0.0,0.0,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:WaistLBack,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:WaistLFront,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:WaistRBack,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,651:WaistRFront,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,Unlabeled 1681,,2,21.264,99.83,0,0.0,unlabeled (other)
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,Unlabeled 1682,,3,21.293,99.969,0,0.0,unlabeled (other)
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,Unlabeled 1689,,2,21.29,99.954,0,0.0,unlabeled (other)
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,Unlabeled 1691,,2,21.29,99.954,0,0.0,unlabeled (other)
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,Unlabeled 1692,,2,21.287,99.938,0,0.0,unlabeled (other)
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,Unlabeled 1701,,2,21.273,99.877,0,0.0,unlabeled (other)
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,Unlabeled 1703,,2,21.283,99.923,0,0.0,unlabeled (other)
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,Unlabeled 1704,,2,21.29,99.954,0,0.0,unlabeled (other)
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,Unlabeled 1710,,2,21.287,99.938,0,0.0,unlabeled (other)
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,Unlabeled 1718,,1,21.3,100.0,0,0.0,unlabeled (other)
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,Unlabeled 1731,,1,21.3,100.0,0,0.0,unlabeled (other)
+651,651_T1_P1_R1,T1_R1,ex09_13,30423,6480,Unlabeled 1743,,1,21.3,100.0,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:BackLeft,Chest,0,0.0,0.0,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:BackRight,RUArm,0,0.0,0.0,0,0.0,RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:BackTop,Neck,0,0.0,0.0,0,0.0,Chest_to_Neck; Neck_to_Head
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:ChestLow,Chest,1,0.379,1.727,1,0.015,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:ChestTop,Neck,4,4.496,20.515,13,0.197,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Neck_to_Head
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:HeadFront,Head,0,0.0,0.0,1,0.015,Neck_to_Head
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:HeadLeft,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:HeadRight,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:HeadTop,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LAnkleOut,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LElbowOut,LFArm,0,0.0,0.0,0,0.0,LFArm_to_LHand; LUArm_to_LFArm
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LFArm,LFArm,0,0.0,0.0,0,0.0,LFArm_to_LHand; LUArm_to_LFArm
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LHandIn,LIndex2,0,0.0,0.0,8,0.121,LFArm_to_LHand
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LHandOut,LPinky1,0,0.0,0.0,7,0.106,LFArm_to_LHand
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LHeel,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LIndex,LIndex2,0,0.0,0.0,6,0.091,bone=LIndex2; no manifest link
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LKneeOut,LShin,0,0.0,0.0,0,0.0,LShin_to_LFoot; LThigh_to_LShin
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LPinky,LPinky3,0,0.0,0.0,5,0.076,bone=LPinky3; no manifest link
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LShin,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot; LThigh_to_LShin
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LShoulderBack,LUArm,0,0.0,0.0,0,0.0,Chest_to_LShoulder; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LShoulderTop,LUArm,0,0.0,0.0,0,0.0,Chest_to_LShoulder; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LThighFront,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LThighSide,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LThumb,LIndex1,0,0.0,0.0,7,0.106,bone=LIndex1; no manifest link
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LToeIn,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LToeOut,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LToeTip,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LUArmHigh,LFArm,0,0.0,0.0,0,0.0,LFArm_to_LHand; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:LWristOut,LHand,0,0.0,0.0,1,0.015,LFArm_to_LHand
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RAnkleOut,RFoot,0,0.0,0.0,0,0.0,RShin_to_RFoot
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RElbowOut,RFArm,0,0.0,0.0,0,0.0,RFArm_to_RHand; RUArm_to_RFArm
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RFArm,RHand,0,0.0,0.0,2,0.03,RFArm_to_RHand; RUArm_to_RFArm
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RHandIn,RIndex1,0,0.0,0.0,19,0.288,RFArm_to_RHand
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RHandOut,RPinky1,0,0.0,0.0,3,0.045,RFArm_to_RHand
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RHeel,RFoot,0,0.0,0.0,0,0.0,RShin_to_RFoot
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RIndex,RIndex2,0,0.0,0.0,18,0.273,bone=RIndex2; no manifest link
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RKneeOut,RShin,0,0.0,0.0,0,0.0,RShin_to_RFoot; RThigh_to_RShin
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RPinky,RPinky3,0,0.0,0.0,7,0.106,bone=RPinky3; no manifest link
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RShin,RShin,0,0.0,0.0,0,0.0,RShin_to_RFoot; RThigh_to_RShin
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RShoulderBack,RUArm,0,0.0,0.0,0,0.0,Chest_to_RShoulder; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RShoulderTop,RUArm,0,0.0,0.0,0,0.0,Chest_to_RShoulder; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RThighFront,RShin,0,0.0,0.0,0,0.0,651_to_RThigh; RShin_to_RFoot; RThigh_to_RShin
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RThighSide,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RThumb,RThumb3,0,0.0,0.0,8,0.121,bone=RThumb3; no manifest link
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RToeIn,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RToeOut,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RToeTip,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RUArmHigh,RFArm,0,0.0,0.0,0,0.0,RFArm_to_RHand; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:RWristOut,RHand,0,0.0,0.0,0,0.0,RFArm_to_RHand
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:WaistCBack,Chest,0,0.0,0.0,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:WaistLBack,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:WaistLFront,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:WaistRBack,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,651:WaistRFront,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1942,,1,21.917,100.0,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1950,,2,21.904,99.939,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1954,,2,21.894,99.894,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1957,,2,21.904,99.939,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1959,,2,21.911,99.97,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1960,,2,21.901,99.924,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1962,,2,21.904,99.939,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1964,,2,21.898,99.909,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1966,,2,21.911,99.97,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1969,,2,21.911,99.97,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1971,,2,21.765,99.303,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1972,,2,21.901,99.924,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1982,,2,21.901,99.924,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1996,,1,21.917,100.0,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 1998,,1,21.917,100.0,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 2002,,1,21.917,100.0,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 2003,,1,21.917,100.0,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 2004,,1,21.917,100.0,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 2009,,1,21.917,100.0,0,0.0,unlabeled (other)
+651,651_T1_P1_R2,T1_R2,ex09_13,30113,6600,Unlabeled 2014,,1,21.917,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:BackLeft,Chest,0,0.0,0.0,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:BackRight,RUArm,0,0.0,0.0,0,0.0,RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:BackTop,Neck,0,0.0,0.0,0,0.0,Chest_to_Neck; Neck_to_Head
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:ChestLow,Chest,3,0.993,4.747,1,0.015,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:ChestTop,Neck,5,1.735,8.289,2,0.03,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Neck_to_Head
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:HeadFront,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:HeadLeft,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:HeadRight,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:HeadTop,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LAnkleOut,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LElbowOut,LFArm,0,0.0,0.0,0,0.0,LFArm_to_LHand; LUArm_to_LFArm
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LFArm,LFArm,0,0.0,0.0,1,0.015,LFArm_to_LHand; LUArm_to_LFArm
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LHandIn,LIndex2,0,0.0,0.0,19,0.283,LFArm_to_LHand
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LHandOut,LPinky1,0,0.0,0.0,0,0.0,LFArm_to_LHand
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LHeel,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LIndex,LIndex2,0,0.0,0.0,23,0.342,bone=LIndex2; no manifest link
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LKneeOut,LShin,0,0.0,0.0,0,0.0,LShin_to_LFoot; LThigh_to_LShin
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LPinky,LPinky3,0,0.0,0.0,0,0.0,bone=LPinky3; no manifest link
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LShin,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot; LThigh_to_LShin
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LShoulderBack,LUArm,0,0.0,0.0,0,0.0,Chest_to_LShoulder; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LShoulderTop,LUArm,0,0.0,0.0,0,0.0,Chest_to_LShoulder; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LThighFront,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LThighSide,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LThumb,LIndex1,0,0.0,0.0,16,0.238,bone=LIndex1; no manifest link
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LToeIn,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LToeOut,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LToeTip,LToe,0,0.0,0.0,7,0.104,bone=LToe; no manifest link; region=left_leg
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LUArmHigh,LFArm,0,0.0,0.0,1,0.015,LFArm_to_LHand; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:LWristOut,LHand,0,0.0,0.0,0,0.0,LFArm_to_LHand
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RAnkleOut,RFoot,0,0.0,0.0,0,0.0,RShin_to_RFoot
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RElbowOut,RFArm,0,0.0,0.0,0,0.0,RFArm_to_RHand; RUArm_to_RFArm
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RFArm,RHand,1,0.23,1.101,0,0.0,RFArm_to_RHand; RUArm_to_RFArm
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RHandIn,RIndex1,0,0.0,0.0,10,0.149,RFArm_to_RHand
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RHandOut,RPinky1,0,0.0,0.0,1,0.015,RFArm_to_RHand
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RHeel,RFoot,0,0.0,0.0,0,0.0,RShin_to_RFoot
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RIndex,RIndex2,0,0.0,0.0,8,0.119,bone=RIndex2; no manifest link
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RKneeOut,RShin,0,0.0,0.0,0,0.0,RShin_to_RFoot; RThigh_to_RShin
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RPinky,RPinky3,0,0.0,0.0,0,0.0,bone=RPinky3; no manifest link
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RShin,RShin,0,0.0,0.0,0,0.0,RShin_to_RFoot; RThigh_to_RShin
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RShoulderBack,RUArm,0,0.0,0.0,0,0.0,Chest_to_RShoulder; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RShoulderTop,RUArm,0,0.0,0.0,1,0.015,Chest_to_RShoulder; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RThighFront,RShin,0,0.0,0.0,0,0.0,651_to_RThigh; RShin_to_RFoot; RThigh_to_RShin
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RThighSide,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RThumb,RThumb3,0,0.0,0.0,5,0.074,bone=RThumb3; no manifest link
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RToeIn,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RToeOut,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RToeTip,RToe,0,0.0,0.0,13,0.193,bone=RToe; no manifest link; region=right_leg
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RUArmHigh,RFArm,0,0.0,0.0,0,0.0,RFArm_to_RHand; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:RWristOut,RHand,0,0.0,0.0,0,0.0,RFArm_to_RHand
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:WaistCBack,Chest,0,0.0,0.0,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:WaistLBack,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:WaistLFront,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:WaistRBack,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,651_T2:WaistRFront,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1274,,1,20.928,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1278,,2,20.925,99.985,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1280,,1,20.928,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1282,,2,20.916,99.94,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1283,,2,20.919,99.955,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1285,,2,20.922,99.97,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1289,,2,20.912,99.926,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1291,,2,20.919,99.955,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1292,,2,20.922,99.97,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1294,,2,20.922,99.97,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1299,,2,20.841,99.583,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1301,,2,20.772,99.256,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1303,,2,20.797,99.375,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1308,,2,20.906,99.896,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1310,,2,20.919,99.955,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1311,,2,20.875,99.747,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1318,,1,20.928,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1323,,1,20.928,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1326,,1,20.928,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1329,,1,20.928,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R1,T2_R1,ex09_13,32110,6720,Unlabeled 1332,,1,20.928,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:BackLeft,Chest,0,0.0,0.0,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:BackRight,RUArm,0,0.0,0.0,0,0.0,RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:BackTop,Neck,0,0.0,0.0,0,0.0,Chest_to_Neck; Neck_to_Head
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:ChestLow,Chest,1,0.309,1.394,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:ChestTop,Neck,2,1.115,5.029,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Neck_to_Head
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:HeadFront,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:HeadLeft,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:HeadRight,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:HeadTop,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LAnkleOut,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LElbowOut,LFArm,0,0.0,0.0,0,0.0,LFArm_to_LHand; LUArm_to_LFArm
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LFArm,LFArm,2,0.411,1.853,1,0.014,LFArm_to_LHand; LUArm_to_LFArm
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LHandIn,LIndex2,0,0.0,0.0,6,0.086,LFArm_to_LHand
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LHandOut,LPinky1,0,0.0,0.0,2,0.029,LFArm_to_LHand
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LHeel,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LIndex,LIndex2,0,0.0,0.0,12,0.172,bone=LIndex2; no manifest link
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LKneeOut,LShin,0,0.0,0.0,0,0.0,LShin_to_LFoot; LThigh_to_LShin
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LPinky,LPinky3,0,0.0,0.0,2,0.029,bone=LPinky3; no manifest link
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LShin,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot; LThigh_to_LShin
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LShoulderBack,LUArm,0,0.0,0.0,0,0.0,Chest_to_LShoulder; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LShoulderTop,LUArm,0,0.0,0.0,1,0.014,Chest_to_LShoulder; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LThighFront,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LThighSide,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LThumb,LIndex1,0,0.0,0.0,3,0.043,bone=LIndex1; no manifest link
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LToeIn,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LToeOut,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LToeTip,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LUArmHigh,LFArm,0,0.0,0.0,1,0.014,LFArm_to_LHand; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:LWristOut,LHand,0,0.0,0.0,0,0.0,LFArm_to_LHand
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RAnkleOut,RFoot,0,0.0,0.0,0,0.0,RShin_to_RFoot
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RElbowOut,RFArm,0,0.0,0.0,1,0.014,RFArm_to_RHand; RUArm_to_RFArm
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RFArm,RHand,1,0.217,0.977,3,0.043,RFArm_to_RHand; RUArm_to_RFArm
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RHandIn,RIndex1,0,0.0,0.0,22,0.316,RFArm_to_RHand
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RHandOut,RPinky1,0,0.0,0.0,0,0.0,RFArm_to_RHand
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RHeel,RFoot,0,0.0,0.0,0,0.0,RShin_to_RFoot
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RIndex,RIndex2,0,0.0,0.0,20,0.287,bone=RIndex2; no manifest link
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RKneeOut,RShin,0,0.0,0.0,0,0.0,RShin_to_RFoot; RThigh_to_RShin
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RPinky,RPinky3,0,0.0,0.0,18,0.259,bone=RPinky3; no manifest link
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RShin,RShin,0,0.0,0.0,0,0.0,RShin_to_RFoot; RThigh_to_RShin
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RShoulderBack,RUArm,0,0.0,0.0,0,0.0,Chest_to_RShoulder; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RShoulderTop,RUArm,3,1.023,4.612,1,0.014,Chest_to_RShoulder; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RThighFront,RShin,0,0.0,0.0,0,0.0,651_to_RThigh; RShin_to_RFoot; RThigh_to_RShin
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RThighSide,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RThumb,RThumb3,0,0.0,0.0,10,0.144,bone=RThumb3; no manifest link
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RToeIn,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RToeOut,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RToeTip,RToe,0,0.0,0.0,9,0.129,bone=RToe; no manifest link; region=right_leg
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RUArmHigh,RFArm,0,0.0,0.0,0,0.0,RFArm_to_RHand; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:RWristOut,RHand,0,0.0,0.0,0,0.0,RFArm_to_RHand
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:WaistCBack,Chest,0,0.0,0.0,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:WaistLBack,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:WaistLFront,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:WaistRBack,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,651_T2:WaistRFront,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1606,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1607,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1608,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1609,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1610,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1611,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1612,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1618,,2,22.167,99.943,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1619,,3,22.173,99.971,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1620,,2,22.167,99.943,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1622,,2,22.145,99.842,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1623,,2,22.145,99.842,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1624,,3,22.167,99.943,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1636,,2,22.167,99.943,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1639,,2,22.154,99.885,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1642,,2,22.167,99.943,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1646,,2,21.804,98.305,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1648,,2,22.033,99.339,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1652,,2,22.119,99.727,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1653,,2,22.173,99.971,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1668,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1669,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1673,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1679,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1681,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1690,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1694,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1696,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T2_P1_R2,T2_R2,ex09_13,31380,6960,Unlabeled 1702,,1,22.18,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:BackLeft,Chest,0,0.0,0.0,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:BackRight,RUArm,0,0.0,0.0,0,0.0,RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:BackTop,Neck,0,0.0,0.0,0,0.0,Chest_to_Neck; Neck_to_Head
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:ChestLow,Chest,0,0.0,0.0,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:ChestTop,Neck,1,0.237,1.086,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Neck_to_Head
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:HeadFront,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:HeadLeft,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:HeadRight,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:HeadTop,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LAnkleOut,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LElbowOut,LFArm,0,0.0,0.0,0,0.0,LFArm_to_LHand; LUArm_to_LFArm
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LFArm,LFArm,0,0.0,0.0,0,0.0,LFArm_to_LHand; LUArm_to_LFArm
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LHandIn,LIndex2,0,0.0,0.0,5,0.074,LFArm_to_LHand
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LHandOut,LPinky1,0,0.0,0.0,0,0.0,LFArm_to_LHand
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LHeel,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LIndex,LIndex2,0,0.0,0.0,23,0.342,bone=LIndex2; no manifest link
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LKneeOut,LShin,0,0.0,0.0,0,0.0,LShin_to_LFoot; LThigh_to_LShin
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LPinky,LPinky3,0,0.0,0.0,27,0.402,bone=LPinky3; no manifest link
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LShin,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot; LThigh_to_LShin
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LShoulderBack,LUArm,0,0.0,0.0,0,0.0,Chest_to_LShoulder; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LShoulderTop,LUArm,0,0.0,0.0,2,0.03,Chest_to_LShoulder; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LThighFront,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LThighSide,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LThumb,LIndex1,0,0.0,0.0,5,0.074,bone=LIndex1; no manifest link
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LToeIn,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LToeOut,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LToeTip,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LUArmHigh,LFArm,0,0.0,0.0,0,0.0,LFArm_to_LHand; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:LWristOut,LHand,0,0.0,0.0,0,0.0,LFArm_to_LHand
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RAnkleOut,RFoot,0,0.0,0.0,0,0.0,RShin_to_RFoot
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RElbowOut,RFArm,0,0.0,0.0,0,0.0,RFArm_to_RHand; RUArm_to_RFArm
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RFArm,RHand,0,0.0,0.0,0,0.0,RFArm_to_RHand; RUArm_to_RFArm
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RHandIn,RIndex1,0,0.0,0.0,18,0.268,RFArm_to_RHand
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RHandOut,RPinky1,0,0.0,0.0,0,0.0,RFArm_to_RHand
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RHeel,RFoot,0,0.0,0.0,0,0.0,RShin_to_RFoot
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RIndex,RIndex2,0,0.0,0.0,22,0.327,bone=RIndex2; no manifest link
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RKneeOut,RShin,0,0.0,0.0,0,0.0,RShin_to_RFoot; RThigh_to_RShin
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RPinky,RPinky3,0,0.0,0.0,4,0.06,bone=RPinky3; no manifest link
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RShin,RShin,0,0.0,0.0,0,0.0,RShin_to_RFoot; RThigh_to_RShin
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RShoulderBack,RUArm,0,0.0,0.0,0,0.0,Chest_to_RShoulder; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RShoulderTop,RUArm,0,0.0,0.0,0,0.0,Chest_to_RShoulder; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RThighFront,RShin,0,0.0,0.0,0,0.0,651_to_RThigh; RShin_to_RFoot; RThigh_to_RShin
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RThighSide,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RThumb,RThumb3,0,0.0,0.0,3,0.045,bone=RThumb3; no manifest link
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RToeIn,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RToeOut,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RToeTip,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RUArmHigh,RFArm,0,0.0,0.0,0,0.0,RFArm_to_RHand; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:RWristOut,RHand,0,0.0,0.0,0,0.0,RFArm_to_RHand
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:WaistCBack,Chest,0,0.0,0.0,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:WaistLBack,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:WaistLFront,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:WaistRBack,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,651_T3:WaistRFront,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,Unlabeled 1290,,1,21.793,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,Unlabeled 1295,,1,21.793,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,Unlabeled 1298,,1,21.793,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,Unlabeled 1307,,2,21.615,99.182,0,0.0,unlabeled (other)
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,Unlabeled 1308,,2,21.78,99.94,0,0.0,unlabeled (other)
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,Unlabeled 1309,,2,21.78,99.94,0,0.0,unlabeled (other)
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,Unlabeled 1319,,2,21.722,99.673,0,0.0,unlabeled (other)
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,Unlabeled 1324,,2,21.787,99.97,0,0.0,unlabeled (other)
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,Unlabeled 1328,,1,21.793,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,Unlabeled 1330,,1,21.793,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,Unlabeled 1332,,1,21.793,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,Unlabeled 1333,,1,21.793,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R1,T3_R1,ex09_13,30835,6720,Unlabeled 1343,,1,21.793,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:BackLeft,Chest,0,0.0,0.0,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:BackRight,RUArm,0,0.0,0.0,0,0.0,RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:BackTop,Neck,0,0.0,0.0,0,0.0,Chest_to_Neck; Neck_to_Head
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:ChestLow,Chest,0,0.0,0.0,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:ChestTop,Neck,4,1.241,5.759,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder; Neck_to_Head
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:HeadFront,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:HeadLeft,Head,0,0.0,0.0,1,0.015,Neck_to_Head
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:HeadRight,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:HeadTop,Head,0,0.0,0.0,0,0.0,Neck_to_Head
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LAnkleOut,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LElbowOut,LFArm,0,0.0,0.0,0,0.0,LFArm_to_LHand; LUArm_to_LFArm
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LFArm,LFArm,0,0.0,0.0,1,0.015,LFArm_to_LHand; LUArm_to_LFArm
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LHandIn,LIndex2,0,0.0,0.0,15,0.223,LFArm_to_LHand
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LHandOut,LPinky1,0,0.0,0.0,0,0.0,LFArm_to_LHand
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LHeel,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LIndex,LIndex2,0,0.0,0.0,12,0.179,bone=LIndex2; no manifest link
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LKneeOut,LShin,0,0.0,0.0,0,0.0,LShin_to_LFoot; LThigh_to_LShin
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LPinky,LPinky3,0,0.0,0.0,4,0.06,bone=LPinky3; no manifest link
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LShin,LFoot,0,0.0,0.0,0,0.0,LShin_to_LFoot; LThigh_to_LShin
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LShoulderBack,LUArm,0,0.0,0.0,0,0.0,Chest_to_LShoulder; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LShoulderTop,LUArm,0,0.0,0.0,1,0.015,Chest_to_LShoulder; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LThighFront,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LThighSide,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LThumb,LIndex1,0,0.0,0.0,6,0.089,bone=LIndex1; no manifest link
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LToeIn,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LToeOut,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LToeTip,LToe,0,0.0,0.0,0,0.0,bone=LToe; no manifest link; region=left_leg
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LUArmHigh,LFArm,0,0.0,0.0,0,0.0,LFArm_to_LHand; LShoulder_to_LUArm; LUArm_to_LFArm
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:LWristOut,LHand,0,0.0,0.0,0,0.0,LFArm_to_LHand
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RAnkleOut,RFoot,0,0.0,0.0,0,0.0,RShin_to_RFoot
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RElbowOut,RFArm,0,0.0,0.0,0,0.0,RFArm_to_RHand; RUArm_to_RFArm
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RFArm,RHand,0,0.0,0.0,0,0.0,RFArm_to_RHand; RUArm_to_RFArm
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RHandIn,RIndex1,0,0.0,0.0,4,0.06,RFArm_to_RHand
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RHandOut,RPinky1,0,0.0,0.0,0,0.0,RFArm_to_RHand
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RHeel,RFoot,0,0.0,0.0,0,0.0,RShin_to_RFoot
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RIndex,RIndex2,0,0.0,0.0,35,0.521,bone=RIndex2; no manifest link
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RKneeOut,RShin,0,0.0,0.0,0,0.0,RShin_to_RFoot; RThigh_to_RShin
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RPinky,RPinky3,0,0.0,0.0,27,0.402,bone=RPinky3; no manifest link
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RShin,RShin,0,0.0,0.0,0,0.0,RShin_to_RFoot; RThigh_to_RShin
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RShoulderBack,RUArm,0,0.0,0.0,0,0.0,Chest_to_RShoulder; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RShoulderTop,RUArm,0,0.0,0.0,0,0.0,Chest_to_RShoulder; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RThighFront,RShin,0,0.0,0.0,0,0.0,651_to_RThigh; RShin_to_RFoot; RThigh_to_RShin
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RThighSide,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RThumb,RThumb3,0,0.0,0.0,2,0.03,bone=RThumb3; no manifest link
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RToeIn,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RToeOut,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RToeTip,RToe,0,0.0,0.0,0,0.0,bone=RToe; no manifest link; region=right_leg
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RUArmHigh,RFArm,0,0.0,0.0,0,0.0,RFArm_to_RHand; RShoulder_to_RUArm; RUArm_to_RFArm
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:RWristOut,RHand,0,0.0,0.0,0,0.0,RFArm_to_RHand
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:WaistCBack,Chest,0,0.0,0.0,0,0.0,Ab_to_Chest; Chest_to_LShoulder; Chest_to_Neck; Chest_to_RShoulder
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:WaistLBack,LThigh,2,3.131,14.524,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:WaistLFront,LThigh,0,0.0,0.0,0,0.0,651_to_LThigh; LThigh_to_LShin
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:WaistRBack,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,651_T3:WaistRFront,RThigh,0,0.0,0.0,0,0.0,651_to_RThigh; RThigh_to_RShin
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1619,,1,21.558,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1620,,1,21.558,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1621,,1,21.558,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1622,,1,21.558,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1623,,1,21.558,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1627,,1,21.558,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1629,,1,21.558,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1633,,1,21.487,99.673,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1638,,2,21.542,99.926,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1640,,2,21.548,99.955,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1643,,2,21.545,99.94,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1645,,2,21.545,99.94,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1648,,1,21.558,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1651,,1,21.558,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1658,,1,21.558,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1662,,1,21.558,100.0,0,0.0,unlabeled (other)
+651,651_T3_P1_R2,T3_R2,ex09_13,31172,6720,Unlabeled 1669,,1,21.558,100.0,0,0.0,unlabeled (other)

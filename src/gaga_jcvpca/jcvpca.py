@@ -364,13 +364,28 @@ def run_comparison(
     sensitivity_p: int = 2,
     min_rows_for_pca: int = 10,
     export_weighted: bool = False,
+    pre_excluded_links: dict[str, str] | None = None,
 ) -> ComparisonResult:
     """Run one full comparison: core -> axis/link tables -> region + space rollups."""
-    kept, excluded, warnings = restrict_to_shared_features(a_df, b_df, feature_names)
+    pre_excluded_links = dict(pre_excluded_links or {})
+    drop_stems = set(pre_excluded_links)
+    filtered_features = [
+        f for f in feature_names if link_id_of(f) not in drop_stems
+    ]
+    kept, excluded, warnings = restrict_to_shared_features(a_df, b_df, filtered_features)
+    merged_excluded = dict(pre_excluded_links)
+    for link, reason in excluded.items():
+        merged_excluded.setdefault(link, reason)
+    if pre_excluded_links:
+        warnings = list(warnings)
+        warnings.append(
+            f"{len(pre_excluded_links)} link(s) excluded by marker-gap policy "
+            f"before shared-link restriction."
+        )
     if not kept:
         raise ValidationError(
             f"{comparison_id}: no shared valid links between {a_label} and {b_label}.",
-            report={"excluded_links": excluded},
+            report={"excluded_links": merged_excluded},
         )
 
     result = compute_jcvpca(
@@ -417,7 +432,7 @@ def run_comparison(
         space_table=space_table,
         evr_table=result["explained_variance_table_A"],
         included_links=list(link_map.keys()),
-        excluded_links=excluded,
+        excluded_links=merged_excluded,
         warnings=warnings,
     )
 

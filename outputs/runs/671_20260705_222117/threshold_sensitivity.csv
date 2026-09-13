@@ -1,0 +1,4 @@
+variance_threshold,selected_m,top1_link,top2_link,top3_link,top1_mean_abs_delta
+0.7,26,LThigh_to_LShin,RFArm_to_RHand,LFArm_to_LHand,0.1273545163886955
+0.8,31,LThigh_to_LShin,Chest_to_RShoulder,Chest_to_LShoulder,0.13361578844833005
+0.9,36,RShin_to_RFoot,Chest_to_LShoulder,LThigh_to_LShin,0.12971121157340904

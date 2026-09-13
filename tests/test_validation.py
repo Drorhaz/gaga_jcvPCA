@@ -39,6 +39,22 @@ def test_natural_variability_baseline_labels_descriptive():
     assert all("natural variability" in c.message for c in concs)
 
 
+def test_natural_variability_baseline_emits_signed_tier():
+    a = _matrix(FEATURES, seed=1)
+    b = _matrix(FEATURES, seed=2)
+    b_rev = _matrix(FEATURES, seed=22)
+    r1 = _matrix(FEATURES, seed=3)
+    r2 = _matrix(FEATURES, seed=4)
+    lon = _comparison("longitudinal", a, b)
+    lon_rev = _comparison("longitudinal", r2, b)  # reverse anchor (T1_R2 -> followup)
+    nv = _comparison("natural_variability", a, r2)
+    concs = validation.natural_variability_baseline(lon, nv, longitudinal_reverse=lon_rev)
+    signed = [c for c in concs if c.method == "nv_profile_signed"]
+    assert signed
+    assert all(c.metric == "nv_profile_tier" for c in signed)
+    assert all("signed NV tier S" in c.message for c in signed)
+
+
 def test_sensitivity_analysis_runs():
     a = _matrix(FEATURES, seed=5)
     b = _matrix(FEATURES, seed=6)

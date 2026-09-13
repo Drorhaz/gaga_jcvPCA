@@ -1,0 +1,13 @@
+participant,comparison_id,n_links,top1_share_t1,top1_share_followup,top1_share_delta,entropy_t1,entropy_followup,entropy_delta,top1_change_link,redistribution
+671,671_T1_R1_vs_R2,18,0.1268,0.1288,0.002,0.9218,0.9189,-0.0029,RFArm_to_RHand,more_concentrated
+671,671_T1_vs_T2,18,0.1312,0.1276,-0.0036,0.9128,0.9163,0.0036,LFArm_to_LHand,more_distributed
+671,671_T1_vs_T3,17,0.1328,0.1277,-0.0051,0.9173,0.9243,0.007,LUArm_to_LFArm,more_distributed
+252,252_T1_R1_vs_R2,22,0.1369,0.1397,0.0029,0.8878,0.8847,-0.003,LUArm_to_LFArm,more_concentrated
+252,252_T1_vs_T2,22,0.14,0.1395,-0.0004,0.8834,0.8844,0.001,RUArm_to_RFArm,more_distributed
+252,252_T1_vs_T3,22,0.14,0.1419,0.002,0.8834,0.8841,0.0007,LUArm_to_LFArm,mixed
+651,651_T1_R1_vs_R2,18,0.1466,0.1463,-0.0003,0.9029,0.902,-0.0009,RUArm_to_RFArm,mixed
+651,651_T1_vs_T2,14,0.157,0.1616,0.0046,0.8992,0.8981,-0.0011,RUArm_to_RFArm,more_concentrated
+651,651_T1_vs_T3,14,0.157,0.154,-0.003,0.8992,0.9109,0.0117,RUArm_to_RFArm,more_distributed
+790,790_T1_R1_vs_R2,22,0.1272,0.132,0.0048,0.8915,0.8848,-0.0067,790_to_LThigh,more_concentrated
+790,790_T1_vs_T2,22,0.1424,0.1411,-0.0013,0.8827,0.8894,0.0066,LShoulder_to_LUArm,more_distributed
+790,790_T1_vs_T3,22,0.1424,0.1367,-0.0057,0.8827,0.8898,0.007,RShoulder_to_RUArm,more_distributed

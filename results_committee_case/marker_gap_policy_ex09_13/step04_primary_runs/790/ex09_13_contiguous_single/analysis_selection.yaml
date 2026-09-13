@@ -1,0 +1,145 @@
+name: 790_ex09_13_contiguous
+participant: '790'
+exercise_ids:
+- 9
+- 10
+- 11
+- 12
+- 13
+combine_exercises: true
+links:
+- link: 790_to_Ab
+  region: other
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: 790_to_LThigh
+  region: left_leg
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: 790_to_RThigh
+  region: right_leg
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: Ab_to_Spine2
+  region: trunk_spine
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: Chest_to_LShoulder
+  region: left_arm
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: Chest_to_Neck
+  region: head_neck
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: Chest_to_RShoulder
+  region: right_arm
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: LFArm_to_LHand
+  region: left_arm
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: LShin_to_LFoot
+  region: left_leg
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: LShoulder_to_LUArm
+  region: left_arm
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: LThigh_to_LShin
+  region: left_leg
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: LUArm_to_LFArm
+  region: left_arm
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: Neck2_to_Head
+  region: head_neck
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: Neck_to_Neck2
+  region: other
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: RFArm_to_RHand
+  region: right_arm
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: RShin_to_RFoot
+  region: right_leg
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: RShoulder_to_RUArm
+  region: right_arm
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: RThigh_to_RShin
+  region: right_leg
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: RUArm_to_RFArm
+  region: right_arm
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: Spine2_to_Spine3
+  region: trunk_spine
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: Spine3_to_Spine4
+  region: trunk_spine
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+- link: Spine4_to_Chest
+  region: trunk_spine
+  included: true
+  reason: Inclusive QC pass on ex09_13 (passes inclusive QC on all sessions).
+  qc_recommendation: include
+  user_override: false
+notes: 'Step 3 committee selection: full feasible link set (trunk-inclusive) on ex09_13_contiguous.
+  Policy: maximize inclusion; caution links retained for Step 4b QC-drop axis.'
+created_at: '2026-07-14T17:44:05'

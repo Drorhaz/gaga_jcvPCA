@@ -162,6 +162,32 @@ def detect_velocity_artifacts(md: MarkerData, cfg: dict) -> int:
     return int(np.sum(spike_frames))
 
 
+def velocity_artifact_threshold(md: MarkerData, cfg: dict) -> Optional[float]:
+    """Shared speed threshold (m/frame) for artifact detection in ``md``."""
+    if md.positions is None or md.n_frames < 2:
+        return None
+    pct = float(cfg["artifacts"]["velocity_percentile_threshold"])
+    speed = np.linalg.norm(np.diff(md.positions, axis=0), axis=2)
+    finite = speed[np.isfinite(speed)]
+    if finite.size == 0:
+        return None
+    return float(np.percentile(finite, pct))
+
+
+def velocity_artifact_counts_per_marker(md: MarkerData, cfg: dict) -> np.ndarray:
+    """Per-marker count of frame intervals where this marker exceeds the shared threshold."""
+    n_markers = md.n_markers
+    if md.positions is None or md.n_frames < 2 or n_markers == 0:
+        return np.zeros(n_markers, dtype=int)
+    threshold = velocity_artifact_threshold(md, cfg)
+    if threshold is None:
+        return np.zeros(n_markers, dtype=int)
+    speed = np.linalg.norm(np.diff(md.positions, axis=0), axis=2)
+    valid = np.isfinite(speed)
+    spikes = (speed > threshold) & valid
+    return np.sum(spikes, axis=0).astype(int)
+
+
 # --- resolution rollups + findings ---
 
 def _missing_percent(presence: np.ndarray) -> float:

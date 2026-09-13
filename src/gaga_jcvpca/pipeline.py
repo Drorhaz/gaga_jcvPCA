@@ -13,7 +13,7 @@ from typing import Optional
 
 import pandas as pd
 
-from gaga_jcvpca import jcvpca, qc_markers, reporting, validation
+from gaga_jcvpca import jcvpca, marker_gap_policy, qc_markers, reporting, validation
 from gaga_jcvpca.config import Config, load_config
 from gaga_jcvpca.inventory import Inventory, build_inventory
 from gaga_jcvpca.schemas import QCFinding
@@ -185,6 +185,45 @@ def run_analysis(
     region_fn = lambda stem: region_of_link(stem, config)
     exercise_ids = list(selection.exercise_ids or [])
     segments_by_session = _segments_by_session(config) if exercise_ids else {}
+    gap_policy = marker_gap_policy.load_policy(config)
+
+    def _sessions_for_side(timepoint: str) -> list[str]:
+        return marker_gap_policy.sessions_for_side(
+            participant,
+            timepoint,
+            repetition_mode=repetition_mode,
+            repetitions=repetitions,
+            task_part=task_part,
+        )
+
+    def _gap_pre_excluded(a_sessions: list[str], b_sessions: list[str]) -> dict[str, str]:
+        return marker_gap_policy.pre_excluded_for_comparison(
+            participant, a_sessions, b_sessions, gap_policy
+        )
+
+    def _run_comparison(
+        comparison_id: str,
+        kind: str,
+        a_label: str,
+        b_label: str,
+        a_df: pd.DataFrame,
+        b_df: pd.DataFrame,
+        a_sessions: list[str],
+        b_sessions: list[str],
+    ) -> jcvpca.ComparisonResult:
+        return jcvpca.run_comparison(
+            comparison_id,
+            kind,
+            a_label,
+            b_label,
+            a_df,
+            b_df,
+            features,
+            variance_threshold=vt,
+            region_of_link=region_fn,
+            sensitivity_p=sensitivity_p,
+            pre_excluded_links=_gap_pre_excluded(a_sessions, b_sessions),
+        )
 
     def _get(session_id: str) -> Optional[pd.DataFrame]:
         df = matrices.get(session_id) if matrices is not None else load_matrix(config, session_id)
@@ -234,17 +273,15 @@ def run_analysis(
         comparison_id = f"{participant}_{reference_timepoint}_vs_{tp}"
         longitudinal_b[comparison_id] = b_df
         comparisons.append(
-            jcvpca.run_comparison(
+            _run_comparison(
                 comparison_id,
                 "longitudinal",
                 ref_label,
                 b_label,
                 a_df,
                 b_df,
-                features,
-                variance_threshold=vt,
-                region_of_link=region_fn,
-                sensitivity_p=sensitivity_p,
+                _sessions_for_side(reference_timepoint),
+                _sessions_for_side(tp),
             )
         )
 
@@ -255,17 +292,15 @@ def run_analysis(
         r2_id = _timepoint_session(participant, reference_timepoint, repetitions[1], task_part)
         r1_df, r2_df = _get(r1_id), _get(r2_id)
         if r1_df is not None and r2_df is not None:
-            nv_comparison = jcvpca.run_comparison(
+            nv_comparison = _run_comparison(
                 f"{participant}_{reference_timepoint}_R1_vs_R2",
                 "natural_variability",
                 r1_id,
                 r2_id,
                 r1_df,
                 r2_df,
-                features,
-                variance_threshold=vt,
-                region_of_link=region_fn,
-                sensitivity_p=sensitivity_p,
+                [r1_id],
+                [r2_id],
             )
             comparisons.append(nv_comparison)
 
@@ -325,7 +360,10 @@ def run_analysis(
         threshold_sweep=sweep_df,
         validation_results=validation_df,
         validation_summary_md=validation_md,
+        input_files=[gap_policy.removals_path] if gap_policy.enabled else [],
         marker_set_notes=_marker_set_notes(config, participant, timepoints),
+        marker_gap_policy_enabled=gap_policy.enabled,
+        marker_gap_removals_path=str(gap_policy.removals_path) if gap_policy.enabled else "",
     )
     return reporting.write_run(ctx)
 
